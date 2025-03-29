@@ -1,0 +1,743 @@
+/************************************************/ 
+/*            Portfolio Page CSS                */ 
+/************************************************/
+/*  
+        Author: John-David A. Amador
+        Date:   March 2025
+*/
+/************************************************/
+/*    background  
+********************/
+body {
+    background-image: url(../img/bg.jpg); 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    
+}
+/*
+    header/ page top 
+************************/
+header {
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.header-content h1 {
+    margin: 0 0 0px 120px;
+    font-size: 2em;
+}
+/*
+    Contact Buttons  
+***********************/
+.contact-buttons-wrapper {
+    display: flex;
+    align-items: center;
+}
+.contact-buttons {
+    display: flex;
+    align-items: center;
+    margin-left: 140px;
+}
+/* contact button icons */
+.contact-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 10px;
+    text-decoration: none;
+    color: white;
+}
+/* contact button circles */
+.icon-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: white;
+    font-size: 1em;
+    transition: transform 0.2s ease-in-out;
+}
+/* contact text */
+.contact-text {
+    font-family: stabil_grotesk;
+    font-size: 0.7em;
+    margin-top: 2px;
+    transition: transform 0.2s ease-in-out;
+}
+/*   Specific contact icon adjustments using nth-of-type     
+************************************************************/
+.contact-buttons > a:nth-of-type(1) .icon-circle i {
+    color: #007bff;
+}
+
+.contact-buttons > a:nth-of-type(2) .icon-circle {
+    background-color: transparent;
+    width: 60px;
+    height: 25px;
+    font-size: 1.8em;
+    margin-top: 15px;
+}
+
+.contact-buttons > a:nth-of-type(3) .icon-circle {
+    background-color: #0077B5;
+    color: white;
+    margin-top: 5px;
+}
+
+.contact-buttons > a:nth-of-type(4) .icon-circle {
+    color: black;
+    width: 31px;
+    height: 31px;
+    font-size: 2em;
+    margin-top: 5px;
+}
+/* Align text with icons */
+.contact-buttons > a:nth-of-type(3) .contact-text,
+.contact-buttons > a:nth-of-type(4) .contact-text {
+    margin-top: 3px;
+}
+/*   Hamburger Menu  
+***********************/
+.hamburger-container {
+    position: fixed; /* Fixed positioning */
+    top: 20px;
+    left: 20px;
+    z-index: 1001; /* Higher z-index */
+}
+.hamburger-menu {
+    background-color: black;
+    border-radius: 90%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2em;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 0 5px lightgreen;
+    line-height: 1;
+}
+.hamburger-menu.sticky {
+    background-color: green;
+}
+/************************
+/*   Navigation Menu     
+*************************/
+.nav-menu {
+    display: none;
+    flex-direction: column;
+    background-color: #333;
+    position: fixed;
+    top: 60px;
+    left: 10px;
+    width: 150px;
+    z-index: 100; /* Lower z-index */
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.nav-menu.show {
+    display: flex;
+}
+/* nav menu text */
+.nav-menu a {
+    font-family: stabil_grotesk;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    text-align: center;
+}
+/* nav menu hover */
+.nav-menu a:hover {
+    background-color: #555;
+}
+/*   Tooltips/ text that appear on hover     
+********************************************/
+[data-tooltip] {
+    position: relative;
+}
+/*  Icon/Menu Hover and active effects   
+******************************************/
+.contact-icon:hover .icon-circle,
+.contact-icon:active .icon-circle,
+.contact-icon:hover .contact-text,
+.contact-icon:active .contact-text,
+.hamburger-menu:hover,
+.hamburger-menu:active {
+    transform: scale(1.1);
+}
+
+/*   Main Title   
+*******************/
+.main-title {
+    font-family: stabil_grotesk;
+    font-size: 1.5em;
+    color: white;
+}
+/*   Greeting    
+/*****************/
+.greeting-section {
+    margin-top: 40px;
+}
+.greeting-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.text-block {   /* Box for: greeting time<h2>, greeting<h2>, JD Amador in red <span><p>, */
+    text-align: left;
+}
+.text-block h2 {    /* Box for: Greeting time and Greeting */
+    font-size: 2.3em;
+    margin-bottom: 10px;
+    font-family: stabil_grotesk;
+}
+.text-block p { /* Box for: JD Amador (red), and job title. */
+    font-size: 2em;
+    margin: 5px 0;
+    font-family: stabil_grotesk;
+    display: block;
+}
+.jd-name {  /* JD Amador (red name, Bold) */
+    color: #ff6600;
+    font-size: 1.2em;
+    font-family: stabil_grotesk;
+    font-weight: bold;
+}
+/***************************************************************
+/********************
+    profile photo 
+*********************/
+/*.image-block img {
+    display: flex;
+    width: 100px; /* can not Adjust defined in js */
+/*    height: auto; /* can not Adjust defined in js */
+/*    border-radius: 100%;
+    transform: scaleX(-1);
+}
+/***************************
+    profile photo switch 
+****************************/
+/*image-container {
+    position: relative;
+    width: 100px; /* can not Adjust defined in js */
+/*    height: 100px; /* can not Adjust defined in js */
+/*}
+.image-container img {
+    position: absolute;
+    top: 220px;
+    left: 310px;
+    width: 100px; /* can not Adjust defined in js */
+/*    height: auto;
+    border-radius: 50%;
+    transition: opacity 0.5s ease; /* Fade transition */
+/*}
+#profileImage, #profileImage2 { /* Target profile images by their IDs */
+/*    max-width: 100px; /* can not Adjust defined in js */
+/*    height: auto;
+    border-radius: 50%; /* Make them circular */
+/*    display: block; /* Ensure they behave as block elements */
+/*    margin: 0 auto; /* Center them horizontally */
+/*}
+#profileImage2 {
+    transform: scaleX(-1);
+}
+
+#profileImage2 {
+    opacity: 0; /* Initially hidden */
+/*}
+/**********************
+ profile photo glow 
+***********************/
+/*#profileImage.glowing,
+#profileImage2.glowing {
+    box-shadow: 0 0 7px 3px rgb(55, 255, 20);
+    transform: scale(1.1);
+}
+*****************************************************************************/
+
+/******************** profile photo *********************/
+.image-block {
+    position: absolute; /* Add this */
+    top: 220px; /* Adjust as needed */
+    left: 310px; /* Adjust as needed */
+}
+
+.image-block img {
+    display: flex;
+    width: 100px; /* can not Adjust defined in js */
+    height: auto; /* can not Adjust defined in js */
+    transform: scaleX(-1);
+}
+
+/******************** profile photo switch *********************/
+image-container {
+    position: relative;
+    width: 100px; /* can not Adjust defined in js */
+    height: 100px; /* can not Adjust defined in js */
+}
+
+.image-container img {
+    width: 100px; /* can not Adjust defined in js */
+    height: auto;
+    transition: opacity 0.5s ease; /* Fade transition */
+}
+
+#profileImage,
+#profileImage2 {
+    position: absolute;
+    top: 20px; /* Adjust as needed */
+    left: 10px; /* Adjust as needed */
+    max-width: 100px; /* can not Adjust defined in js */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    transition: opacity 0.5s ease;
+    border-radius: 10px;
+}
+
+#profileImage2 {
+    transform: scaleX(-1);
+    opacity: 0;
+}
+
+/******************** profile photo glow *********************/
+#profileImage.glowing,
+#profileImage2.glowing {
+    filter: drop-shadow(0 0 5px rgb(55, 255, 20)); /* Glow along transparency */
+    transform: scale(1.05); /* Adjusted scale */
+}
+/*not certain what this does anymore*/
+/* content in greeting */
+/*
+.greeting-content {
+    flex-direction: row-reverse;
+}
+*/
+
+/*
+    Intro Text (what I do, notable attributes, notable achievements) 
+***********************************************************************/
+.intro-text {
+    text-align: left;
+    padding: 10px;
+    color:white;
+    font-family: stabil_grotesk, sans-serif;
+    font-size: 18px;
+    letter-spacing:2px;
+    line-height: 28.8px;
+    margin-top: 30px;
+    margin-left: 600px;
+}
+
+/****************
+    sections    
+*****************/
+
+/*  skills box 
+******************/
+#skills {
+    position: relative;
+
+    padding: 60px; /* adjusts text from borders */
+    margin: 0 auto;
+    margin-top: 60px;
+    
+    box-sizing: border-box;
+    min-height: 200px;
+    max-width: 1200px;
+    max-height: 1000px;
+
+    border-radius: 3px;
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    
+    display: flex;
+    flex-direction: column;
+}
+/*  projects box 
+********************/
+#projects {
+    position: relative;
+
+    padding: 60px; /*adjusts text from borders */
+    margin: 0 auto;
+    margin-top: 680px;
+
+    box-sizing: border-box;
+    min-height: 200px;
+    max-width: 1200px;
+    max-height: 1000px;
+
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    border-radius: 3px;
+    
+    display: flex;
+    flex-direction: column;
+}
+/*  resume box 
+******************/
+#resume {
+    position: relative;
+
+    padding: 60px; /*adjusts text from borders */
+    margin: 0 auto;
+    margin-top: 60px;
+
+    box-sizing: border-box;
+    min-height: 200px;
+    max-width: 1200px;
+    max-height: 1000px;
+
+    border-radius: 3px;
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    
+    display: flex;
+    flex-direction: column;
+}
+/*  bio box
+***************/
+#bio {
+    position: relative;
+
+    padding: 60px; /*adjusts text from borders */
+    margin: 0 auto;
+    margin-top: 60px;
+    
+
+    box-sizing: border-box;
+    min-height: 200px;
+    max-width: 1200px;
+    max-height: 1000px;
+
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    border-radius: 3px;
+    
+    display: flex;
+    flex-direction: column;
+}
+/* sections white background, black text */
+#skills, #resume {
+    background-color: white; /* Added background-color: white */
+    color: black;
+}
+/* sections black background, white text */
+#projects, #bio {
+    background-color: black;
+    color: white;
+}
+/* section content control */
+.section-content {
+    padding: 20px;
+    word-wrap: break-word;
+    overflow: auto;
+    width: 100%;
+}
+
+/******************
+    top divider 
+*******************/
+.title-flex-wrapper {   /* Divider Box */
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
+.divider {  /* Divider object */
+    height: 2px;
+    width: 90%;
+    margin: auto;
+    background-color: grey;
+    z-index: 2;
+    margin-top: 60px;
+    margin-left: -40px;
+    position: relative;
+}
+.top-divider {  /* Top Divider Object */
+    background-color: white;
+}
+#skills .top-divider,   /* Top Divider (Black Background Sections) */
+#resume .top-divider {
+    background-color: rgb(172, 238, 255);
+    box-shadow: 0 0 15px 1px rgb(0, 221, 255);
+}
+#projects .top-divider, /* Top Divider (White Background Sections) */
+#bio .top-divider {
+    background-color: rgb(172, 238, 255);
+    box-shadow: 0 0 10px 1.5px rgb(0, 221, 255);
+}
+
+
+/******************************************
+    Autotyping Title above each Section 
+*******************************************/
+section span.animated-title {
+    margin-top: 4px;
+    position: absolute;
+    top: 87%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+}
+.animated-title{
+    white-space: nowrap;
+    font-family: "Colossalis", arial, sans-serif;
+    line-height: 1;
+    text-transform: uppercase;
+    font-size: 48px;
+    font-weight: bold;
+    top: 0px;
+    padding: 1px 10px; /* Add padding to create background space */
+    border-radius: 28%; 
+    z-index: 2; /* Ensure it's above the divider */
+}
+/*  Autotype White Background Sections
+******************************************/
+#skills .animated-title,
+#resume .animated-title{
+    color: rgb(0, 221, 255);
+    background-color: rgba(254, 254, 254, 0.871);
+    text-shadow: 0 0 8px rgb(0, 221, 255), /* Bright blue glow */
+                 0 0 2px rgb(0, 221, 255); /* Slightly less intense blue glow */
+    
+}
+/*  Autotype Black Background Sections
+******************************************/
+#projects .animated-title,
+#bio .animated-title{
+    color: rgb(0, 221, 255);
+    background-color: rgba(0, 0, 0, 0.943);
+    text-shadow: 0 0 8px rgb(0, 221, 255), /* Bright blue glow */
+                 0 0 2px rgb(0, 221, 255); /* Slightly less intense blue glow */
+}
+/*  adjust left for animated title spacing 
+***********************************************/
+#skills span.animated-title{
+    left: 23%;
+}
+#projects span.animated-title{
+    left: 11%;
+}
+#resume span.animated-title{
+    left: 9%;
+}
+#bio span.animated-title{
+    left: 6%;
+}
+
+/*********************
+    Title Backing
+**********************/
+/*  Title Backing Box for Sections
+**************************************/
+.title-effects-wrapper {
+    position: relative; /* Needed for positioning */
+    display: inline-block; /* To contain the background */
+    padding: 15px 20px; /* Adjust padding as needed */
+    border-radius: 5px; /* Optional: for rounded corners */
+}
+/*  Title Backing White Background
+**************************************/
+#skills .title-background,
+#resume .title-background {
+    background-color: white;
+    color: black;
+}
+/*  Title Backing Black Background
+**************************************/
+#projects .title-background,
+#bio .title-background {
+    background-color: black;
+    color: white;
+}
+/*  Title Backing Object
+**************************************/
+.title-background {
+    position: absolute;
+    top: 30px;
+    left: 0px;
+    right: 400px;
+    bottom: -21px;
+    z-index: 1; /* Place behind divider and autotyping */
+    border-radius: 15px;
+    box-shadow: 0 0 15px 1px rgb(0, 221, 255);
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 9%, black 13%, black, rgba(0, 0, 0, 0)); /* Gradient mask */
+}
+/*  Title Backing Glow Effect
+**************************************/
+.title-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    filter: blur(100px); /* Adjust blur as needed */
+    z-index: 1; /* Place behind background */
+    /*opacity: 0.7; /* Adjust opacity as needed */
+
+}
+
+/**************************
+    Section Backgrounds
+***************************/
+/*  Background Containers for Sections
+******************************************/
+#skills, #projects, #resume, #bio {
+    position: relative; /* Ensure relative positioning for stacking */
+}
+/*  Background Control All Sections
+***************************************/
+#skills::before, #projects::before, #resume::before, #bio::before {
+    content: '';
+    position: absolute;
+    top: -55px;
+    left: -150px; 
+    bottom: -100px;
+    right: -150px; 
+    width: 1500px;
+    height: 1000px;
+    z-index: -2; /* layer */
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+}
+/*  Section Background Images
+*********************************/
+#skills::before {
+    background-image: url('../img/skills_bg.png'); /* Replace with your skills image path */
+}
+
+#projects::before {
+    background-image: url('../img/projects_bg.png'); /* Replace with your projects image path */
+}
+
+#resume::before {
+    background-image: url('../img/resume_bg.png'); /* Replace with your resume image path */
+}
+
+#bio::before {
+    background-image: url('../img/bio_bg.png'); /* Replace with your bio image path */
+}
+
+/*  Section Background Opacity
+**********************************/
+#skills, #resume {  /*   White Background Opacity */
+    background-color: rgba(255, 255, 255, 0.5); /* White with 50% opacity */
+    color: black;
+}
+#projects, #bio {   /*   Black Background Opacity */
+    background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
+    color: white;
+}
+
+
+/***********************************
+    Section Content Text Control
+************************************/
+/*  Sections h2
+******************/
+#skills h2 {
+    font-family: "Colossalis"!important;
+    font-size: 24px;
+    letter-spacing:2px;
+    line-height: 28.8px;
+    font-weight: 100;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgb(0, 221, 255), /* Bright blue glow */
+                 0 0 15px rgb(0, 221, 255); /* Slightly less intense blue glow */
+}
+#projects h2 {
+    font-family: "Colossalis"!important;
+    font-size: 24px;
+    letter-spacing:2px;
+    line-height: 28.8px;
+    font-weight: 100;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgb(0, 221, 255), /* Bright blue glow */
+                 0 0 15px rgb(0, 221, 255); /* Slightly less intense blue glow */
+}
+#resume h2 {
+    font-family: "Colossalis"!important;
+    font-size: 24px;
+    letter-spacing:2px;
+    line-height: 28.8px;
+    font-weight: 100;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgb(0, 221, 255), /* Bright blue glow */
+                 0 0 15px rgb(0, 221, 255); /* Slightly less intense blue glow */
+}
+#bio h2 {
+    font-family: "Colossalis"!important;
+    font-size: 24px;
+    letter-spacing:2px;
+    line-height: 28.8px;
+    font-weight: 100;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgb(0, 221, 255), /* Bright blue glow */
+                 0 0 15px rgb(0, 221, 255); /* Slightly less intense blue glow */
+}
+
+
+/*  Sections p
+******************/
+#skills p {
+    font-size: 18px;
+    font-family: "Helvetica"!important;
+    font-weight: 300;
+    line-height: 1.5em;
+    text-shadow: 0 0 20px rgb(0, 221, 255), /* Bright blue glow */
+                 0 0 0px rgb(0, 221, 255); /* Slightly less intense blue glow */
+}
+#projects p {
+    font-size: 18px;
+    font-family: "Helvetica"!important;
+    font-weight: 300;
+    line-height: 1.5em;
+    text-shadow: 0 0 20px rgb(0, 221, 255), /* Bright blue glow */
+                 0 0 0px rgb(0, 221, 255); /* Slightly less intense blue glow */
+}
+#resume p {
+    font-size: 18px;
+    font-family: "Helvetica"!important;
+    font-weight: 300;
+    line-height: 1.5em;
+    text-shadow: 0 0 20px rgb(0, 221, 255), /* Bright blue glow */
+                 0 0 0px rgb(0, 221, 255); /* Slightly less intense blue glow */
+}
+#bio p {
+    font-size: 18px;
+    font-family: "Helvetica"!important;
+    font-weight: 300;
+    line-height: 1.5em;
+    text-shadow: 0 0 20px rgb(0, 221, 255), /* Bright blue glow */
+                 0 0 0px rgb(0, 221, 255); /* Slightly less intense blue glow */
+}

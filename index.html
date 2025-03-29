@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!------------------------------------------------>
+<!--                Portfolio Html              -->
+<!------------------------------------------------>
+<!--    Author: John-David A. Amador   -->
+<!--    Date:   March 2025             -->
+<!------------------------------------------------>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio Home</title>
+    <!--View Settings-->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!--CSS Reference-->
+    <link rel="stylesheet" href="css/portfolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+          integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <div class="container" id="top">
+            <div class="header-content">
+                <!-------------------------------->
+                <!--    Main Title/ My Name     -->
+                <!-------------------------------->                   
+                <h1 class="main-title">John-David Amador</h1>
+                <!----------------> 
+                <!--    Menu    -->
+                <!---------------->
+                <div class="contact-buttons-wrapper">
+                    <div class="hamburger-container">
+                        <button class="hamburger-menu" onclick="toggleNav()" data-tooltip="Menu">☰</button>
+                    </div>
+                    <div class="nav-menu" id="navMenu">
+                        <!--Intro-->
+                        <a href="#top" onclick="toggleNav()">Intro</a>
+                        <!--Skills-->
+                        <a href="#skills" onclick="toggleNav()">Skills</a>
+                        <!--Projects-->
+                        <a href="#projects" onclick="toggleNav()">Projects</a>
+                        <!--Resume-->
+                        <a href="#resume" onclick="toggleNav()">Resume</a>
+                        <!--Bio-->
+                        <a href="#bio" onclick="toggleNav()">Bio</a>
+                    </div>
+                    <!-------------------->
+                    <!--    Contacts    -->
+                    <!-------------------->
+                    <div class="contact-buttons">
+                        <!--Phone-->
+                        <a href="tel:+1(903)-224-5867" class="contact-icon" data-tooltip="Call JD">
+                            <span class="icon-circle">
+                                <i class="fas fa-phone"></i>
+                            </span>
+                            <span class="contact-text">1(903)-224-5867</span>
+                        </a>
+                        <!--E-Mail-->
+                        <a href="mailto:john.a.amador@gmail.com" class="contact-icon" data-tooltip="Email JD">
+                            <span class="icon-circle">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <span class="contact-text">john.a.amador<br>@gmail.com</span>
+                        </a>
+                        <!--LinkedIn-->
+                        <a href="https://www.linkedin.com/in/john-david-amador-a05a52160" class="contact-icon">
+                            <span class="icon-circle">
+                                <i class="fab fa-linkedin-in"></i>
+                            </span>
+                            <span class="contact-text">LinkedIn</span>
+                        </a>
+                        <!--GitHub-->
+                        <a href="https://github.com/JohnDavidAAmador" class="contact-icon">
+                            <span class="icon-circle">
+                                <i class="fab fa-github"></i>
+                            </span>
+                            <span class="contact-text">GitHub</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-------------------->
+    <!--    Greeting    -->
+    <!-------------------->
+    <section class="greeting-section">
+        <div class="greeting-content">
+            <div class="text-block">
+                <h2 id="greeting-time">Good afternoon Team,</h2>
+                <p>I'm <span class="jd-name">J.D. Amador</span></p>
+                <p>a Software Engineer | Full-Stack Developer</p>
+            </div>
+            <!------------------------>
+            <!--    Profile Pic     -->
+            <!------------------------>
+            <div class="image-block">
+                <div class="image-container">
+                    <img id="profileImage" src="img/photo1.png" alt="Profile Photo">
+                    <img id="profileImage2" src="img/profile_photo_2.png" alt="Profile Photo 2">
+                </div>
+            </div>
+        </div>
+        <!---------------->
+        <!--    Intro   -->
+        <!---------------->
+        <div class="intro-text">
+            <p>I build beneficial and impactful software technology solutions for individuals, professionals, and organizations. </p>
+            <p>I have a Bachelor's in Computer Science (Software Development) <br> where I gained foundational knowledge, skills, and hands on experience engineering and developing software, learning from highly educated industry experts.</p>
+            <p>I also have 12 years of service in the US Marine Corps, <br> specializing in multiple technology systems, fixes, impovements, maintainance, integration, and deployments providing me with a unique analytical perspective on systems design, integration, quality assurance, testing, debugging, and adapting to new and emerging technologies.</p>
+            <p>This experience serving, coupled with my technical military education, formal computer and software engineering education, and personal software projects, allows me to approach basic and complex software problems with a systems-level understanding, focusing on signal flow, configuration, and component-level analysis to deliver robust, efficient, and beneficial technology that adds value to peoples lives .</p>
+        </div>
+    </section>
+
+<!-------------------->
+<!--    Sections    -->
+<!-------------------->
+    <!--Skills-->
+    <section id="skills">
+        <div class="title-flex-wrapper">
+            <div class="title-background"></div>
+            <div class="divider top-divider"></div>
+        </div>
+        <div class="section-content">
+            <h2>Skills</h2>
+            <p>Skills section content goes here...</p>
+        </div>
+    </section>
+    <!--Projects-->
+    <section id="projects">
+        <div class="title-flex-wrapper">
+            <div class="title-background"></div>
+            <div class="divider top-divider"></div>
+        </div>
+        <div class="section-content">
+            <h2>Projects</h2>
+            <p>Projects section content goes here...</p>
+            <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage</p> 
+            <p>is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum</p> 
+            <p>et Malorum for use in a type specimen book. It usually begins with:</p>
+            <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”</p>
+            <p>&nbsp; </p>
+            <p>The purpose of lorem ipsum is to create a natural looking block of text (sentence, paragraph, page, etc.) that doesn't distract</p> 
+            <p>from the layout. A practice not without controversy, laying out pages with meaningless filler text can be very useful when the</p> 
+            <p>focus is meant to be on design, not content.</p>
+        </div>
+    </section>
+    <!--Resume-->
+    <section id="resume">
+        <div class="title-flex-wrapper">
+            <div class="title-background"></div>
+            <div class="divider top-divider"></div>
+        </div>
+        <div class="section-content">
+            <h2>Resume</h2>
+            <p>Resume section content goes here...</p>
+            <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage</p> 
+            <p>is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum</p> 
+            <p>et Malorum for use in a type specimen book. It usually begins with:</p>
+            <p>&nbsp; </p>
+            <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”</p>
+            <p>&nbsp; </p>
+            <p>The purpose of lorem ipsum is to create a natural looking block of text (sentence, paragraph, page, etc.) that doesn't distract</p> 
+            <p>from the layout. A practice not without controversy, laying out pages with meaningless filler text can be very useful when the</p> 
+            <p>focus is meant to be on design, not content.</p>
+            <p>&nbsp; </p>
+            <p>The passage experienced a surge in popularity during the 1960s when Letraset used it on their dry-transfer sheets, and again</p>
+            <p>during the 90s as desktop publishers bundled the text with their software. Today it's seen all around the web; on templates,</p> 
+            <p>websites, and stock designs. Use our generator to get your own, or read on for the authoritative history of lorem ipsum.</p>
+        </div>
+    </section>
+    <!--Bio-->
+    <section id="bio">
+        <div class="title-flex-wrapper">
+            <div class="title-background"></div>
+            <div class="divider top-divider"></div>
+        </div>
+        <div class="section-content">
+            <h2>Software Engineer</h2>
+            <h2>Amador, John-David A.</h2>
+            <p>Bio section content goes here...</p>
+            <p>John-David Amador was Born in Sacramento, CA</p> 
+            <p>He enlisted in the United States Marine Corps. He attended Marine Corps. Recruit Training at Marine Corps Recruit Depot San Diego , California. Upon completion of recruit training Pvt Amador attended Marine Corps Combat Training at Camp Pendleton, California. Pvt Amador  was assigned the military occupation specialty of 0612 Field Wireman. Pvt Amador received training for his MOS at Twentynine Palms, California.</p> 
+            <p>Pvt Amador was assigned orders to 2d Battalion, 2d Marine Regiment, Camp Lejeune, North Carolina to serve as a Field Wireman for Communications Platoon, Headquarters and Service Company. Pvt Amador was promoted to the rank of PFC during deployment work-up. In April 2008 PFC Amador deployed with 2BN 2MAR to COP Rawah, Iraq and served as a Field Wireman, Switchboard Operator, and Field Radio Operator. PFC Amador was promoted to LCpl during deployment. LCpl Amador was promoted to Cpl. Cpl Amador deployed with 2D BN 2D MAR to PB Masood and LSA Shamshad, Afghanistan and served as a Field Radio Operator, BN MUX Specialist and Watch Chief for LSA Shamshad.</p>
+            <p>&nbsp; </p>
+            <p>Cpl Amador reenlisted with a lateral move incentive and received training for his military occupational specialty at Twentynine Palms, California. Cpl Amador was assigned the MOS 5939 Aviation Communication Systems Technician and assigned orders to Marine Air Control Squadron 2, Marine Corps Air Station Cherry Point, North Carolina. Cpl Amador was promoted to the rank of Sgt. Sgt Amador deployed as a detatchment of MACS-2 as the Tactical Air Operation Center to Camp Leatherneck, Afghanistan and served as Squadron Communications Chief and Squadron Anti Terrorism Force Protection Chief.</p>
+            <p>&nbsp; </p>
+            <p>Sgt Amador reported to Drill Instructor school, Class 3-15, MCRD Parris Island, S.C.</p>
+        </div> 
+    </section>
+
+    <!-------------------->
+    <!--    Scripts     -->
+    <!--    Scripts     -->
+    <!--    Scripts     -->
+    <!-------------------->
+    <script src="js/portfolio.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+</body>
+</html>
