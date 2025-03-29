@@ -103,77 +103,81 @@
     });
 
     //photo switch and glow
-    const profileImage = document.getElementById('profileImage');
-    const profileImage2 = document.getElementById('profileImage2');
-    let currentImageIndex = 0;
-    let imageChangeInterval; // Store the interval ID
-    //change photos
-    function changeProfileImage() {
-        if (currentImageIndex === 0) {
-            profileImage.style.opacity = 0;
-            profileImage2.style.opacity = 1;
-            currentImageIndex = 1;
-        } else {
-            profileImage.style.opacity = 1;
-            profileImage2.style.opacity = 0;
-            currentImageIndex = 0;
-        }
+const profileImage = document.getElementById('profileImage');
+const profileImage2 = document.getElementById('profileImage2');
+let currentImageIndex = 0;
+let imageChangeInterval; // Store the interval ID
+
+//change photos
+function changeProfileImage() {
+    if (currentImageIndex === 0) {
+        profileImage.style.opacity = 0;
+        profileImage2.style.opacity = 1;
+        currentImageIndex = 1;
+    } else {
+        profileImage.style.opacity = 1;
+        profileImage2.style.opacity = 0;
+        currentImageIndex = 0;
     }
-    //make photo border glow
-    function triggerImageGlow() {
-        profileImage.classList.add('glowing');
-        profileImage2.classList.add('glowing');
-    
-        // Clear any existing interval
-        clearInterval(imageChangeInterval);
-    
-        // Apply width transition for grow
-        profileImage.style.transition = 'width 1s ease';
-        profileImage2.style.transition = 'width 1s ease';
-    
-        // Reset size to original (grow)
-        profileImage.style.width = '100px';
-        profileImage2.style.width = '100px';
-    
-        // Remove width transition after grow animation
-        setTimeout(() => {
-            profileImage.style.transition = '';
-            profileImage2.style.transition = '';
-        }, 1000);
-    
-        // Set new interval
-        imageChangeInterval = setInterval(changeProfileImage, 4000);
-    }
-    //shrink photo when scrolled off screen
-    function shrinkImage() {
-        // Clear any existing interval
-        clearInterval(imageChangeInterval);
-    
-        // Remove any existing width transition
+}
+
+//make photo border glow
+function triggerImageGlow() {
+    profileImage.classList.add('glowing');
+    profileImage2.classList.add('glowing');
+
+    // Clear any existing interval
+    clearInterval(imageChangeInterval);
+
+    // Apply scale transition for grow
+    profileImage.style.transition = 'transform 1s ease';
+    profileImage2.style.transition = 'transform 1s ease';
+
+    // Reset size to original (grow)
+    profileImage.style.transform = 'scale(1.05)'; // Adjust scale as needed
+    profileImage2.style.transform = 'scale(1.05)';
+
+    // Remove transform transition after grow animation
+    setTimeout(() => {
         profileImage.style.transition = '';
         profileImage2.style.transition = '';
-    
-        // Shrink by 50px
-        profileImage.style.width = '50px';
-        profileImage2.style.width = '50px';
-    }
-    //watch for shrink condition
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                // Image is in view (grow)
-                triggerImageGlow();
-            } else {
-                // Image is out of view (shrink)
-                shrinkImage();
-            }
-        });
-    }, { threshold: 0.1 });
-    
-    observer.observe(profileImage);
-    
-    // Initialize the interval when the page loads
+    }, 1000);
+
+    // Set new interval
     imageChangeInterval = setInterval(changeProfileImage, 4000);
+}
+
+//shrink photo when scrolled off screen
+function shrinkImage() {
+    // Clear any existing interval
+    clearInterval(imageChangeInterval);
+
+    // Remove any existing transform transition
+    profileImage.style.transition = '';
+    profileImage2.style.transition = '';
+
+    // Shrink using scale
+    profileImage.style.transform = 'scale(0.5)'; // Adjust scale as needed
+    profileImage2.style.transform = 'scale(0.5)';
+}
+
+//watch for shrink condition
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            // Image is in view (grow)
+            triggerImageGlow();
+        } else {
+            // Image is out of view (shrink)
+            shrinkImage();
+        }
+    });
+}, { threshold: 0.1 });
+
+observer.observe(profileImage);
+
+// Initialize the interval when the page loads
+imageChangeInterval = setInterval(changeProfileImage, 4000);
 
     //autotyping divider
     function typeWriter(element, text, speed, callback) {

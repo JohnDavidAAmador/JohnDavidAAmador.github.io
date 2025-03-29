@@ -214,16 +214,86 @@ header {
 .greeting-content {
     display: flex; /*  flexbox */
     flex-direction: row; /* Stack greeting content horizontally */
-    align-items: flex-start; /* Align items to the top */
-    justify-content: flex-start; /* Align items to the start */
     color: white;
-    
-    /*align-items: center; /* Center content */
 }
+/********************
+    profile photo 
+*********************/
+.image-block {
+    width: 55%;
+    height: 100vh;
+    margin: 5px;
+    padding: 5px;
+}
+
+.image-block img {
+    /*position: relative;*/
+    display: block; /* Ensure images behave as block elements */
+    max-width: 100%; /* Make images responsive */
+    height: auto;
+}
+
+/***************************
+    profile photo switch 
+****************************/
+image-container {
+    position: relative;
+    width: 100px; /* can not Adjust defined in js */
+    height: 100px; /* can not Adjust defined in js */
+    z-index: 0; /* Set a lower z-index */
+}
+
+.image-container img {
+    position: absolute;
+    width: 100%; /* can not Adjust defined in js */
+    height: auto;
+    transition: opacity 0.5s ease; /* Fade transition */
+}
+
+#profileImage{
+    position: absolute;
+    /*top: 20px; /* Adjust as needed */
+    /*left: 10px; /* Adjust as needed */
+    max-width: 100px; /* can not Adjust defined in js */
+    height: auto;
+    display: block;
+    margin: 0;
+    transition: opacity 0.5s ease;
+    border-radius: 10px;
+}
+
+#profileImage2 {
+    position: absolute;
+    /*top: 20px; /* Adjust as needed */
+    /*left: 10px; /* Adjust as needed */
+    max-width: 100px; /* can not Adjust defined in js */
+    height: auto;
+    display: block;
+    margin: 0;
+    transition: opacity 0.5s ease;
+    border-radius: 10px;
+}
+
+#profileImage2 {
+    transform: scaleX(-1);
+    opacity: 0;
+}
+
+/**********************
+ profile photo glow 
+***********************/
+#profileImage.glowing,
+#profileImage2.glowing {
+    filter: drop-shadow(0 0 5px rgb(55, 255, 20)); /* Glow along transparency */
+    transform: scale(1.05); /* Adjusted scale */
+}
+/**********************
+    greeting text
+***********************/
 .text-block {   /* Box for: greeting time<h2>, greeting<h2>, JD Amador in red <span><p>, */
-    flex: 1; /* Allow text block to take remaining space */
-    text-align: left; /* Align text left */
-    margin-right: 20px; /* Add right margin for spacing */
+    width: 45%;
+    margin: 5px;
+    padding: 5px;
 }
 .text-block h2 {    /* Box for: Greeting time and Greeting */
     font-size: 2.3em;
@@ -250,82 +320,7 @@ header {
     font-weight: bold;
 }
 
-/********************
-    profile photo 
-*********************/
-.image-block {
-    flex: 0 0 auto; /* Prevent image block from growing */
-    max-width: 200px; /* Max width */
-    margin: 20px; /* Adjust margins */
-}
 
-.image-block img {
-    /*position: relative;*/
-    display: block; /* Ensure images behave as block elements */
-    max-width: 100%; /* Make images responsive */
-    height: auto;
-}
-
-/***************************
-    profile photo switch 
-****************************/
-image-container {
-    position: relative;
-    width: 100px; /* can not Adjust defined in js */
-    height: 100px; /* can not Adjust defined in js */
-}
-
-.image-container img {
-    position: relative;
-    width: 100%; /* can not Adjust defined in js */
-    height: auto;
-    transition: opacity 0.5s ease; /* Fade transition */
-}
-
-#profileImage{
-    /*position: absolute;*/
-    /*top: 20px; /* Adjust as needed */
-    /*left: 10px; /* Adjust as needed */
-    max-width: 100px; /* can not Adjust defined in js */
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    transition: opacity 0.5s ease;
-    border-radius: 10px;
-}
-
-#profileImage2 {
-    /*position: absolute;*/
-    /*top: 20px; /* Adjust as needed */
-    /*left: 10px; /* Adjust as needed */
-    max-width: 100px; /* can not Adjust defined in js */
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    transition: opacity 0.5s ease;
-    border-radius: 10px;
-}
-
-#profileImage2 {
-    transform: scaleX(-1);
-    opacity: 0;
-}
-
-/**********************
- profile photo glow 
-***********************/
-#profileImage.glowing,
-#profileImage2.glowing {
-    filter: drop-shadow(0 0 5px rgb(55, 255, 20)); /* Glow along transparency */
-    transform: scale(1.05); /* Adjusted scale */
-}
-/*not certain what this does anymore*/
-/* content in greeting */
-/*
-.greeting-content {
-    flex-direction: row-reverse;
-}
-*/
 
 /*
     Intro Text (what I do, notable attributes, notable achievements) 
@@ -760,20 +755,20 @@ section span.animated-title {
     }}
 
 /* Media Queries for Mobile */
-@media (max-width: 768px) {
+/*@media (max-width: 768px) {
     .greeting-content {
         flex-direction: column; /* Stack vertically on smaller screens */
-        align-items: center; /* Center content */
-    }
+/*        align-items: center; /* Center content */
+/*    }
 
     .image-block {
        /* width: 80%; /* Adjust image block width for smaller screens */
-        margin: 20px auto; /* Center image block */
-        margin-right: 0; 
+/*        margin: 20px auto; /* Center image block */
+/*        margin-right: 0; 
         max-width: 100%;
     }
 
     .text-block {
         margin-right: 0; /* Remove right margin on mobile */
-    }
-}
+/*    }
+}*/
