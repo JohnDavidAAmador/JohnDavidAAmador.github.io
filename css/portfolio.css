@@ -212,23 +212,33 @@ header {
     margin-top: 40px;
 }
 .greeting-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex; /*  flexbox */
+    flex-direction: row; /* Stack greeting content horizontally */
+    align-items: flex-start; /* Align items to the top */
+    justify-content: flex-start; /* Align items to the start */
     color: white;
-    flex-direction: column; /* Stack greeting content vertically */
-    align-items: center; /* Center content */
+    
+    /*align-items: center; /* Center content */
 }
 .text-block {   /* Box for: greeting time<h2>, greeting<h2>, JD Amador in red <span><p>, */
-    text-align: left;
+    flex: 1; /* Allow text block to take remaining space */
+    text-align: left; /* Align text left */
+    margin-right: 20px; /* Add right margin for spacing */
 }
 .text-block h2 {    /* Box for: Greeting time and Greeting */
     font-size: 2.3em;
     margin-bottom: 10px;
     font-family: stabil_grotesk;
 }
-.text-block p { /* Box for: JD Amador (red), and job title. */
+.text-block h3 { /* Box for: JD Amador (red), and job title. */
     font-size: 2em;
+    margin: 5px 0;
+    font-family: stabil_grotesk;
+    display: block;
+    font-weight: lighter;
+}
+.text-block p { /* and job title. */
+    font-size: 1.5em;
     margin: 5px 0;
     font-family: stabil_grotesk;
     display: block;
@@ -239,75 +249,26 @@ header {
     font-family: stabil_grotesk;
     font-weight: bold;
 }
-/***************************************************************
+
 /********************
     profile photo 
 *********************/
-/*.image-block img {
-    display: flex;
-    width: 100px; /* can not Adjust defined in js */
-/*    height: auto; /* can not Adjust defined in js */
-/*    border-radius: 100%;
-    transform: scaleX(-1);
-}
-/***************************
-    profile photo switch 
-****************************/
-/*image-container {
-    position: relative;
-    width: 100px; /* can not Adjust defined in js */
-/*    height: 100px; /* can not Adjust defined in js */
-/*}
-.image-container img {
-    position: absolute;
-    top: 220px;
-    left: 310px;
-    width: 100px; /* can not Adjust defined in js */
-/*    height: auto;
-    border-radius: 50%;
-    transition: opacity 0.5s ease; /* Fade transition */
-/*}
-#profileImage, #profileImage2 { /* Target profile images by their IDs */
-/*    max-width: 100px; /* can not Adjust defined in js */
-/*    height: auto;
-    border-radius: 50%; /* Make them circular */
-/*    display: block; /* Ensure they behave as block elements */
-/*    margin: 0 auto; /* Center them horizontally */
-/*}
-#profileImage2 {
-    transform: scaleX(-1);
-}
-
-#profileImage2 {
-    opacity: 0; /* Initially hidden */
-/*}
-/**********************
- profile photo glow 
-***********************/
-/*#profileImage.glowing,
-#profileImage2.glowing {
-    box-shadow: 0 0 7px 3px rgb(55, 255, 20);
-    transform: scale(1.1);
-}
-*****************************************************************************/
-
-/******************** profile photo *********************/
 .image-block {
-    position: relative; /* Use relative positioning */
-    width: 80%; /* Adjust width */
-    /*max-width: 300px; /* Max width */
-    width: 100%;
-    margin: 20px 0; /* Adjust margins */
+    flex: 0 0 auto; /* Prevent image block from growing */
+    max-width: 200px; /* Max width */
+    margin: 20px; /* Adjust margins */
 }
 
 .image-block img {
-    display: flex;
-    width: 100px; /* can not Adjust defined in js */
-    height: auto; /* can not Adjust defined in js */
-    transform: scaleX(-1);
+    /*position: relative;*/
+    display: block; /* Ensure images behave as block elements */
+    max-width: 100%; /* Make images responsive */
+    height: auto;
 }
 
-/******************** profile photo switch *********************/
+/***************************
+    profile photo switch 
+****************************/
 image-container {
     position: relative;
     width: 100px; /* can not Adjust defined in js */
@@ -315,16 +276,28 @@ image-container {
 }
 
 .image-container img {
+    position: relative;
     width: 100%; /* can not Adjust defined in js */
     height: auto;
     transition: opacity 0.5s ease; /* Fade transition */
 }
 
-#profileImage,
+#profileImage{
+    /*position: absolute;*/
+    /*top: 20px; /* Adjust as needed */
+    /*left: 10px; /* Adjust as needed */
+    max-width: 100px; /* can not Adjust defined in js */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    transition: opacity 0.5s ease;
+    border-radius: 10px;
+}
+
 #profileImage2 {
-    position: absolute;
-    top: 20px; /* Adjust as needed */
-    left: 10px; /* Adjust as needed */
+    /*position: absolute;*/
+    /*top: 20px; /* Adjust as needed */
+    /*left: 10px; /* Adjust as needed */
     max-width: 100px; /* can not Adjust defined in js */
     height: auto;
     display: block;
@@ -338,7 +311,9 @@ image-container {
     opacity: 0;
 }
 
-/******************** profile photo glow *********************/
+/**********************
+ profile photo glow 
+***********************/
 #profileImage.glowing,
 #profileImage2.glowing {
     filter: drop-shadow(0 0 5px rgb(55, 255, 20)); /* Glow along transparency */
@@ -365,7 +340,7 @@ image-container {
     line-height: 28.8px;
     margin-top: 30px;
     margin-left: 0px;
-    width: 95%; /* Adjust width */
+    width: 100%; /* Adjust width */
     box-sizing: border-box;
 }
 
@@ -783,3 +758,22 @@ section span.animated-title {
     body {
         font-size: 14px; /* Adjust font size for mobile */
     }}
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+    .greeting-content {
+        flex-direction: column; /* Stack vertically on smaller screens */
+        align-items: center; /* Center content */
+    }
+
+    .image-block {
+       /* width: 80%; /* Adjust image block width for smaller screens */
+        margin: 20px auto; /* Center image block */
+        margin-right: 0; 
+        max-width: 100%;
+    }
+
+    .text-block {
+        margin-right: 0; /* Remove right margin on mobile */
+    }
+}
