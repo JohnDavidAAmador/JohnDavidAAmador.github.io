@@ -15,13 +15,14 @@ body {
     background-size: cover;
     margin: 0;
     padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
     
 }
 /*
     header/ page top 
 ************************/
 header {
-    padding: 20px;
+    padding: 10px; /* Reduce padding for mobile */
 }
 
 .container {
@@ -33,11 +34,14 @@ header {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    flex-direction: column; /* Stack header content vertically */
+    align-items: center; /* Center align content */
 }
 
 .header-content h1 {
-    margin: 0 0 0px 120px;
-    font-size: 2em;
+    white-space: nowrap; /* Prevent title from wrapping */
+    font-size: 1.8em; /* Adjust font size */
+    margin: 10px 70px; /* Adjust margins */
 }
 /*
     Contact Buttons  
@@ -49,14 +53,19 @@ header {
 .contact-buttons {
     display: flex;
     align-items: center;
-    margin-left: 140px;
+    flex-direction: row; /* Stack contact icons vertically */
+    align-items: center; /* Center align icons */
+    margin-left: 0; /* Remove left margin */
+    margin-top: 10px; /* Add top margin */
 }
 /* contact button icons */
 .contact-icon {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 10px;
+    margin: 10px 0; /* Add top and bottom margins */
+    margin-right: 20px;
+    /* align-items: center; /* Center align items */
     text-decoration: none;
     color: white;
 }
@@ -65,18 +74,18 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background-color: white;
-    font-size: 1em;
+    font-size: 1.7em;
     transition: transform 0.2s ease-in-out;
 }
 /* contact text */
 .contact-text {
     font-family: stabil_grotesk;
-    font-size: 0.7em;
-    margin-top: 2px;
+    font-size: 1em;
+    margin-top: 5px;
     transition: transform 0.2s ease-in-out;
 }
 /*   Specific contact icon adjustments using nth-of-type     
@@ -89,41 +98,41 @@ header {
     background-color: transparent;
     width: 60px;
     height: 25px;
-    font-size: 1.8em;
+    font-size: 2.5em;
     margin-top: 15px;
 }
 
 .contact-buttons > a:nth-of-type(3) .icon-circle {
     background-color: #0077B5;
     color: white;
-    margin-top: 5px;
+    /*margin-top: 5px;*/
 }
 
 .contact-buttons > a:nth-of-type(4) .icon-circle {
     color: black;
-    width: 31px;
-    height: 31px;
-    font-size: 2em;
-    margin-top: 5px;
+    width: 45px;
+    height: 45px;
+    font-size: 3em;
+    /*margin-top: 5px;*/
 }
 /* Align text with icons */
-.contact-buttons > a:nth-of-type(3) .contact-text,
+/*.contact-buttons > a:nth-of-type(3) .contact-text,
 .contact-buttons > a:nth-of-type(4) .contact-text {
     margin-top: 3px;
-}
+}*/
 /*   Hamburger Menu  
 ***********************/
 .hamburger-container {
     position: fixed; /* Fixed positioning */
-    top: 20px;
-    left: 20px;
+    top: 15px;
+    left: 15px;
     z-index: 1001; /* Higher z-index */
 }
 .hamburger-menu {
     background-color: black;
     border-radius: 90%;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -142,27 +151,33 @@ header {
 /*   Navigation Menu     
 *************************/
 .nav-menu {
-    display: none;
+    display: none; /*initially hidden */
     flex-direction: column;
     background-color: #333;
     position: fixed;
+    flex-direction: column;
+    /*justify-content: center; /* Center content vertically */
+    /*align-items: center; /* Center content horizontally */
     top: 60px;
     left: 10px;
-    width: 150px;
-    z-index: 100; /* Lower z-index */
+    width: 25%;
+    height: 10%;
+    z-index: 1002; /* Lower z-index */
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
 }
 .nav-menu.show {
-    display: flex;
+    display: flex; /* show when active */
 }
 /* nav menu text */
 .nav-menu a {
     font-family: stabil_grotesk;
     color: white;
-    padding: 10px;
+    padding: 15px;
     text-decoration: none;
     text-align: center;
+    font-size: 1.5em; /* Increase font size */
+    padding: 15px; /* Increase padding */
 }
 /* nav menu hover */
 .nav-menu a:hover {
@@ -201,6 +216,8 @@ header {
     justify-content: center;
     align-items: center;
     color: white;
+    flex-direction: column; /* Stack greeting content vertically */
+    align-items: center; /* Center content */
 }
 .text-block {   /* Box for: greeting time<h2>, greeting<h2>, JD Amador in red <span><p>, */
     text-align: left;
@@ -276,9 +293,11 @@ header {
 
 /******************** profile photo *********************/
 .image-block {
-    position: absolute; /* Add this */
-    top: 220px; /* Adjust as needed */
-    left: 310px; /* Adjust as needed */
+    position: relative; /* Use relative positioning */
+    width: 80%; /* Adjust width */
+    /*max-width: 300px; /* Max width */
+    width: 100%;
+    margin: 20px 0; /* Adjust margins */
 }
 
 .image-block img {
@@ -296,7 +315,7 @@ image-container {
 }
 
 .image-container img {
-    width: 100px; /* can not Adjust defined in js */
+    width: 100%; /* can not Adjust defined in js */
     height: auto;
     transition: opacity 0.5s ease; /* Fade transition */
 }
@@ -345,7 +364,9 @@ image-container {
     letter-spacing:2px;
     line-height: 28.8px;
     margin-top: 30px;
-    margin-left: 600px;
+    margin-left: 0px;
+    width: 95%; /* Adjust width */
+    box-sizing: border-box;
 }
 
 /****************
@@ -357,13 +378,14 @@ image-container {
 #skills {
     position: relative;
 
-    padding: 60px; /* adjusts text from borders */
+    padding: 20px; /*60 changed to test */
     margin: 0 auto;
-    margin-top: 60px;
+    margin-top: 20px; /* 60px changed to test */
     
     box-sizing: border-box;
     min-height: 200px;
-    max-width: 1200px;
+    /*max-width: 1200px;*/
+    max-width: 95%;
     max-height: 1000px;
 
     border-radius: 3px;
@@ -377,13 +399,14 @@ image-container {
 #projects {
     position: relative;
 
-    padding: 60px; /*adjusts text from borders */
+    padding: 20px; /*60px changed to test*/
     margin: 0 auto;
-    margin-top: 680px;
+    margin-top: 20px;/*680px changed to test*/
 
     box-sizing: border-box;
     min-height: 200px;
-    max-width: 1200px;
+    /*max-width: 1200px;*/
+    max-width: 95%;
     max-height: 1000px;
 
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
@@ -397,13 +420,14 @@ image-container {
 #resume {
     position: relative;
 
-    padding: 60px; /*adjusts text from borders */
+    padding: 20px; /*adjusts text from borders */
     margin: 0 auto;
-    margin-top: 60px;
+    margin-top: 20px;
 
     box-sizing: border-box;
     min-height: 200px;
-    max-width: 1200px;
+    /*max-width: 1200px;*/
+    max-width: 95%;
     max-height: 1000px;
 
     border-radius: 3px;
@@ -417,14 +441,15 @@ image-container {
 #bio {
     position: relative;
 
-    padding: 60px; /*adjusts text from borders */
+    padding: 20px; /*adjusts text from borders */
     margin: 0 auto;
-    margin-top: 60px;
+    margin-top: 20px;
     
 
     box-sizing: border-box;
     min-height: 200px;
-    max-width: 1200px;
+    /*max-width: 1200px;*/
+    max-width: 95%;
     max-height: 1000px;
 
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
@@ -499,6 +524,7 @@ section span.animated-title {
     transform: translate(-50%, -50%);
 }
 .animated-title{
+    left: 5%;
     white-space: nowrap;
     font-family: "Colossalis", arial, sans-serif;
     line-height: 1;
@@ -741,3 +767,19 @@ section span.animated-title {
     text-shadow: 0 0 20px rgb(0, 221, 255), /* Bright blue glow */
                  0 0 0px rgb(0, 221, 255); /* Slightly less intense blue glow */
 }
+
+/* Prevent Zooming */
+@viewport {
+    zoom: 1.0;
+    width: extend-to-zoom;
+}
+@-ms-viewport {
+    zoom: 1.0;
+    width: extend-to-zoom;
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px; /* Adjust font size for mobile */
+    }}
