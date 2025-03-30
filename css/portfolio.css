@@ -27,7 +27,6 @@ header {
 
 .container {
     display: flex;
-    justify-content: flex-start;
 }
 
 .header-content {
@@ -48,7 +47,7 @@ header {
 ***********************/
 .contact-buttons-wrapper {
     display: flex;
-    align-items: center;
+    align-items: center;    
 }
 .contact-buttons {
     display: flex;
@@ -214,23 +213,28 @@ header {
 .greeting-content {
     display: flex; /*  flexbox */
     flex-direction: row; /* Stack greeting content horizontally */
+    align-items: center; /* Vertically center items */
+    align-items: flex-start; /* Align items to the top */
     color: white;
 }
 /********************
     profile photo 
 *********************/
 .image-block {
-    width: 55%;
-    height: 100vh;
+    /*width: 20%;
+    /*height: 10vh;*/
     margin: 5px;
     padding: 5px;
+    margin-right: 20px;
+    flex-basis: 200px;
+    flex-grow: 0;
+    flex-shrink: 0;
 }
 
 .image-block img {
     /*position: relative;*/
     display: block; /* Ensure images behave as block elements */
-    max-width: 100%; /* Make images responsive */
-    height: auto;
+    /*width: 100%; /* Make images responsive */
 }
 
 /***************************
@@ -264,8 +268,6 @@ image-container {
 
 #profileImage2 {
     position: absolute;
-    /*top: 20px; /* Adjust as needed */
-    /*left: 10px; /* Adjust as needed */
     max-width: 100px; /* can not Adjust defined in js */
     height: auto;
     display: block;
@@ -291,9 +293,13 @@ image-container {
     greeting text
 ***********************/
 .text-block {   /* Box for: greeting time<h2>, greeting<h2>, JD Amador in red <span><p>, */
-    width: 45%;
-    margin: 5px;
+    flex: 1; /* Allow text block to take remaining space */
+    /*width: 45%;*/
+    margin: -40px;
     padding: 5px;
+    flex-basis: 600px;
+    flex-grow: 0;
+    flex-shrink: 0;
 }
 .text-block h2 {    /* Box for: Greeting time and Greeting */
     font-size: 2.3em;
@@ -755,17 +761,16 @@ section span.animated-title {
     }}
 
 /* Media Queries for Mobile */
-/*@media (max-width: 768px) {
+/*@media (width: 768px) {
     .greeting-content {
         flex-direction: column; /* Stack vertically on smaller screens */
 /*        align-items: center; /* Center content */
 /*    }
 
     .image-block {
-       /* width: 80%; /* Adjust image block width for smaller screens */
-/*        margin: 20px auto; /* Center image block */
-/*        margin-right: 0; 
-        max-width: 100%;
+        /*width: 80%; /* Adjust image block width for smaller screens */
+/*        margin: 20px ; /* Center image block */
+        /*margin-right: 0; 
     }
 
     .text-block {
