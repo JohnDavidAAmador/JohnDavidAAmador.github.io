@@ -499,7 +499,7 @@ section span.animated-title {
 /* Media Query for Mobile */
 @media (width: 768px) {
     .animated-title {
-        font-size: 24px;
+        font-size: 10px;
     }}
 /* Autotype White Background Sections
 ******************************************/
@@ -602,12 +602,12 @@ section span.animated-title {
 #skills::before, #projects::before, #resume::before, #bio::before {
     content: '';
     position: absolute;
-    top: -55px;
-    left: -150px;
-    bottom: -100px;
-    right: -150px;
-    width: 1500px;
-    height: 1000px;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 100%; /* Make the background responsive */
+    height: 100%; /* Make the background responsive */
     z-index: -2; /* layer */
     background-size: cover;
     background-repeat: no-repeat;
