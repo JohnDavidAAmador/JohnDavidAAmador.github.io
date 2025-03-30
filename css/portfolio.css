@@ -16,6 +16,7 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden; /* Prevent horizontal scrolling */
+    font-size: 16px;
 
 }
 /*
@@ -39,7 +40,7 @@ header {
 
 .header-content h1 {
     white-space: nowrap; /* Prevent title from wrapping */
-    font-size: 1.8em; /* Adjust font size */
+    font-size: 1.75em; /* Adjust font size */
     margin: 10px 70px; /* Adjust margins */
 }
 
@@ -48,9 +49,9 @@ header {
 ***********************/
 .hamburger-container {
     position: fixed; /* Fixed positioning */
-    top: 15px;
-    right: 15px; /* Moved to the right */
-    z-index: 1001; /* Higher z-index */
+    top: 10px;
+    right: 20px; /* Moved to the right */
+    z-index: 100; /* Higher z-index */
 }
 .hamburger-menu {
     background-color: black;
@@ -60,16 +61,20 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: lightblue;
+    box-shadow: 0 0 15px 1px rgb(0, 221, 255);
     font-size: 2em;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    box-shadow: 0 0 5px lightgreen;
     line-height: 1;
+    position: fixed; /* Fixed positioning */
+    /*top: 20px;
+    right: 20px; /* Moved to the right */
+    /*z-index: 100; /* Higher z-index */
 }
 .hamburger-menu.sticky {
-    background-color: green;
+    background-color: rgba(11, 169, 222, 0.614);;
 }
 /************************
 /* Navigation Menu
@@ -79,7 +84,7 @@ header {
     flex-direction: column;
     background-color: rgba(0, 0, 0, 0.3); /* Adjust opacity */
     border: 2px solid lightblue;
-    box-shadow: 0 0 10px lightblue;
+    box-shadow: 0 0 15px 1px rgb(0, 221, 255);
     padding: 20px;
     position: fixed;
     flex-direction: column;
@@ -87,9 +92,9 @@ header {
     /*align-items: center; /* Center content horizontally */
     top: 60px;
     right: 10px; /* Aligned to the right */
-    width: 90vh;
+    width: auto;
     height: auto;
-    z-index: 999; /* Lower z-index */
+    z-index: 99; /* Lower z-index */
     border-bottom-left-radius: 10px; /* Adjusted radius */
     border-top-left-radius: 10px; /* Adjusted radius */
 }
@@ -100,11 +105,11 @@ header {
 .nav-menu a {
     font-family: stabil_grotesk;
     color: white;
-    padding: 15px;
+    padding: 20px;
     text-decoration: none;
     text-align: left;
     font-size: 1.5em; /* Increase font size */
-    padding: 15px; /* Increase padding */
+    padding: 20px; /* Increase padding */
     text-shadow: 0 0 20px rgb(0, 221, 255), /* Bright blue glow */
                 0 0 0px rgb(0, 221, 255); /* Slightly less intense blue glow */
 }
@@ -131,12 +136,12 @@ header {
     height: 200px;
     background-color: rgba(0, 0, 0, 0.3); /* Adjust opacity */
     border: 2px solid lightblue;
-    box-shadow: 0 0 10px lightblue;
+    box-shadow: 0 0 15px 1px rgb(0, 221, 255);
     color: white;
     text-shadow: 0 0 20px rgb(0, 221, 255), /* Bright blue glow */
                 0 0 0px rgb(0, 221, 255); /* Slightly less intense blue glow */
     padding: 20px;
-    z-index: 1000; /* Ensure it's on top */
+    z-index: 101; /* Ensure it's on top */
 }
 
 .close-button {
@@ -195,12 +200,12 @@ header {
 .image-block {
     /*width: 20%;
     /*height: 10vh;*/
-    margin: 5px 20px 5px 5px;
+    margin: 15px 20px 5px 5px;
     padding: 5px;
-    flex-basis: 200px;
+    flex-basis: 10px;
     flex-grow: 0;
     flex-shrink: 0;
-    flex: 0 0 200px; /* Fixed width, no grow/shrink */
+    flex: 0 0 100px; /* Fixed width, no grow/shrink */
 }
 
 .image-block img {
@@ -258,20 +263,20 @@ profile photo glow
 ***********************/
 #profileImage.glowing,
 #profileImage2.glowing {
-    filter: drop-shadow(0 0 5px rgb(55, 255, 20)); /* Glow along transparency */
+    filter: drop-shadow(0 0 5px rgb(0, 221, 255)); /* Glow along transparency */
     transform: scale(1.05); /* Adjusted scale */
 }
 /**********************
     greeting text
 ***********************/
 .text-block {  /* Box for: greeting time<h2>, greeting<h2>, JD Amador in red <span><p>, */
-    flex: 1 1 auto; /* Allow text block to grow and shrink */
+    flex: 1; /* Allow text block to grow and shrink */
     /*width: 45%;*/
     margin: 5px;
     padding: 5px;
-    flex-basis: 600px;
+    /*flex-basis: 500px;
     flex-grow: 0;
-    flex-shrink: 0;
+    flex-shrink: 0;*/
 }
 .text-block h2 {   /* Box for: Greeting time and Greeting */
     font-size: 2.3em;
@@ -309,9 +314,9 @@ profile photo glow
     padding: 10px;
     color: white;
     font-family: stabil_grotesk, sans-serif;
-    font-size: 18px;
+    font-size: 1.125em;
     letter-spacing: 2px;
-    line-height: 28.8px;
+    line-height: 1.5em;
     margin-top: 20px;
     /*margin-left: 40px;*/
     /*width: 100%; /* Stretch across full width */
@@ -489,7 +494,7 @@ section span.animated-title {
     font-family: "Colossalis", arial, sans-serif;
     line-height: 1;
     text-transform: uppercase;
-    font-size: 48px;
+    font-size: 3em;
     font-weight: bold;
     top: 0px;
     padding: 1px 10px; /* Add padding to create background space */
@@ -746,7 +751,7 @@ section span.animated-title {
 /* Media Queries for Mobile */
 @media (max-width: 768px) {
     body {
-        font-size: 14px; /* Adjust font size for mobile */
+        font-size: 10px; /* Adjust font size for mobile */
     }
 }
 
