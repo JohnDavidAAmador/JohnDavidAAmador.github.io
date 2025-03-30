@@ -44,44 +44,54 @@
                         <a href="#resume" onclick="toggleNav()">Resume</a>
                         <!--Bio-->
                         <a href="#bio" onclick="toggleNav()">Bio</a>
-                    </div>
-                    <!-------------------->
-                    <!--    Contacts    -->
-                    <!-------------------->
-                    <div class="contact-buttons">
-                        <!--Phone-->
-                        <a href="tel:+1(903)-224-5867" class="contact-icon" data-tooltip="Call JD">
-                            <span class="icon-circle">
-                                <i class="fas fa-phone"></i>
-                            </span>
-                            <span class="contact-text">1(903)-224-5867</span>
-                        </a>
-                        <!--E-Mail-->
-                        <a href="mailto:john.a.amador@gmail.com" class="contact-icon" data-tooltip="Email JD">
-                            <span class="icon-circle">
-                                <i class="fas fa-envelope"></i>
-                            </span>
-                            <span class="contact-text">john.a.amador<br>@gmail.com</span>
-                        </a>
-                        <!--LinkedIn-->
-                        <a href="https://www.linkedin.com/in/john-david-amador-a05a52160" class="contact-icon">
-                            <span class="icon-circle">
-                                <i class="fab fa-linkedin-in"></i>
-                            </span>
-                            <span class="contact-text">LinkedIn</span>
-                        </a>
-                        <!--GitHub-->
-                        <a href="https://github.com/JohnDavidAAmador" class="contact-icon">
-                            <span class="icon-circle">
-                                <i class="fab fa-github"></i>
-                            </span>
-                            <span class="contact-text">GitHub</span>
-                        </a>
+                        <!--Contact me-->
+                        <a href="#" onclick="openContactWindow()">Contact Me</a> </div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
+    <div id="contactWindow" style="display: none;">
+        <div class="contact-window">
+            <span class="close-button" onclick="closeContactWindow()">&times;</span>
+            <h2>Contact Information</h2>
+            <div class="contact-info">
+                <!-------------------->
+                <!--    Contacts    -->
+                <!-------------------->
+                <div class="contact-buttons">
+                    <!--Phone-->
+                    <a href="tel:+1(903)-224-5867" class="contact-icon" data-tooltip="Call JD">
+                        <span class="icon-circle">
+                            <i class="fas fa-phone"></i>
+                        </span>
+                        <span class="contact-text">1(903)-224-5867</span>
+                    </a>
+                    <!--E-Mail-->
+                    <a href="mailto:john.a.amador@gmail.com" class="contact-icon" data-tooltip="Email JD">
+                        <span class="icon-circle">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        <span class="contact-text">john.a.amador<br>@gmail.com</span>
+                    </a>
+                    <!--LinkedIn-->
+                    <a href="https://www.linkedin.com/in/john-david-amador-a05a52160" class="contact-icon">
+                        <span class="icon-circle">
+                            <i class="fab fa-linkedin-in"></i>
+                        </span>
+                        <span class="contact-text">LinkedIn</span>
+                    </a>
+                    <!--GitHub-->
+                    <a href="https://github.com/JohnDavidAAmador" class="contact-icon">
+                        <span class="icon-circle">
+                            <i class="fab fa-github"></i>
+                        </span>
+                        <span class="contact-text">GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-------------------->
     <!--    Greeting    -->
     <!-------------------->

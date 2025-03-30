@@ -1,25 +1,25 @@
-/************************************************/ 
-/*            Portfolio Page CSS                */ 
 /************************************************/
-/*  
-        Author: John-David A. Amador
-        Date:   March 2025
+/* Portfolio Page CSS              */
+/************************************************/
+/*
+    Author: John-David A. Amador
+    Date:   March 2025
 */
 /************************************************/
-/*    background  
+/* background
 ********************/
 body {
-    background-image: url(../img/bg.jpg); 
+    background-image: url(../img/bg.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     margin: 0;
     padding: 0;
     overflow-x: hidden; /* Prevent horizontal scrolling */
-    
+
 }
 /*
-    header/ page top 
+    header/ page top
 ************************/
 header {
     padding: 10px; /* Reduce padding for mobile */
@@ -42,89 +42,14 @@ header {
     font-size: 1.8em; /* Adjust font size */
     margin: 10px 70px; /* Adjust margins */
 }
+
 /*
-    Contact Buttons  
-***********************/
-.contact-buttons-wrapper {
-    display: flex;
-    align-items: center;    
-}
-.contact-buttons {
-    display: flex;
-    align-items: center;
-    flex-direction: row; /* Stack contact icons vertically */
-    align-items: center; /* Center align icons */
-    margin-left: 0; /* Remove left margin */
-    margin-top: 10px; /* Add top margin */
-}
-/* contact button icons */
-.contact-icon {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px 0; /* Add top and bottom margins */
-    margin-right: 20px;
-    /* align-items: center; /* Center align items */
-    text-decoration: none;
-    color: white;
-}
-/* contact button circles */
-.icon-circle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: white;
-    font-size: 1.7em;
-    transition: transform 0.2s ease-in-out;
-}
-/* contact text */
-.contact-text {
-    font-family: stabil_grotesk;
-    font-size: 1em;
-    margin-top: 5px;
-    transition: transform 0.2s ease-in-out;
-}
-/*   Specific contact icon adjustments using nth-of-type     
-************************************************************/
-.contact-buttons > a:nth-of-type(1) .icon-circle i {
-    color: #007bff;
-}
-
-.contact-buttons > a:nth-of-type(2) .icon-circle {
-    background-color: transparent;
-    width: 60px;
-    height: 25px;
-    font-size: 2.5em;
-    margin-top: 15px;
-}
-
-.contact-buttons > a:nth-of-type(3) .icon-circle {
-    background-color: #0077B5;
-    color: white;
-    /*margin-top: 5px;*/
-}
-
-.contact-buttons > a:nth-of-type(4) .icon-circle {
-    color: black;
-    width: 45px;
-    height: 45px;
-    font-size: 3em;
-    /*margin-top: 5px;*/
-}
-/* Align text with icons */
-/*.contact-buttons > a:nth-of-type(3) .contact-text,
-.contact-buttons > a:nth-of-type(4) .contact-text {
-    margin-top: 3px;
-}*/
-/*   Hamburger Menu  
+    Hamburger Menu
 ***********************/
 .hamburger-container {
     position: fixed; /* Fixed positioning */
     top: 15px;
-    left: 15px;
+    right: 15px; /* Moved to the right */
     z-index: 1001; /* Higher z-index */
 }
 .hamburger-menu {
@@ -147,23 +72,26 @@ header {
     background-color: green;
 }
 /************************
-/*   Navigation Menu     
+/* Navigation Menu
 *************************/
 .nav-menu {
     display: none; /*initially hidden */
     flex-direction: column;
-    background-color: #333;
+    background-color: rgba(0, 0, 0, 0.3); /* Adjust opacity */
+    border: 2px solid lightblue;
+    box-shadow: 0 0 10px lightblue;
+    padding: 20px;
     position: fixed;
     flex-direction: column;
     /*justify-content: center; /* Center content vertically */
     /*align-items: center; /* Center content horizontally */
     top: 60px;
-    left: 10px;
-    width: 25%;
-    height: 10%;
-    z-index: 1002; /* Lower z-index */
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
+    right: 10px; /* Aligned to the right */
+    width: 90vh;
+    height: auto;
+    z-index: 999; /* Lower z-index */
+    border-bottom-left-radius: 10px; /* Adjusted radius */
+    border-top-left-radius: 10px; /* Adjusted radius */
 }
 .nav-menu.show {
     display: flex; /* show when active */
@@ -174,20 +102,62 @@ header {
     color: white;
     padding: 15px;
     text-decoration: none;
-    text-align: center;
+    text-align: left;
     font-size: 1.5em; /* Increase font size */
     padding: 15px; /* Increase padding */
+    text-shadow: 0 0 20px rgb(0, 221, 255), /* Bright blue glow */
+                0 0 0px rgb(0, 221, 255); /* Slightly less intense blue glow */
 }
 /* nav menu hover */
 .nav-menu a:hover {
     background-color: #555;
 }
-/*   Tooltips/ text that appear on hover     
+/*
+    Contact Buttons
+***********************/
+.contact-buttons-wrapper {
+    display: flex;
+    align-items: center;
+}
+/*********************
+    Contact Window
+**********************/
+#contactWindow {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.3); /* Adjust opacity */
+    border: 2px solid lightblue;
+    box-shadow: 0 0 10px lightblue;
+    color: white;
+    text-shadow: 0 0 20px rgb(0, 221, 255), /* Bright blue glow */
+                0 0 0px rgb(0, 221, 255); /* Slightly less intense blue glow */
+    padding: 20px;
+    z-index: 1000; /* Ensure it's on top */
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+}
+/* Tooltips/ text that appear on hover
 ********************************************/
 [data-tooltip] {
     position: relative;
 }
-/*  Icon/Menu Hover and active effects   
+/* Icon/Menu Hover and active effects
 ******************************************/
 .contact-icon:hover .icon-circle,
 .contact-icon:active .icon-circle,
@@ -198,48 +168,49 @@ header {
     transform: scale(1.1);
 }
 
-/*   Main Title   
+/* Main Title
 *******************/
 .main-title {
     font-family: stabil_grotesk;
     font-size: 1.5em;
     color: white;
 }
-/*   Greeting    
+/* Greeting
 /*****************/
 .greeting-section {
     margin-top: 40px;
 }
 .greeting-content {
-    display: flex; /*  flexbox */
+    display: flex; /* flexbox */
     flex-direction: row; /* Stack greeting content horizontally */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
     align-items: center; /* Vertically center items */
     align-items: flex-start; /* Align items to the top */
     color: white;
+    margin-top: 40px;
 }
 /********************
-    profile photo 
+    profile photo
 *********************/
 .image-block {
     /*width: 20%;
     /*height: 10vh;*/
-    margin: 5px;
+    margin: 5px 20px 5px 5px;
     padding: 5px;
-    margin-left: 40px;
-    margin-right: 20px;
     flex-basis: 200px;
     flex-grow: 0;
     flex-shrink: 0;
+    flex: 0 0 200px; /* Fixed width, no grow/shrink */
 }
 
 .image-block img {
     /*position: relative;*/
     display: block; /* Ensure images behave as block elements */
-    /*width: 100%; /* Make images responsive */
+    max-width: 100%;/*width: 100%; /* Make images responsive */
 }
 
 /***************************
-    profile photo switch 
+    profile photo switch
 ****************************/
 image-container {
     position: relative;
@@ -283,7 +254,7 @@ image-container {
 }
 
 /**********************
- profile photo glow 
+profile photo glow
 ***********************/
 #profileImage.glowing,
 #profileImage2.glowing {
@@ -293,16 +264,16 @@ image-container {
 /**********************
     greeting text
 ***********************/
-.text-block {   /* Box for: greeting time<h2>, greeting<h2>, JD Amador in red <span><p>, */
-    flex: 1; /* Allow text block to take remaining space */
+.text-block {  /* Box for: greeting time<h2>, greeting<h2>, JD Amador in red <span><p>, */
+    flex: 1 1 auto; /* Allow text block to grow and shrink */
     /*width: 45%;*/
-    margin: -40px;
+    margin: 5px;
     padding: 5px;
     flex-basis: 600px;
     flex-grow: 0;
     flex-shrink: 0;
 }
-.text-block h2 {    /* Box for: Greeting time and Greeting */
+.text-block h2 {   /* Box for: Greeting time and Greeting */
     font-size: 2.3em;
     margin-bottom: 10px;
     font-family: stabil_grotesk;
@@ -312,7 +283,7 @@ image-container {
     margin: 5px 0;
     font-family: stabil_grotesk;
     display: block;
-    font-weight: lighter;
+    font-weight: normal;
 }
 .text-block p { /* and job title. */
     font-size: 1.5em;
@@ -330,10 +301,10 @@ image-container {
 
 
 /*
-    Intro Text (what I do, notable attributes, notable achievements) 
+    Intro Text (what I do, notable attributes, notable achievements)
 ***********************************************************************/
 .intro-text {
-    flex: 1;
+    flex: 1 0 100%;
     text-align: left;
     padding: 10px;
     color: white;
@@ -341,9 +312,9 @@ image-container {
     font-size: 18px;
     letter-spacing: 2px;
     line-height: 28.8px;
-    margin-top: 30px;
-    margin-left: 40px;
-    width: 100%; /* Stretch across full width */
+    margin-top: 20px;
+    /*margin-left: 40px;*/
+    /*width: 100%; /* Stretch across full width */
     box-sizing: border-box;
     /* Remove max-width and margin: 0 auto; */
 }
@@ -359,10 +330,10 @@ image-container {
 }
 
 /****************
-    sections    
+    sections
 *****************/
 
-/*  skills box 
+/* skills box
 ******************/
 #skills {
     position: relative;
@@ -370,7 +341,7 @@ image-container {
     padding: 20px; /*60 changed to test */
     margin: 0 auto;
     margin-top: 20px; /* 60px changed to test */
-    
+
     box-sizing: border-box;
     min-height: 200px;
     /*max-width: 1200px;*/
@@ -379,11 +350,11 @@ image-container {
 
     border-radius: 3px;
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
-    
+
     display: flex;
     flex-direction: column;
 }
-/*  projects box 
+/* projects box
 ********************/
 #projects {
     position: relative;
@@ -400,11 +371,11 @@ image-container {
 
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
     border-radius: 3px;
-    
+
     display: flex;
     flex-direction: column;
 }
-/*  resume box 
+/* resume box
 ******************/
 #resume {
     position: relative;
@@ -421,11 +392,11 @@ image-container {
 
     border-radius: 3px;
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
-    
+
     display: flex;
     flex-direction: column;
 }
-/*  bio box
+/* bio box
 ***************/
 #bio {
     position: relative;
@@ -433,7 +404,7 @@ image-container {
     padding: 20px; /*adjusts text from borders */
     margin: 0 auto;
     margin-top: 20px;
-    
+
 
     box-sizing: border-box;
     min-height: 200px;
@@ -443,7 +414,7 @@ image-container {
 
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
     border-radius: 3px;
-    
+
     display: flex;
     flex-direction: column;
 }
@@ -466,25 +437,25 @@ image-container {
 }
 
 /******************
-    top divider 
+    top divider
 *******************/
-.title-flex-wrapper {   /* Divider Box */
+.title-flex-wrapper {  /* Divider Box */
     margin-top: 0;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: left;
+    justify-content: left;
     position: absolute;
     width: 100%;
     top: 0;
 }
-.divider {  /* Divider object */
+.divider { /* Divider object */
     height: 2px;
-    width: 90%;
+    width: 95%;
     margin: auto;
     background-color: grey;
     z-index: 2;
     margin-top: 60px;
-    margin-left: -40px;
+    margin-left: -15px;
     position: relative;
 }
 .top-divider {  /* Top Divider Object */
@@ -503,7 +474,7 @@ image-container {
 
 
 /******************************************
-    Autotyping Title above each Section 
+    Autotyping Title above each Section
 *******************************************/
 section span.animated-title {
     margin-top: 4px;
@@ -522,29 +493,34 @@ section span.animated-title {
     font-weight: bold;
     top: 0px;
     padding: 1px 10px; /* Add padding to create background space */
-    border-radius: 28%; 
+    border-radius: 28%;
     z-index: 2; /* Ensure it's above the divider */
 }
-/*  Autotype White Background Sections
+/* Media Query for Mobile */
+@media (width: 768px) {
+    .animated-title {
+        font-size: 24px;
+    }}
+/* Autotype White Background Sections
 ******************************************/
 #skills .animated-title,
 #resume .animated-title{
     color: rgb(0, 221, 255);
     background-color: rgba(254, 254, 254, 0.871);
     text-shadow: 0 0 8px rgb(0, 221, 255), /* Bright blue glow */
-                 0 0 2px rgb(0, 221, 255); /* Slightly less intense blue glow */
-    
+                0 0 2px rgb(0, 221, 255); /* Slightly less intense blue glow */
+
 }
-/*  Autotype Black Background Sections
+/* Autotype Black Background Sections
 ******************************************/
 #projects .animated-title,
 #bio .animated-title{
     color: rgb(0, 221, 255);
     background-color: rgba(0, 0, 0, 0.943);
     text-shadow: 0 0 8px rgb(0, 221, 255), /* Bright blue glow */
-                 0 0 2px rgb(0, 221, 255); /* Slightly less intense blue glow */
+                0 0 2px rgb(0, 221, 255); /* Slightly less intense blue glow */
 }
-/*  adjust left for animated title spacing 
+/* adjust left for animated title spacing
 ***********************************************/
 #skills span.animated-title{
     left: 23%;
@@ -562,7 +538,7 @@ section span.animated-title {
 /*********************
     Title Backing
 **********************/
-/*  Title Backing Box for Sections
+/* Title Backing Box for Sections
 **************************************/
 .title-effects-wrapper {
     position: relative; /* Needed for positioning */
@@ -570,21 +546,21 @@ section span.animated-title {
     padding: 15px 20px; /* Adjust padding as needed */
     border-radius: 5px; /* Optional: for rounded corners */
 }
-/*  Title Backing White Background
+/* Title Backing White Background
 **************************************/
 #skills .title-background,
 #resume .title-background {
     background-color: white;
     color: black;
 }
-/*  Title Backing Black Background
+/* Title Backing Black Background
 **************************************/
 #projects .title-background,
 #bio .title-background {
     background-color: black;
     color: white;
 }
-/*  Title Backing Object
+/* Title Backing Object
 **************************************/
 .title-background {
     position: absolute;
@@ -597,7 +573,7 @@ section span.animated-title {
     box-shadow: 0 0 15px 1px rgb(0, 221, 255);
     mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 9%, black 13%, black, rgba(0, 0, 0, 0)); /* Gradient mask */
 }
-/*  Title Backing Glow Effect
+/* Title Backing Glow Effect
 **************************************/
 .title-background::before {
     content: '';
@@ -616,20 +592,20 @@ section span.animated-title {
 /**************************
     Section Backgrounds
 ***************************/
-/*  Background Containers for Sections
+/* Background Containers for Sections
 ******************************************/
 #skills, #projects, #resume, #bio {
     position: relative; /* Ensure relative positioning for stacking */
 }
-/*  Background Control All Sections
+/* Background Control All Sections
 ***************************************/
 #skills::before, #projects::before, #resume::before, #bio::before {
     content: '';
     position: absolute;
     top: -55px;
-    left: -150px; 
+    left: -150px;
     bottom: -100px;
-    right: -150px; 
+    right: -150px;
     width: 1500px;
     height: 1000px;
     z-index: -2; /* layer */
@@ -637,7 +613,7 @@ section span.animated-title {
     background-repeat: no-repeat;
     border-radius: 15px;
 }
-/*  Section Background Images
+/* Section Background Images
 *********************************/
 #skills::before {
     background-image: url('../img/skills_bg.png'); /* Replace with your skills image path */
@@ -655,13 +631,13 @@ section span.animated-title {
     background-image: url('../img/bio_bg.png'); /* Replace with your bio image path */
 }
 
-/*  Section Background Opacity
+/* Section Background Opacity
 **********************************/
-#skills, #resume {  /*   White Background Opacity */
+#skills, #resume {  /* White Background Opacity */
     background-color: rgba(255, 255, 255, 0.5); /* White with 50% opacity */
     color: black;
 }
-#projects, #bio {   /*   Black Background Opacity */
+#projects, #bio {   /* Black Background Opacity */
     background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
     color: white;
 }
@@ -670,7 +646,7 @@ section span.animated-title {
 /***********************************
     Section Content Text Control
 ************************************/
-/*  Sections h2
+/* Sections h2
 ******************/
 #skills h2 {
     font-family: "Colossalis"!important;
@@ -682,7 +658,7 @@ section span.animated-title {
     text-transform: uppercase;
     letter-spacing: 2px;
     text-shadow: 0 0 15px rgb(0, 221, 255), /* Bright blue glow */
-                 0 0 15px rgb(0, 221, 255); /* Slightly less intense blue glow */
+                0 0 15px rgb(0, 221, 255); /* Slightly less intense blue glow */
 }
 #projects h2 {
     font-family: "Colossalis"!important;
@@ -694,7 +670,7 @@ section span.animated-title {
     text-transform: uppercase;
     letter-spacing: 2px;
     text-shadow: 0 0 15px rgb(0, 221, 255), /* Bright blue glow */
-                 0 0 15px rgb(0, 221, 255); /* Slightly less intense blue glow */
+                0 0 15px rgb(0, 221, 255); /* Slightly less intense blue glow */
 }
 #resume h2 {
     font-family: "Colossalis"!important;
@@ -706,7 +682,7 @@ section span.animated-title {
     text-transform: uppercase;
     letter-spacing: 2px;
     text-shadow: 0 0 15px rgb(0, 221, 255), /* Bright blue glow */
-                 0 0 15px rgb(0, 221, 255); /* Slightly less intense blue glow */
+                0 0 15px rgb(0, 221, 255); /* Slightly less intense blue glow */
 }
 #bio h2 {
     font-family: "Colossalis"!important;
@@ -718,11 +694,11 @@ section span.animated-title {
     text-transform: uppercase;
     letter-spacing: 2px;
     text-shadow: 0 0 15px rgb(0, 221, 255), /* Bright blue glow */
-                 0 0 15px rgb(0, 221, 255); /* Slightly less intense blue glow */
+                0 0 15px rgb(0, 221, 255); /* Slightly less intense blue glow */
 }
 
 
-/*  Sections p
+/* Sections p
 ******************/
 #skills p {
     font-size: 18px;
@@ -730,7 +706,7 @@ section span.animated-title {
     font-weight: 300;
     line-height: 1.5em;
     text-shadow: 0 0 20px rgb(0, 221, 255), /* Bright blue glow */
-                 0 0 0px rgb(0, 221, 255); /* Slightly less intense blue glow */
+                0 0 0px rgb(0, 221, 255); /* Slightly less intense blue glow */
 }
 #projects p {
     font-size: 18px;
@@ -738,7 +714,7 @@ section span.animated-title {
     font-weight: 300;
     line-height: 1.5em;
     text-shadow: 0 0 20px rgb(0, 221, 255), /* Bright blue glow */
-                 0 0 0px rgb(0, 221, 255); /* Slightly less intense blue glow */
+                0 0 0px rgb(0, 221, 255); /* Slightly less intense blue glow */
 }
 #resume p {
     font-size: 18px;
@@ -746,7 +722,7 @@ section span.animated-title {
     font-weight: 300;
     line-height: 1.5em;
     text-shadow: 0 0 20px rgb(0, 221, 255), /* Bright blue glow */
-                 0 0 0px rgb(0, 221, 255); /* Slightly less intense blue glow */
+                0 0 0px rgb(0, 221, 255); /* Slightly less intense blue glow */
 }
 #bio p {
     font-size: 18px;
@@ -754,7 +730,7 @@ section span.animated-title {
     font-weight: 300;
     line-height: 1.5em;
     text-shadow: 0 0 20px rgb(0, 221, 255), /* Bright blue glow */
-                 0 0 0px rgb(0, 221, 255); /* Slightly less intense blue glow */
+                0 0 0px rgb(0, 221, 255); /* Slightly less intense blue glow */
 }
 
 /* Prevent Zooming */
@@ -771,22 +747,23 @@ section span.animated-title {
 @media (max-width: 768px) {
     body {
         font-size: 14px; /* Adjust font size for mobile */
-    }}
+    }
+}
 
 /* Media Queries for Mobile */
 /*@media (width: 768px) {
     .greeting-content {
         flex-direction: column; /* Stack vertically on smaller screens */
-/*        align-items: center; /* Center content */
-/*    }
+/* align-items: center; /* Center content */
+/* }
 
     .image-block {
         /*width: 80%; /* Adjust image block width for smaller screens */
-/*        margin: 20px ; /* Center image block */
-        /*margin-right: 0; 
+/* margin: 20px ; /* Center image block */
+        /*margin-right: 0;
     }
 
     .text-block {
         margin-right: 0; /* Remove right margin on mobile */
-/*    }
+/* }
 }*/

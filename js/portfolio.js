@@ -55,7 +55,27 @@
             hamburgerMenu.classList.remove("sticky");
         }
     });
-
+    //contact button
+    function openContactWindow() {
+        document.getElementById('contactWindow').style.display = 'block';
+    }
+    
+    function closeContactWindow() {
+        document.getElementById('contactWindow').style.display = 'none';
+    }
+    
+    // Close on outside click
+    window.onclick = function(event) {
+        const contactWindow = document.getElementById('contactWindow');
+        if (event.target === contactWindow) {
+            contactWindow.style.display = 'none';
+        }
+    }
+    
+    //close on menu button click
+    document.querySelector('.hamburger-menu').addEventListener('click', function() {
+        closeContactWindow();
+    })
     //tooltips
     const tooltipElements = document.querySelectorAll('[data-tooltip]');
 
