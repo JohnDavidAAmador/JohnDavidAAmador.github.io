@@ -41,7 +41,7 @@ header {
 .header-content h1 {
     white-space: nowrap; /* Prevent title from wrapping */
     font-size: 1.75em; /* Adjust font size */
-    margin: 10px 70px; /* Adjust margins */
+    margin: 10px 10px; /* Adjust margins */
 }
 
 /*
@@ -50,7 +50,7 @@ header {
 .hamburger-container {
     position: fixed; /* Fixed positioning */
     top: 10px;
-    right: 20px; /* Moved to the right */
+    right: 10px; /* Moved to the right */
     z-index: 100; /* Higher z-index */
 }
 .hamburger-menu {
@@ -150,7 +150,9 @@ header {
     right: 10px;
     width: 20px;
     height: 20px;
-    background-color: red;
+    font-size: 3em;
+    background-color: rgb(0, 221, 255);
+    box-shadow: 0 0 15px 1px rgb(0, 221, 255);
     color: white;
     border-radius: 50%;
     text-align: center;
@@ -263,7 +265,7 @@ profile photo glow
 ***********************/
 #profileImage.glowing,
 #profileImage2.glowing {
-    filter: drop-shadow(0 0 5px rgb(0, 221, 255)); /* Glow along transparency */
+    filter: drop-shadow(0 0 5px rgb(255, 102, 0)); /* Glow along transparency */
     transform: scale(1.05); /* Adjusted scale */
 }
 /**********************
@@ -459,7 +461,7 @@ profile photo glow
     margin: auto;
     background-color: grey;
     z-index: 2;
-    margin-top: 60px;
+    margin-top: 30px;
     margin-left: -15px;
     position: relative;
 }
@@ -494,18 +496,14 @@ section span.animated-title {
     font-family: "Colossalis", arial, sans-serif;
     line-height: 1;
     text-transform: uppercase;
-    font-size: 3em;
+    font-size: 1.7em;
     font-weight: bold;
     top: 0px;
     padding: 1px 10px; /* Add padding to create background space */
     border-radius: 28%;
     z-index: 2; /* Ensure it's above the divider */
 }
-/* Media Query for Mobile */
-@media (width: 768px) {
-    .animated-title {
-        font-size: 10px;
-    }}
+
 /* Autotype White Background Sections
 ******************************************/
 #skills .animated-title,
@@ -607,12 +605,12 @@ section span.animated-title {
 #skills::before, #projects::before, #resume::before, #bio::before {
     content: '';
     position: absolute;
-    top: 0px;
-    left: 0px;
-    bottom: 0px;
+    top: -20px;
+    left: -10px;
+    bottom: -20px;
     right: 0px;
-    width: 100%; /* Make the background responsive */
-    height: 100%; /* Make the background responsive */
+    width: 100vw; /* Make the background responsive */
+    height: auto; /* Make the background responsive */
     z-index: -2; /* layer */
     background-size: cover;
     background-repeat: no-repeat;
