@@ -44,18 +44,42 @@ header {
     margin: 10px 10px; /* Adjust margins */
 }
 
+/*******************************
+    Contact Me Header Button
+********************************/
+.sticky-contact-button {
+    position: fixed;
+    top: 20px; /* Adjust top position as needed */
+    right: 120px; /* Position to the left of the menu button (adjust as needed) */
+    z-index: 101; /* Ensure it's above other elements */
+}
+
+.sticky-contact-button a {
+    text-decoration: none;
+    color: rgb(255, 102, 0);
+    padding: 10px 20px;
+    border: 1px solid rgb(0, 221, 255);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgb(0, 221, 255);
+    transition: transform 0.3s ease;
+}
+
+.sticky-contact-button a:hover {
+    transform: scale(1.1);
+}
+
 /*
     Hamburger Menu
 ***********************/
 .hamburger-container {
     position: fixed; /* Fixed positioning */
-    top: 10px;
+    top: 5px;
     right: 10px; /* Moved to the right */
     z-index: 100; /* Higher z-index */
 }
 .hamburger-menu {
     background-color: black;
-    border-radius: 90%;
+    border-radius: 20px;
     width: 60px;
     height: 60px;
     display: flex;
@@ -287,13 +311,22 @@ header {
 
 /* orange glow transparent boxes around header section */
 .main-title-container{
-        position: relative;
+        position: absolute;
         padding: 0px; /* Adjust padding as needed */
-        width: 100vw; /* Full viewport width */
+        width: 100%; /* Full viewport width */
+        height: 70px;
+        top:0px;
+        left:0px;
 }
+.main-title-container :after, :before {
+            box-sizing: border-box;
+}
+
+
 .image-block {
     position: relative;
     padding: 10px; /* Adjust padding as needed */
+    border-radius: 0px; /* Optional: Add rounded corners */
 }
 .main-title-container::before{
     content: '';
@@ -303,9 +336,10 @@ header {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5); /* Adjust transparency */
-    box-shadow: 0 0 5px 2px rgb(255, 102, 0), inset 0 0 5px 1px rgb(255, 102, 0); /* Orange glow */
-    border: .05px solid rgb(255, 102, 0); /* Add white border */
-    border-radius: 4px; /* Optional: Add rounded corners */
+    box-shadow: -1px -1px 5px -1px rgb(255, 102, 0), inset -1px -1px 5px -1px rgb(255, 102, 0); /* Orange glow */
+    border-bottom: .05px solid rgb(255, 102, 0); /* Add white border */
+    border-top: .05px solid rgb(255, 102, 0);
+    border-radius: 0px; /* Optional: Add rounded corners */
     z-index: -1; /* Place behind the content */
     background-color: rgba(255, 255, 255, 0.08); /* Opaque white */
 }
@@ -317,9 +351,10 @@ header {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5); /* Adjust transparency */
-    box-shadow: 0 0 5px 2px rgb(255, 102, 0), inset 0 0 5px 1px rgb(255, 102, 0); /* Orange glow */
+    box-shadow: 0 0 5px 2px rgb(255, 102, 0), 
+                inset 0 0 5px 1px rgb(255, 102, 0); /* Orange glow */
     border: .05px solid rgb(255, 102, 0); /* Add white border */
-    border-radius: 4px; /* Optional: Add rounded corners */
+    border-radius: 0px; /* Optional: Add rounded corners */
     z-index: -1; /* Place behind the content */
     background-color: rgba(255, 255, 255, 0.08); /* Opaque white */
 }
@@ -334,7 +369,7 @@ header {
 /* Greeting
 /*****************/
 .greeting-section {
-    margin-top: 40px;
+    margin-top: 60px;
 }
 .greeting-content {
     display: flex; /* flexbox */
@@ -356,7 +391,7 @@ header {
     width: 100px; /* Set the container width */
     height: 100px; /* Set the container height */
     overflow: hidden; /* Prevent images from overflowing */
-    border-radius: 10px; /* Match the image's border-radius */
+    border-radius: 0px; /* Match the image's border-radius */
     margin: 15px 20px 5px 5px;
 }
 
