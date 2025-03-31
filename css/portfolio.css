@@ -76,6 +76,11 @@ header {
 .hamburger-menu.sticky {
     background-color: rgba(11, 169, 222, 0.614);;
 }
+@media (width: 768px) {
+    .hamburger-menu {
+        font-size: 4em;
+    }
+}
 /************************
 /* Navigation Menu
 *************************/
@@ -567,10 +572,7 @@ section span.animated-title {
 **************************************/
 .title-background {
     position: absolute;
-    top: 30px;
-    left: 0px;
-    right: 400px;
-    bottom: -21px;
+    left:200px;
     z-index: 1; /* Place behind divider and autotyping */
     border-radius: 15px;
     box-shadow: 0 0 15px 1px rgb(0, 221, 255);
@@ -653,7 +655,7 @@ section span.animated-title {
 ******************/
 #skills h2 {
     font-family: "Colossalis"!important;
-    font-size: 24px;
+    font-size: 1.5em;
     letter-spacing:2px;
     line-height: 28.8px;
     font-weight: 100;
@@ -665,7 +667,7 @@ section span.animated-title {
 }
 #projects h2 {
     font-family: "Colossalis"!important;
-    font-size: 24px;
+    font-size: 5em;
     letter-spacing:2px;
     line-height: 28.8px;
     font-weight: 100;
@@ -677,9 +679,9 @@ section span.animated-title {
 }
 #resume h2 {
     font-family: "Colossalis"!important;
-    font-size: 24px;
+    font-size: 1.5px;
     letter-spacing:2px;
-    line-height: 28.8px;
+    line-height: 1.5em;
     font-weight: 100;
     text-align: center;
     text-transform: uppercase;
@@ -689,9 +691,9 @@ section span.animated-title {
 }
 #bio h2 {
     font-family: "Colossalis"!important;
-    font-size: 24px;
+    font-size: 1.5em;
     letter-spacing:2px;
-    line-height: 28.8px;
+    line-height: 1.5em;
     font-weight: 100;
     text-align: center;
     text-transform: uppercase;
@@ -704,7 +706,7 @@ section span.animated-title {
 /* Sections p
 ******************/
 #skills p {
-    font-size: 18px;
+    font-size: 1.125em;
     font-family: "Helvetica"!important;
     font-weight: 300;
     line-height: 1.5em;
@@ -712,7 +714,7 @@ section span.animated-title {
                 0 0 0px rgb(0, 221, 255); /* Slightly less intense blue glow */
 }
 #projects p {
-    font-size: 18px;
+    font-size: 1.125em;
     font-family: "Helvetica"!important;
     font-weight: 300;
     line-height: 1.5em;
@@ -720,7 +722,7 @@ section span.animated-title {
                 0 0 0px rgb(0, 221, 255); /* Slightly less intense blue glow */
 }
 #resume p {
-    font-size: 18px;
+    font-size: 1.125em;
     font-family: "Helvetica"!important;
     font-weight: 300;
     line-height: 1.5em;
@@ -728,7 +730,7 @@ section span.animated-title {
                 0 0 0px rgb(0, 221, 255); /* Slightly less intense blue glow */
 }
 #bio p {
-    font-size: 18px;
+    font-size: 1.125em;
     font-family: "Helvetica"!important;
     font-weight: 300;
     line-height: 1.5em;
