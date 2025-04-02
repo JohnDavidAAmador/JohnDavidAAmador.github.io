@@ -44,37 +44,13 @@ header {
     margin: 10px 10px; /* Adjust margins */
 }
 
-/*******************************
-    Contact Me Header Button
-********************************/
-.sticky-contact-button {
-    position: fixed;
-    top: 20px; /* Adjust top position as needed */
-    right: 120px; /* Position to the left of the menu button (adjust as needed) */
-    z-index: 101; /* Ensure it's above other elements */
-}
-
-.sticky-contact-button a {
-    text-decoration: none;
-    color: rgb(255, 102, 0);
-    padding: 10px 20px;
-    border: 1px solid rgb(0, 221, 255);
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgb(0, 221, 255);
-    transition: transform 0.3s ease;
-}
-
-.sticky-contact-button a:hover {
-    transform: scale(1.1);
-}
-
 /*
     Hamburger Menu
 ***********************/
 .hamburger-container {
     position: fixed; /* Fixed positioning */
-    top: 5px;
-    right: 10px; /* Moved to the right */
+    top: 10vh;
+    right: 15vw; /* Moved to the right */
     z-index: 100; /* Higher z-index */
 }
 .hamburger-menu {
@@ -121,7 +97,7 @@ header {
     /*align-items: center; /* Center content horizontally */
     top: 60px;
     right: 10px; /* Aligned to the right */
-    width: auto;
+    width: 50vw;
     height: auto;
     z-index: 99; /* Lower z-index */
     border-bottom-left-radius: 10px; /* Adjusted radius */
@@ -161,7 +137,7 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 85vw;
+    width: 80vw;
     height: auto;
     background-color: rgba(0, 0, 0, 0.3); /* Adjust opacity */
     border: 2px solid lightblue;
@@ -313,24 +289,19 @@ header {
 .main-title-container{
         position: absolute;
         padding: 0px; /* Adjust padding as needed */
-        width: 100%; /* Full viewport width */
+        width: 100vw; /* Full viewport width */
         height: 70px;
         top:0px;
         left:0px;
 }
 .main-title-container :after, :before {
-            box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-
-.image-block {
-    position: relative;
-    padding: 10px; /* Adjust padding as needed */
-    border-radius: 0px; /* Optional: Add rounded corners */
-}
 .main-title-container::before{
     content: '';
     position: absolute;
+    height: 100px;
     top: 0;
     left: 0;
     right: 0;
@@ -339,21 +310,6 @@ header {
     box-shadow: -1px -1px 5px -1px rgb(255, 102, 0), inset -1px -1px 5px -1px rgb(255, 102, 0); /* Orange glow */
     border-bottom: .05px solid rgb(255, 102, 0); /* Add white border */
     border-top: .05px solid rgb(255, 102, 0);
-    border-radius: 0px; /* Optional: Add rounded corners */
-    z-index: -1; /* Place behind the content */
-    background-color: rgba(255, 255, 255, 0.08); /* Opaque white */
-}
-.image-block::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Adjust transparency */
-    box-shadow: 0 0 5px 2px rgb(255, 102, 0), 
-                inset 0 0 5px 1px rgb(255, 102, 0); /* Orange glow */
-    border: .05px solid rgb(255, 102, 0); /* Add white border */
     border-radius: 0px; /* Optional: Add rounded corners */
     z-index: -1; /* Place behind the content */
     background-color: rgba(255, 255, 255, 0.08); /* Opaque white */
@@ -419,49 +375,67 @@ header {
     font-weight: bold;
 }
 
+/*******************************
+    Contact Me sticky Button
+********************************/
+.sticky-contact-button {
+    position: fixed;
+    top: 400px; /* Adjust top position as needed */
+    right: 150px; /* Position to the left of the menu button (adjust as needed) */
+    z-index: 101; /* Ensure it's above other elements */
+}
+
+.sticky-contact-button a {
+    text-decoration: none;
+    color: rgb(255, 102, 0);
+    padding: 10px 20px;
+    border: 1px solid rgb(0, 221, 255);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgb(0, 221, 255);
+    transition: transform 0.3s ease;
+}
+
+.sticky-contact-button a:hover {
+    transform: scale(1.1);
+}
+
+/*******************************
+ Profile and Stats Container 
+********************************/
+
+.profile-stats-container {
+    display: flex;
+    flex-direction: column;
+}
+.profile-record {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: transparent;
+    color: #fff;
+    padding: 20px;
+    display: flex; /* Use flexbox */
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the top */
+}
+.profile-row-1 {
+    display: flex; /* Add flexbox */
+    flex-direction: row; /* Ensure row layout */
+    justify-content: flex-start; /* Align items to the start */
+    align-items: flex-start; /* Align items to the top */
+}
 
 /********************
     profile photo
 *********************/
-.image-block {
-    position: relative; /* Needed for absolute positioning of images */
-    width: 100px; /* Set the container width */
-    height: 100px; /* Set the container height */
-    overflow: hidden; /* Prevent images from overflowing */
-    border-radius: 0px; /* Match the image's border-radius */
-    margin: 0px 20px 5px 5px;
-    background-color: rgba(0, 0, 0, 0.5); /* Adjust transparency */
-    box-shadow: 0 0 10px 3px rgb(255, 102, 0), 
-                inset 0 0 3px .5px rgb(255, 102, 0); /* Orange glow */
-    border: .05px solid rgb(255, 102, 0); /* Add white border */
-    border-radius: 0px; /* Optional: Add rounded corners */
-    z-index: -1; /* Place behind the content */
-    background-color: rgba(255, 255, 255, 0.08); /* Opaque white */
-}
-
-.image-block img {
-    /*position: relative;*/
-    position: absolute; /* Position images absolutely within the container */
-    width: 100%; /* Make images fill the container */
-    height: 100%; /* Make images fill the container */
-    object-fit: cover; /* Maintain aspect ratio and cover container */
-    transition: opacity 0.5s ease; /* Fade transition */
-}
-
-/***************************
-    profile photo switch
-****************************/
-image-container {
+.profile-image {
+    width: 100px; /* Keep fixed width */
+    height: 100px; /* Keep fixed height */
+    flex: 0 0 auto;
+    margin-right: 20px;
+    padding: 10px;
     position: relative;
-    z-index: 0; /* Set a lower z-index */
-}
-
-.image-container img {
-    position: absolute;
-    width: 100%; /* can not Adjust defined in js */
-    height: auto;
-    transition: opacity 0.5s ease; /* Fade transition */
-}
+  }
 
 #profileImage{
     position: absolute;
@@ -472,9 +446,16 @@ image-container {
     display: block;
     margin: 0;
     transition: opacity 0.5s ease;
-    border-radius: 10px;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust transparency */
+    box-shadow: 0 0 10px 1px rgb(255, 102, 0), 
+                inset 0 0 3px .5px rgb(255, 102, 0); /* Orange glow */
+    border: .05px solid rgb(255, 255, 255); /* Add white border */
 }
 
+/*************************
+    profile photo switch
+**************************/
 #profileImage2 {
     position: absolute;
     max-width: 100px; /* can not Adjust defined in js */
@@ -482,7 +463,11 @@ image-container {
     display: block;
     margin: 0;
     transition: opacity 0.5s ease;
-    border-radius: 10px;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust transparency */
+    box-shadow: 0 0 10px 1px rgb(255, 102, 0), 
+                inset 0 0 3px .5px rgb(255, 102, 0); /* Orange glow */
+    border: .05px solid rgb(255, 255, 255); /* Add white border */
 }
 
 #profileImage2 {
@@ -490,101 +475,168 @@ image-container {
     opacity: 0;
 }
 
-/**********************
-profile photo glow
-***********************/
+/*************************
+    profile photo glow
+**************************/
 #profileImage.glowing,
 #profileImage2.glowing {
     filter: drop-shadow(0 0 5px rgb(255, 102, 0)); /* Glow along transparency */
     transform: scale(1.05); /* Adjusted scale */
 }
-
-/* Profile and Stats Container */
-.profile-stats-container {
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-}
-
-.image-stats-wrapper {
-    display: flex;
-    width: 100%;
-    max-width: 1200px;
-}
-
-.image-block, .stats-blocks {
-    position: relative;
-    padding: 0px;
-    box-sizing: border-box;
-}
-
-.image-block::before, .stats-blocks::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-}
-
-/* Transparent Button with Orange Chevrons */
-.stats-button {
-    text-align: center;
-    margin-top: 10px; /* Initial position below stats-block1 */
-}
-
-.stats-button button {
-    background-color: transparent;
-    border: 2px solid orange;
-    cursor: pointer;
-    font-size: 2em;
-    color: orange;
-    box-shadow: 0 0 10px orange;
-    padding: 10px 30px;
-    border-radius: 20px;
-    transition: transform 0.3s ease;
-}
-
-.stats-button button:hover {
-    transform: scale(1.1);
-}
-
-/* Stats Blocks */
-.stats-block1, .stats-block2, .stats-block3 {
-    padding: 10px;
-    color: white;
-    box-sizing: border-box;
-}
-
-.stats-block2, .stats-block3 {
-    margin-top: 20px;
-    display: none;
-    border: .5px solid lightblue;
-    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
-}
+/*
+    Stats Block 1
+**********************/
 .stats-block1 {
-    margin-top: 20px;
-    border: .5px solid lightblue;
+    border: 0.5px solid lightblue;
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: left; /* Left align text */
+    flex-grow: 1; /* Allow stats-block2 to expand */
+    max-width: 210px; /* Set max width */
+    width: 210px;
 }
 
-/* Placeholder Images */
+.profile-row-2 {
+    display: flex;
+    flex-direction: row; /* Ensure row layout */
+    align-items: flex-start; /* Align items to the top */
+}
+
+.placeholder-images {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
 .placeholder-image {
     width: 100px;
     height: 100px;
     background-color: red;
-    border: .5px solid lightblue;
+    border: 0.5px solid lightblue;
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
-    margin-top: 20px;
-    display: none; /* Initially hidden */
+    margin-bottom: 10px;
+    /*display: none; /* Initially hidden */
+}
+.profile-record .placeholder-image {
+    display: none;
+}
+.profile-record.expanded .placeholder-image {
+    display: block;
 }
 
-/* Expanded State (JavaScript will toggle this class) */
-.profile-stats-container.expanded .stats-button {
-    margin-top: 20px; /* Position below stats-block3 */
+.stats-block2 {
+    border: 0.5px solid lightblue;
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    padding: 10px;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Allow stats-block2 to expand */
+    max-width: 230px; /* Set max width */
+    width: 230px;
+    color: white;
+    /*display: none; /* Hide initially */
 }
+.profile-record .stats-block2 {
+    display: none;
+}
+.profile-record.expanded .stats-block2 {
+    display: block;
+}
+
+.stats-block2 ul {
+    padding: 10px;
+}
+
+.stats-block2 li {
+    margin-bottom: 5px;
+}
+
+.stats-block3 {
+    border: 0.5px solid lightblue;
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+    max-width: 352px; /* Set max width */
+    width: 352px;
+    /*display: none; /* Initially hidden */
+}
+.profile-record .stats-block3 {
+    display: none;
+}
+.profile-record.expanded .stats-block3 {
+    display: block;
+}
+
+.stats-block3 ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+}
+.expand-button-container {
+    position:relative ;
+    border: 0.5px solid lightblue;
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    background-color: transparent;
+    padding: 10px;
+    width: 150px;
+    text-align: left; /* Center the button */
+    top: -38px; /* Adjust top value */
+    left: 70px; /* Adjust left value */
+}
+.profile-record .expand-button-container {
+    display: block;
+}
+.profile-record.expanded .expand-button-container {
+    display: none;
+}
+
+.expand-button button {
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    background-color: rgb(0, 221, 255);
+    color: white;
+    border: 0.5px solid white;
+    padding: 15px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.5em;
+    min-width: 150px;
+}
+
+.collapse-button-container {
+    position: relative;
+    border: 0.5px solid lightblue;
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    background-color: transparent;
+    padding: 10px;
+    width: 150px;
+    text-align: left; /* Center the button */
+    top: -15px; /* Adjust top value */
+    left: 215px; /* Adjust left value */
+    /*display: none; /* Hide initially */
+}
+.profile-record .collapse-button-container {
+    display: none;
+}
+.profile-record.expanded .collapse-button-container {
+    display: block;
+}
+.collapse-button button {
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    background-color: rgb(0, 221, 255);
+    color: white;
+    border: 0.5px solid white;
+    padding: 15px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.5em;
+    min-width: 150px;
+    top: 100px; /* Adjust top value */
+    left: 100px;
+}
+
+
+
 /*
     Intro Text (what I do, notable attributes, notable achievements)
 ***********************************************************************/
