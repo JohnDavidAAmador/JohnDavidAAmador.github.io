@@ -49,8 +49,8 @@ header {
 ***********************/
 .hamburger-container {
     position: fixed; /* Fixed positioning */
-    top: 2vh;
-    right: 11vw; /* Moved to the right */
+    top: 9vh;
+    right: 14vw; /* Moved to the right */
     z-index: 100; /* Higher z-index */
 }
 .hamburger-menu {
@@ -364,8 +364,9 @@ header {
 
 .text-block p {
     font-size: 1.7em;
-    margin: 5px 0;
-    font-family: stabil_grotesk;
+    margin: 0px 0;
+    text-align: left;
+    font-family: stabil;
     display: block;
 }
 
@@ -381,8 +382,8 @@ header {
 ********************************/
 .sticky-contact-button {
     /*position: fixed;*/
-    margin-top: -20px; /* Adjust top position as needed */
-    margin-left: 150px; /* Position to the left of the menu button (adjust as needed) */
+    margin-top: -0vh; /* Adjust top position as needed */
+    margin-left: 35vw; /* Position to the left of the menu button (adjust as needed) */
     z-index: 10; /* Ensure it's above other elements */
 }
 
@@ -647,7 +648,7 @@ header {
 .intro-text {
     flex: 1 0 100%;
     text-align: left;
-    padding: 10px;
+    padding: 35px;
     color: white;
     font-family: stabil_grotesk, sans-serif;
     font-size: 1.125em;
