@@ -49,8 +49,8 @@ header {
 ***********************/
 .hamburger-container {
     position: fixed; /* Fixed positioning */
-    top: 10vh;
-    right: 15vw; /* Moved to the right */
+    top: 2vh;
+    right: 11vw; /* Moved to the right */
     z-index: 100; /* Higher z-index */
 }
 .hamburger-menu {
@@ -289,7 +289,7 @@ header {
 .main-title-container{
         position: absolute;
         padding: 0px; /* Adjust padding as needed */
-        width: 100vw; /* Full viewport width */
+        width: 100%; /* Full viewport width */
         height: 70px;
         top:0px;
         left:0px;
@@ -302,6 +302,7 @@ header {
     content: '';
     position: absolute;
     height: 100px;
+    width: 100%;
     top: 0;
     left: 0;
     right: 0;
