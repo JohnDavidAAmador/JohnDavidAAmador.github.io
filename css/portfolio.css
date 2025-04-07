@@ -504,28 +504,29 @@ header {
     Stats Block 1
 **********************/
 .stats-block1 {
-    position: relative;
+    position: relative;/* required for absolute of overlay */
     border: 0.5px solid lightblue;
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
     padding: 10px;
     margin-bottom: 20px;
     text-align: left; /* Left align text */
     flex-grow: 1; /* Allow stats-block2 to expand */
-    max-width: 270px; /* Set max width */
     width: 230px;
-    max-height: 250px;
+    min-width: 230px;
+    min-height: 200px;
     height: 200px;
 }
 /*
     Stats Block 1 overlay
 *****************************/
 .profile-row-1 .overlay-window.intro-tech { /* More specific selector */
-    position: absolute;
-    top: 0px;
+    position: absolute; /* requires to overlap other items */
     left: 120px; /* Final horizontal position on the left */
+    min-width: 230px;
     width: 230px;
+    min-height: 201px;
     height: 201px;
-    z-index: 11;
+    z-index: 10;
     transition: transform .7s ease-in-out; /* Transition only the transform */
     padding: 10px;
     box-sizing: border-box;
@@ -536,11 +537,10 @@ header {
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
     backdrop-filter: blur(5px);
     background-color: rgba(0, 0, 0, 0.1);
-    transform: translateX(150px); /* Start off-screen to the right */
+    transform: translateX(15%); /* Start off-screen to the right */
     visibility: hidden; /* Initially hidden */
     display: flex;
     flex-direction: column; /* Stack the buttons vertically */
-    gap: 10px; /* Add 10 pixels of space between the buttons */
     align-items: center;
 }
 
@@ -548,20 +548,21 @@ header {
     transform: translateX(0px); /* Slide to its final 'left: 120px' position */
     opacity: 1; /* Make it fully visible */
     visibility: visible;
-    right: auto;
 }
 
 .overlay-window.intro-tech button {
     width: 70%;
     padding: 10px 10px;
-    background-color: rgb(0, 221, 255);
     color: white;
-    border: none;
-    border-radius: 5px;
     cursor: pointer;
     box-sizing: border-box;
     font-size: 0.9em;
     text-align: center;
+    text-shadow: 0 0 10px rgb(0, 221, 255);
+    border: 0.5px solid lightblue;
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 10px rgb(0, 221, 255); /* Add the glow shadow to the buttons */
     transition: box-shadow 0.2s ease-in-out; /* Optional: Smooth transition for the glow */
 }
@@ -591,7 +592,6 @@ header {
     border: 0.5px solid lightblue;
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
     margin-bottom: 10px;
-    /*display: none; /* Initially hidden */
 }
 .profile-record .fingerprint-image {
     display: none;
@@ -602,8 +602,6 @@ header {
 /* Fingerprint Image Overlay */
 .overlay-window.fingerprint-overlay {
     position: absolute;
-    /*top: 0;*/
-    /*left: 0;*/
     width: 100px;
     height: 100px;
     border: 0.5px solid lightblue;
@@ -621,18 +619,20 @@ header {
     box-sizing: border-box;
     padding: 20px;
     visibility: hidden; /* Initially hidden */
-    z-index: 12;
+    z-index: 10;
 }
 
 .overlay-window.fingerprint-overlay button {
     padding: 10px 20px;
-    background-color: rgb(0, 221, 255);
     color: white;
-    border: none;
-    border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
-    box-shadow: 0 0 10px rgb(0, 221, 255);
+    text-shadow: 0 0 10px rgb(0, 221, 255);
+    border: 0.5px solid lightblue;
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgb(0, 221, 255); /* Add the glow shadow to the buttons */
     transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
@@ -689,15 +689,18 @@ header {
     box-sizing: border-box;
     padding: 20px;
     visibility: hidden; /* Initially hidden */
-    z-index: 12;
+    z-index: 10;
 }
 
 .overlay-window.retina-overlay button {
     padding: 10px 20px;
-    background-color: rgb(0, 221, 255);
     color: white;
-    border: none;
+    text-shadow: 0 0 10px rgb(0, 221, 255);
+    border: 0.5px solid lightblue;
     border-radius: 5px;
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgb(0, 221, 255); /* Add the glow shadow to the buttons */
     cursor: pointer;
     font-size: 1em;
     box-shadow: 0 0 10px rgb(0, 221, 255);
@@ -718,21 +721,24 @@ header {
 
 .stats-block2 {
     position: relative;
+    flex-direction: column;
+    justify-content: space-around;
     border: 0.5px solid lightblue;
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
     padding: 10px;
     margin-bottom: 20px;
     flex-grow: 1; /* Allow stats-block2 to expand */
-    max-width: 230px; /* Set max width */
+    min-width: 230px; /* Set max width */
     width: 230px;
+    min-height: 355px;
+    height: 355px;
     color: white;
-    /*display: none; /* Hide initially */
 }
 .profile-record .stats-block2 {
     display: none;
 }
 .profile-record.expanded .stats-block2 {
-    display: block;
+    display: flex;
 }
 
 .stats-block2 ul {
@@ -746,8 +752,10 @@ header {
 .overlay-window.stats2-overlay {
     position: absolute;
     left: 140px;
+    min-width:230px;
     width: 230px;
-    height: 366px;
+    min-height: 355px;
+    height: 355px;
     border: 0.5px solid lightblue;
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
     backdrop-filter: blur(5px);
@@ -755,24 +763,28 @@ header {
     color: white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     opacity: 0;
-    transform: translateX(200%); /* Start from the RIGHT */
+    transform: translateX(15%); /* Start from the RIGHT */
     /* Transition to start after retina (assuming retina is 0.7s) */
     transition: transform 0.7s ease-in-out 2.1s, opacity 0.7s ease-in-out 2.1s;
     box-sizing: border-box;
     padding: 20px;
     visibility: hidden;
-    z-index: 102;
+    z-index: 12;
 }
 
 .overlay-window.stats2-overlay button {
-    padding: 10px 20px;
-    background-color: rgb(0, 221, 255);
+    width: 70%;
+    padding: 10px 10px;
     color: white;
-    border: none;
+    text-shadow: 0 0 10px rgb(0, 221, 255);
+    border: 0.5px solid lightblue;
     border-radius: 5px;
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgb(0, 221, 255); /* Add the glow shadow to the buttons */
     cursor: pointer;
     font-size: 1em;
     box-shadow: 0 0 10px rgb(0, 221, 255);
@@ -798,9 +810,10 @@ header {
     color: white;
     padding: 10px;
     margin-top: 20px;
-    max-width: 352px; /* Set max width */
+    min-width: 352px; /* Set max width */
     width: 352px;
-    /*display: none; /* Initially hidden */
+    min-height: 175px;
+    height: 175px;
 }
 .profile-record .stats-block3 {
     display: none;
@@ -817,14 +830,17 @@ header {
 /* Stats Block 3 Overlay */
 .overlay-window.stats3-overlay {
     position: absolute;
-    top: 646px;
+    top: 635px;
     width: 353px;
-    height: 180px;
+    min-width: 353px;
+    height: 175px;
+    min-height: 175px;
     border: 0.5px solid lightblue;
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
     backdrop-filter: blur(5px);
     background-color: rgba(0, 0, 0, 0.1);
-    color: white;
+    color: rgb(255, 102, 0);
+    text-shadow: 0 0 10px rgb(255, 102, 0);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -835,7 +851,7 @@ header {
     box-sizing: border-box;
     padding: 20px;
     visibility: hidden;
-    z-index: 102;
+    z-index: 12;
 }
 
 .overlay-window.stats3-overlay p {
@@ -859,6 +875,7 @@ header {
     text-align: left; /* Center the button */
     top: -38px; /* Adjust top value */
     left: 70px; /* Adjust left value */
+    z-index: 20;
 }
 .profile-record .expand-button-container {
     display: block;
@@ -877,6 +894,7 @@ header {
     cursor: pointer;
     font-size: 1.5em;
     width: 150px;
+    z-index: 12;
 }
 
 .collapse-button-container {
@@ -890,7 +908,7 @@ header {
     text-align: left; /* Center the button */
     top: -15px; /* Adjust top value */
     left: 215px; /* Adjust left value */
-    /*display: none; /* Hide initially */
+    z-index: 12;
 }
 .profile-record .collapse-button-container {
     display: none;
@@ -910,6 +928,7 @@ header {
     min-width: 150px;
     top: 100px; /* Adjust top value */
     left: 100px;
+    z-index: 12;
 }
 /* Stats Overlay */
 
@@ -1378,7 +1397,7 @@ section span.animated-title {
     .overlay-window.retina-overlay button,
     .overlay-window.stats2-overlay button {
         font-size: 1.4em; /* Further increase for smaller screens */
-        padding: 14px 28px; /* Adjust padding if needed */
+         /* Adjust padding if needed */
     }
 
     .overlay-window.stats3-overlay p {

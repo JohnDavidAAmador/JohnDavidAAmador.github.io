@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
             collapseButton.style.display = 'none';
 
             // Hide intro tech overlay
-            introTechOverlay.style.transform = 'translateX(250px)'; // Adjust to your initial position
+            introTechOverlay.style.transform = 'translateX(15%)'; // Adjust to your initial position
             introTechOverlay.classList.remove('show');
 
             // Hide fingerprint overlay
