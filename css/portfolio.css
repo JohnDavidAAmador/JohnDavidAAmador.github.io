@@ -525,7 +525,7 @@ header {
     left: 120px; /* Final horizontal position on the left */
     width: 230px;
     height: 201px;
-    z-index: 101;
+    z-index: 11;
     transition: transform .7s ease-in-out; /* Transition only the transform */
     padding: 10px;
     box-sizing: border-box;
@@ -536,7 +536,7 @@ header {
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
     backdrop-filter: blur(5px);
     background-color: rgba(0, 0, 0, 0.1);
-    transform: translateX(800px); /* Start off-screen to the right */
+    transform: translateX(150px); /* Start off-screen to the right */
     visibility: hidden; /* Initially hidden */
     display: flex;
     flex-direction: column; /* Stack the buttons vertically */
@@ -577,13 +577,14 @@ header {
     align-items: flex-start; /* Align items to the top */
 }
 
-.placeholder-images {
+.stats-images {
     display: flex;
     flex-direction: column;
     margin-right: 20px;
 }
 
-.placeholder-image {
+.fingerprint-image {
+    position: relative;
     width: 100px;
     height: 100px;
     background-color: red;
@@ -592,11 +593,125 @@ header {
     margin-bottom: 10px;
     /*display: none; /* Initially hidden */
 }
-.profile-record .placeholder-image {
+.profile-record .fingerprint-image {
     display: none;
 }
-.profile-record.expanded .placeholder-image {
+.profile-record.expanded .fingerprint-image {
     display: block;
+}
+/* Fingerprint Image Overlay */
+.overlay-window.fingerprint-overlay {
+    position: absolute;
+    /*top: 0;*/
+    /*left: 0;*/
+    width: 100px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateX(-200%); /* Start off-screen to the LEFT */
+    transition: transform 0.7s ease-in-out 0.7s, opacity 0.7s ease-in-out 0.7s; /* Add a delay to start after intro-tech */
+    box-sizing: border-box;
+    padding: 20px;
+    border: 0.5px solid lightblue;
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    visibility: hidden; /* Initially hidden */
+    z-index: 12;
+}
+
+.overlay-window.fingerprint-overlay button {
+    padding: 10px 20px;
+    background-color: rgb(0, 221, 255);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    box-shadow: 0 0 10px rgb(0, 221, 255);
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.overlay-window.fingerprint-overlay button:hover {
+    background-color: rgb(0, 180, 220);
+    box-shadow: 0 0 15px rgb(0, 221, 255);
+}
+
+/* Class to show the fingerprint overlay */
+.overlay-window.fingerprint-overlay.show {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible !important;
+}
+
+.profile-record .retina-image {
+    display: none;
+}
+.profile-record.expanded .retina-image {
+    display: block;
+}
+/* Retina Image Placeholder */
+.retina-image {
+    position: relative;
+    width: 100px; /* Or your desired width */
+    height: 100px; /* Or your desired height */
+    background-color: green; /* Placeholder background */
+    border: 0.5px solid lightblue;
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    cursor: pointer;
+    /*margin-left: 10px; /* Add some spacing between the images */
+    /* Add any other styling for the retina image placeholder */
+}
+
+/* Retina Image Overlay */
+.overlay-window.retina-overlay {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 350px;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateX(-200%); /* Start off-screen to the LEFT */
+    /* Transition with a longer delay to start after fingerprint */
+    transition: transform 0.7s ease-in-out 1.4s, opacity 0.7s ease-in-out 1.4s; /* Assuming fingerprint is 0.7s */
+    box-sizing: border-box;
+    padding: 20px;
+    border: 0.5px solid lightblue;
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    visibility: hidden; /* Initially hidden */
+    z-index: 12;
+}
+
+.overlay-window.retina-overlay button {
+    padding: 10px 20px;
+    background-color: rgb(0, 221, 255);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    box-shadow: 0 0 10px rgb(0, 221, 255);
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.overlay-window.retina-overlay button:hover {
+    background-color: rgb(0, 180, 220);
+    box-shadow: 0 0 15px rgb(0, 221, 255);
+}
+
+/* Class to show the retina overlay */
+.overlay-window.retina-overlay.show {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible !important;
 }
 
 .stats-block2 {

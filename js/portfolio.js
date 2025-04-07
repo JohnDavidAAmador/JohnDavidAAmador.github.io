@@ -130,34 +130,41 @@ tooltipElements.forEach(element => {
         }
     });
 });
-
+//Stats Overlays
 document.addEventListener('DOMContentLoaded', function() {
     const profileRecord = document.querySelector('.profile-record');
     const expandButton = document.querySelector('.expand-button button');
     const collapseButton = document.querySelector('.collapse-button button');
-    const overlayWindow = document.querySelector('.overlay-window.intro-tech');
-    const statsBlock1 = document.getElementById('stats-block1');
+    const introTechOverlay = document.querySelector('.overlay-window.intro-tech');
+    const fingerprintOverlay = document.querySelector('.overlay-window.fingerprint-overlay');
+    const retinaOverlay = document.querySelector('.overlay-window.retina-overlay'); // Get the retina overlay
 
     console.log("DOM Content Loaded - Animation Test");
     console.log("profileRecord:", profileRecord);
     console.log("expandButton:", expandButton);
     console.log("collapseButton:", collapseButton);
-    console.log("overlayWindow:", overlayWindow);
-    console.log("statsBlock1:", statsBlock1);
+    console.log("overlayWindow:", introTechOverlay);
+    console.log("fingerprintOverlay:", fingerprintOverlay);
+    console.log("retinaOverlay:", retinaOverlay);
 
-    if (profileRecord && expandButton && collapseButton && overlayWindow) {
-        // Initially hide the overlay by default in CSS
+    if (profileRecord && expandButton && collapseButton && introTechOverlay && fingerprintOverlay && retinaOverlay) {
+        // Initially hide the overlays by default in CSS
 
         expandButton.addEventListener('click', function() {
             console.log("Expand button clicked - Animation Test");
             profileRecord.classList.add('expanded');
             expandButton.style.display = 'none';
             collapseButton.style.display = 'block';
-            // if (statsBlock1) statsBlock1.style.display = 'block';
 
-            // Apply final position and show
-            overlayWindow.style.transform = 'translateX(0)'; // Adjust the final X value as needed
-            overlayWindow.classList.add('show'); // Add the 'show' class to make it visible
+            // Show intro tech overlay
+            introTechOverlay.style.transform = 'translateX(0)';
+            introTechOverlay.classList.add('show');
+
+            // Show fingerprint overlay
+            fingerprintOverlay.classList.add('show');
+
+            // Show retina overlay
+            retinaOverlay.classList.add('show');
         });
 
         collapseButton.addEventListener('click', function() {
@@ -166,14 +173,21 @@ document.addEventListener('DOMContentLoaded', function() {
             expandButton.style.display = 'block';
             collapseButton.style.display = 'none';
 
-            // Apply initial position and hide
-            overlayWindow.style.transform = 'translateX(250px)'; // Adjust the initial/collapsed X value to match CSS
-            overlayWindow.classList.remove('show'); // Remove the 'show' class to hide it
+            // Hide intro tech overlay
+            introTechOverlay.style.transform = 'translateX(250px)'; // Adjust to your initial position
+            introTechOverlay.classList.remove('show');
+
+            // Hide fingerprint overlay
+            fingerprintOverlay.classList.remove('show');
+
+            // Hide retina overlay
+            retinaOverlay.classList.remove('show');
         });
     } else {
-        console.log("Key elements not found for animation test.");
+        console.log("Key elements for profile animation not found.");
     }
 
+    //profile photo changes
     const profileImage = document.getElementById('profileImage');
     const profileImage2 = document.getElementById('profileImage2');
     let currentImageIndex = 0;
