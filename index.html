@@ -114,16 +114,22 @@
                 <a href="#" onclick="openContactWindow();">Contact Me</a>
             </div>
         </div>
-        <!------------------------>
-        <!--    Profile Pic     -->
-        <!------------------------>
+        <!-------------------------->
+        <!--    Profile Stats     -->
+        <!-------------------------->
         <div class="profile-stats-container">
             <div class="profile-record"> 
                 <div class="profile-row-1">
+                    <!------------------------>
+                    <!--    Profile Pic     -->
+                    <!------------------------>
                     <div class="profile-image">
                         <img id="profileImage" src="img/profile_photo_placeholder.png" alt="Profile Photo">
                         <img id="profileImage2" src="img/photo_2.png" alt="Profile Photo 2">
                     </div>
+                    <!------------------------------------->
+                    <!--    Stats 1 (personal details)   -->
+                    <!------------------------------------->
                     <div class="stats-block1">
                         <p>First Name: &ensp;John-David (J.D.)</p>
                         <p>Middle Init.: &ensp;A.</p>
@@ -131,6 +137,13 @@
                         <p>Nationality: &ensp;American Born (U.S.A.) </p>
                         <p>Class: &ensp;Technology Solutions Creator</p>
                         <p>Profession: &ensp; &ensp;Software Engineer </p>
+                    </div>
+                    <!------------------------------------------>
+                    <!--    Stats 1 Overlay (Intro, Skills)   -->
+                    <!------------------------------------------>
+                    <div class="overlay-window intro-tech">
+                        <button onclick="scrollToSection('intro')">Intro</button>
+                        <button onclick="scrollToSection('skills')">Technologies I Use</button>
                     </div>
                 </div>
                 <div class="profile-row-2">
@@ -168,6 +181,9 @@
                         <li>Laptop + SmartPhone</li>
                     </ul>
                 </div>
+                <!-------------------------->
+                <!--    Stats Buttons     -->
+                <!-------------------------->
                 <div class="collapse-button-container">
                     <div class="collapse-button">
                         <button id="collapse">&#x2303;</button>

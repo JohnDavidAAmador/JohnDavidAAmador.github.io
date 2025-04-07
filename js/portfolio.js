@@ -131,38 +131,49 @@ tooltipElements.forEach(element => {
     });
 });
 
-// Stats Section expand and collapse
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("DOM Content Loaded");
-
     const profileRecord = document.querySelector('.profile-record');
     const expandButton = document.querySelector('.expand-button button');
     const collapseButton = document.querySelector('.collapse-button button');
+    const overlayWindow = document.querySelector('.overlay-window.intro-tech');
+    const statsBlock1 = document.getElementById('stats-block1');
 
+    console.log("DOM Content Loaded - Animation Test");
     console.log("profileRecord:", profileRecord);
     console.log("expandButton:", expandButton);
     console.log("collapseButton:", collapseButton);
+    console.log("overlayWindow:", overlayWindow);
+    console.log("statsBlock1:", statsBlock1);
 
-    if (profileRecord && expandButton) {
+    if (profileRecord && expandButton && collapseButton && overlayWindow) {
+        // Initially hide the overlay by default in CSS
+
         expandButton.addEventListener('click', function() {
-            console.log("Expand button clicked");
+            console.log("Expand button clicked - Animation Test");
             profileRecord.classList.add('expanded');
-        });
-    } else {
-        console.log("Expand button or profileRecord not found");
-    }
+            expandButton.style.display = 'none';
+            collapseButton.style.display = 'block';
+            // if (statsBlock1) statsBlock1.style.display = 'block';
 
-    if (profileRecord && collapseButton) {
+            // Apply final position and show
+            overlayWindow.style.transform = 'translateX(0)'; // Adjust the final X value as needed
+            overlayWindow.classList.add('show'); // Add the 'show' class to make it visible
+        });
+
         collapseButton.addEventListener('click', function() {
-            console.log("Collapse button clicked");
+            console.log("Collapse button clicked - Animation Test");
             profileRecord.classList.remove('expanded');
+            expandButton.style.display = 'block';
+            collapseButton.style.display = 'none';
+
+            // Apply initial position and hide
+            overlayWindow.style.transform = 'translateX(250px)'; // Adjust the initial/collapsed X value to match CSS
+            overlayWindow.classList.remove('show'); // Remove the 'show' class to hide it
         });
     } else {
-        console.log("Collapse button or profileRecord not found");
+        console.log("Key elements not found for animation test.");
     }
-});
 
-document.addEventListener('DOMContentLoaded', function() {
     const profileImage = document.getElementById('profileImage');
     const profileImage2 = document.getElementById('profileImage2');
     let currentImageIndex = 0;
@@ -216,50 +227,49 @@ document.addEventListener('DOMContentLoaded', function() {
 
     observer.observe(profileImage);
     imageChangeInterval = setInterval(changeProfileImage, 4000); // Start image switching initially
-});
-//autotyping divider
-function typeWriter(element, text, speed, callback) {
-    let i = 0;
-    function type() {
-        if (i < text.length) {
-            element.textContent += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        } else {
-            if (callback) {
-                callback();
+
+    function typeWriter(element, text, speed, callback) {
+        let i = 0;
+        function type() {
+            if (i < text.length) {
+                element.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            } else {
+                if (callback) {
+                    callback();
+                }
             }
         }
+        type();
     }
-    type();
-}
 
-function animateSection(sectionId, text, speed) {
-    const section = document.getElementById(sectionId);
-    if (!section) return;
+    function animateSection(sectionId, text, speed) {
+        const section = document.getElementById(sectionId);
+        if (!section) return;
 
-    const titleFlexWrapper = section.querySelector('.title-flex-wrapper');
-    if (!titleFlexWrapper) return;
+        const titleFlexWrapper = section.querySelector('.title-flex-wrapper');
+        if (!titleFlexWrapper) return;
 
-    const textElement = document.createElement('span');
-    textElement.classList.add('animated-title'); // Add a class for styling
-    titleFlexWrapper.appendChild(textElement);
+        const textElement = document.createElement('span');
+        textElement.classList.add('animated-title'); // Add a class for styling
+        titleFlexWrapper.appendChild(textElement);
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                typeWriter(textElement, text, speed, () => {
-                    observer.unobserve(entry.target);
-                });
-            }
-        });
-    }, { threshold: 0.1 });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    typeWriter(textElement, text, speed, () => {
+                        observer.unobserve(entry.target);
+                    });
+                }
+            });
+        }, { threshold: 0.1 });
 
-    observer.observe(section);
-}
-
-// Call the animation functions
-animateSection('skills', 'Technologies I Use', 100);
-animateSection('projects', 'Projects', 100);
-animateSection('resume', 'Resume', 100);
-animateSection('bio', 'My Bio', 100);
+        observer.observe(section);
+    }
+    // Call the animation functions
+    animateSection('skills', 'Technologies I Use', 100);
+    animateSection('projects', 'Projects', 100);
+    animateSection('resume', 'Resume', 100);
+    animateSection('bio', 'My Bio', 100);
+});

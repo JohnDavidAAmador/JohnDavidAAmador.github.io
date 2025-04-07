@@ -1,13 +1,23 @@
 /************************************************/
-/* Portfolio Page CSS              */
+/* Portfolio Page CSS                                */
 /************************************************/
 /*
     Author: John-David A. Amador
-    Date:   March 2025
+    Date:    March 2025
 */
 /************************************************/
 /* background
 ********************/
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
 body {
     background-image: url(../img/bg.jpg);
     background-repeat: no-repeat;
@@ -404,7 +414,7 @@ header {
 }
 
 /*******************************
- Profile and Stats Container 
+ Profile and Stats Container
 ********************************/
 
 .profile-stats-container {
@@ -413,6 +423,7 @@ header {
     margin-top: 100px;
 }
 .profile-record {
+    position: relative;
     width: 100%;
     max-width: 1200px;
     margin: 20px auto;
@@ -424,6 +435,7 @@ header {
     align-items: flex-start; /* Align items to the top */
 }
 .profile-row-1 {
+    position: relative;
     display: flex; /* Add flexbox */
     flex-direction: row; /* Ensure row layout */
     justify-content: flex-start; /* Align items to the start */
@@ -440,7 +452,7 @@ header {
     margin-right: 20px;
     padding: 10px;
     position: relative;
-  }
+ }
 
 #profileImage{
     position: absolute;
@@ -453,7 +465,7 @@ header {
     transition: opacity 0.5s ease;
     border-radius: 4px;
     background-color: rgba(0, 0, 0, 0.5); /* Adjust transparency */
-    box-shadow: 0 0 10px 1px rgb(255, 102, 0), 
+    box-shadow: 0 0 10px 1px rgb(255, 102, 0),
                 inset 0 0 3px .5px rgb(255, 102, 0); /* Orange glow */
     border: .05px solid rgb(255, 255, 255); /* Add white border */
 }
@@ -470,7 +482,7 @@ header {
     transition: opacity 0.5s ease;
     border-radius: 4px;
     background-color: rgba(0, 0, 0, 0.5); /* Adjust transparency */
-    box-shadow: 0 0 10px 1px rgb(255, 102, 0), 
+    box-shadow: 0 0 10px 1px rgb(255, 102, 0),
                 inset 0 0 3px .5px rgb(255, 102, 0); /* Orange glow */
     border: .05px solid rgb(255, 255, 255); /* Add white border */
 }
@@ -492,14 +504,71 @@ header {
     Stats Block 1
 **********************/
 .stats-block1 {
+    position: relative;
     border: 0.5px solid lightblue;
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
     padding: 10px;
     margin-bottom: 20px;
     text-align: left; /* Left align text */
     flex-grow: 1; /* Allow stats-block2 to expand */
-    max-width: 210px; /* Set max width */
-    width: 210px;
+    max-width: 270px; /* Set max width */
+    width: 230px;
+    max-height: 250px;
+    height: 200px;
+}
+/*
+    Stats Block 1 overlay
+*****************************/
+.profile-row-1 .overlay-window.intro-tech { /* More specific selector */
+    position: absolute;
+    top: 0px;
+    left: 120px; /* Final horizontal position on the left */
+    width: 230px;
+    height: 201px;
+    z-index: 101;
+    transition: transform .7s ease-in-out; /* Transition only the transform */
+    padding: 10px;
+    box-sizing: border-box;
+    opacity: 0; /* Initially fully transparent */
+    flex-direction: column;
+    justify-content: space-around;
+    border: 0.5px solid lightblue;
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.1);
+    transform: translateX(800px); /* Start off-screen to the right */
+    visibility: hidden; /* Initially hidden */
+    display: flex;
+    flex-direction: column; /* Stack the buttons vertically */
+    gap: 10px; /* Add 10 pixels of space between the buttons */
+    align-items: center;
+}
+
+.profile-row-1 .overlay-window.intro-tech.show { /* More specific selector */
+    transform: translateX(0px); /* Slide to its final 'left: 120px' position */
+    opacity: 1; /* Make it fully visible */
+    visibility: visible;
+    right: auto;
+}
+
+.overlay-window.intro-tech button {
+    width: 70%;
+    padding: 10px 10px;
+    background-color: rgb(0, 221, 255);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+    font-size: 0.9em;
+    text-align: center;
+    box-shadow: 0 0 10px rgb(0, 221, 255); /* Add the glow shadow to the buttons */
+    transition: box-shadow 0.2s ease-in-out; /* Optional: Smooth transition for the glow */
+}
+
+.overlay-window.intro-tech button:hover {
+    background-color: rgb(0, 180, 220);
+    box-shadow: 0 0 15px rgb(0, 221, 255); /* Slightly stronger glow on hover */
 }
 
 .profile-row-2 {
@@ -614,7 +683,8 @@ header {
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
     background-color: transparent;
     padding: 10px;
-    width: 150px;
+    width: 200px;
+    max-width: 200px;
     text-align: left; /* Center the button */
     top: -15px; /* Adjust top value */
     left: 215px; /* Adjust left value */
@@ -639,8 +709,7 @@ header {
     top: 100px; /* Adjust top value */
     left: 100px;
 }
-
-
+/* Stats Overlay */
 
 /*
     Intro Text (what I do, notable attributes, notable achievements)
