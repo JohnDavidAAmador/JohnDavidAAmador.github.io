@@ -137,7 +137,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const collapseButton = document.querySelector('.collapse-button button');
     const introTechOverlay = document.querySelector('.overlay-window.intro-tech');
     const fingerprintOverlay = document.querySelector('.overlay-window.fingerprint-overlay');
-    const retinaOverlay = document.querySelector('.overlay-window.retina-overlay'); // Get the retina overlay
+    const retinaOverlay = document.querySelector('.overlay-window.retina-overlay');
+    const stats2Overlay = document.querySelector('.overlay-window.stats2-overlay');
+    const stats3Overlay = document.querySelector('.overlay-window.stats3-overlay');
 
     console.log("DOM Content Loaded - Animation Test");
     console.log("profileRecord:", profileRecord);
@@ -146,8 +148,10 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("overlayWindow:", introTechOverlay);
     console.log("fingerprintOverlay:", fingerprintOverlay);
     console.log("retinaOverlay:", retinaOverlay);
+    console.log("stats2Overlay:", stats2Overlay);
+    console.log("stats3Overlay:", stats3Overlay);
 
-    if (profileRecord && expandButton && collapseButton && introTechOverlay && fingerprintOverlay && retinaOverlay) {
+    if (profileRecord && expandButton && collapseButton && introTechOverlay && fingerprintOverlay && retinaOverlay && stats2Overlay && stats3Overlay) {
         // Initially hide the overlays by default in CSS
 
         expandButton.addEventListener('click', function() {
@@ -165,6 +169,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Show retina overlay
             retinaOverlay.classList.add('show');
+
+            // Show stats 2 overlay
+            stats2Overlay.classList.add('show');
+
+            // Show stats 3 overlay
+            stats3Overlay.classList.add('show');
         });
 
         collapseButton.addEventListener('click', function() {
@@ -182,6 +192,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Hide retina overlay
             retinaOverlay.classList.remove('show');
+
+            // Hide stats 2 overlay
+            stats2Overlay.classList.remove('show');
+
+            // Hide stats 3 overlay
+            stats3Overlay.classList.remove('show');
         });
     } else {
         console.log("Key elements for profile animation not found.");
