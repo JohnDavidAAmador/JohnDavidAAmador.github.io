@@ -140,6 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const retinaOverlay = document.querySelector('.overlay-window.retina-overlay');
     const stats2Overlay = document.querySelector('.overlay-window.stats2-overlay');
     const stats3Overlay = document.querySelector('.overlay-window.stats3-overlay');
+    const allOverlays = [introTechOverlay, fingerprintOverlay, retinaOverlay, stats2Overlay, stats3Overlay];
 
     console.log("DOM Content Loaded - Animation Test");
     console.log("profileRecord:", profileRecord);
@@ -160,21 +161,26 @@ document.addEventListener('DOMContentLoaded', function() {
             expandButton.style.display = 'none';
             collapseButton.style.display = 'block';
 
-            // Show intro tech overlay
-            introTechOverlay.style.transform = 'translateX(0)';
-            introTechOverlay.classList.add('show');
-
-            // Show fingerprint overlay
-            fingerprintOverlay.classList.add('show');
-
-            // Show retina overlay
-            retinaOverlay.classList.add('show');
-
-            // Show stats 2 overlay
-            stats2Overlay.classList.add('show');
-
-            // Show stats 3 overlay
-            stats3Overlay.classList.add('show');
+            allOverlays.forEach(overlay => {
+                if (overlay) {
+                    // Reset transform to the initial 'off-screen' position
+                    if (overlay.classList.contains('intro-tech')) {
+                        overlay.style.transform = 'translateX(200px)'; // Or your initial right position
+                    } else if (overlay.classList.contains('fingerprint-overlay') || overlay.classList.contains('retina-overlay')) {
+                        overlay.style.transform = 'translateX(-200%)'; // Or your initial left position
+                    } else if (overlay.classList.contains('stats2-overlay')) {
+                        overlay.style.transform = 'translateX(200%)'; // Or your initial right position
+                    } else if (overlay.classList.contains('stats3-overlay')) {
+                        overlay.style.transform = 'translateY(200%)'; // Or your initial bottom position
+                    }
+                    // Force a reflow
+                    overlay.offsetHeight;
+                    // Now, set the transform to the 'on-screen' position to trigger the CSS transition
+                    overlay.style.transform = 'translateX(0)';
+                    overlay.style.opacity = '1'; // Ensure opacity is set for visibility
+                    overlay.classList.add('show');
+                }
+            });
         });
 
         collapseButton.addEventListener('click', function() {
@@ -183,21 +189,34 @@ document.addEventListener('DOMContentLoaded', function() {
             expandButton.style.display = 'block';
             collapseButton.style.display = 'none';
 
-            // Hide intro tech overlay
-            introTechOverlay.style.transform = 'translateX(15%)'; // Adjust to your initial position
-            introTechOverlay.classList.remove('show');
+            allOverlays.forEach(overlay => {
+                if (overlay) {
+                    // Disable transitions for instant reset
+                    overlay.style.transition = 'none';
 
-            // Hide fingerprint overlay
-            fingerprintOverlay.classList.remove('show');
+                    // Force a reflow
+                    overlay.offsetHeight;
 
-            // Hide retina overlay
-            retinaOverlay.classList.remove('show');
+                    // Reset transform based on the overlay's origin
+                    if (overlay.classList.contains('intro-tech')) {
+                        overlay.style.transform = 'translateX(200px)'; // Or your initial right position
+                    } else if (overlay.classList.contains('fingerprint-overlay') || overlay.classList.contains('retina-overlay')) {
+                        overlay.style.transform = 'translateX(-200%)'; // Or your initial left position
+                    } else if (overlay.classList.contains('stats2-overlay')) {
+                        overlay.style.transform = 'translateX(200%)'; // Or your initial right position
+                    } else if (overlay.classList.contains('stats3-overlay')) {
+                        overlay.style.transform = 'translateY(200%)'; // Or your initial bottom position
+                    }
 
-            // Hide stats 2 overlay
-            stats2Overlay.classList.remove('show');
+                    overlay.style.opacity = '0';
+                    overlay.classList.remove('show');
 
-            // Hide stats 3 overlay
-            stats3Overlay.classList.remove('show');
+                    // Re-enable transitions (important for the next expand)
+                    requestAnimationFrame(() => {
+                        overlay.style.transition = '';
+                    });
+                }
+            });
         });
     } else {
         console.log("Key elements for profile animation not found.");
