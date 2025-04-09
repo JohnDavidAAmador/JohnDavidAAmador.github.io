@@ -494,17 +494,13 @@ header {
     opacity: 0;
 }
 
-/*************************
-    profile photo glow
-**************************/
+/* profile photo glow */
 #profileImage.glowing,
 #profileImage2.glowing {
     filter: drop-shadow(0 0 5px rgb(255, 102, 0)); /* Glow along transparency */
     transform: scale(1.05); /* Adjusted scale */
 }
-/*
-    Stats Block 1
-**********************/
+/* Stats Block 1 */
 .stats-block1 {
     position: relative;/* required for absolute of overlay */
     overflow: hidden;
@@ -520,9 +516,7 @@ header {
     min-height: 200px;
     height: 200px;
 }
-/*
-    Stats Block 1 overlay
-*****************************/
+/* Intro/Tech Block Overlay */
 .profile-row-1 .overlay-window.intro-tech { /* More specific selector */
     position: absolute; /* requires to overlap other items */
     left: 120px; /* Final horizontal position on the left */
@@ -549,6 +543,7 @@ header {
     align-items: center;
 }
 
+/* Intro/Tech Block Show Overlay */
 .profile-row-1 .overlay-window.intro-tech.show { /* More specific selector */
     transform: translateX(0px); /* Slide to its final 'left: 120px' position */
     visibility: visible;
@@ -576,19 +571,20 @@ header {
     box-shadow: 0 0 15px rgb(0, 221, 255); /* Slightly stronger glow on hover */
 }
 
+/* Row 2 */
 .profile-row-2 {
     display: flex;
     flex-direction: row; /* Ensure row layout */
     align-items: flex-start; /* Align items to the top */
 }
-
+/* Container for Fingerprint and Retina Blocks */
 .stats-images {
     display: flex;
     flex-direction: column;
     margin-right: 20px;
     border-radius: 4px;
 }
-
+/* Fingerprint Block Image */
 .fingerprint-image {
     position: relative;
     overflow: hidden;
@@ -606,7 +602,7 @@ header {
 .profile-record.expanded .fingerprint-image {
     display: block;
 }
-/* Fingerprint Image Overlay */
+/* Fingerprint Block Overlay */
 .overlay-window.fingerprint-overlay {
     position: absolute;
     width: 100px;
@@ -649,19 +645,20 @@ header {
     box-shadow: 0 0 15px rgb(0, 221, 255);
 }
 
-/* Class to show the fingerprint overlay */
+/* Fingerprint Block Show Overlay */
 .overlay-window.fingerprint-overlay.show {
     transform: translateX(0px);
     visibility: visible;
 }
 
+/* Retina Block */
 .profile-record .retina-image {
     display: none;
 }
 .profile-record.expanded .retina-image {
     display: block;
 }
-/* Retina Image Placeholder */
+/* Retina Block Image  */
 .retina-image {
     position: relative;
     overflow: hidden;
@@ -676,7 +673,7 @@ header {
     /* Add any other styling for the retina image placeholder */
 }
 
-/* Retina Image Overlay */
+/* Retina Block Overlay */
 .overlay-window.retina-overlay {
     position: absolute;
     width: 100px;
@@ -721,12 +718,12 @@ header {
     box-shadow: 0 0 15px rgb(0, 221, 255);
 }
 
-/* Class to show the retina overlay */
+/* Retina Block Show Overlay */
 .overlay-window.retina-overlay.show {
     transform: translateX(0);
     visibility: visible;
 }
-
+/* Stats Block 2 */
 .stats-block2 {
     position: relative;
     overflow: hidden;
@@ -813,13 +810,14 @@ header {
     background-color: rgb(0, 180, 220);
     box-shadow: 0 0 15px rgb(0, 221, 255);
 }
-
+/* Stats Block 2 Show Overlay */
 .overlay-window.stats2-overlay.show {
     transform: translateX(0);
     visibility: visible;
     opacity: 1;
 }
 
+/* Stats Block 3 */
 .stats-block3 {
     position: relative;
     overflow: hidden;
@@ -877,11 +875,12 @@ header {
     font-size: 1.5em;
     text-align: center;
 }
-
+/* Stats Block 3 Show Overlay */
 .overlay-window.stats3-overlay.show {
     transform: translateY(0);
     visibility: visible;
 }
+/* Stats Expand Button */ 
 .expand-button-container {
     position:relative ;
     overflow: hidden;
@@ -890,7 +889,7 @@ header {
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
     background-color: transparent;
     padding: 10px;
-    width: 170px;
+    width: 260px;
     align-items: center;
     text-align: left; /* Center the button */
     top: -38px; /* Adjust top value */
@@ -907,16 +906,17 @@ header {
 .expand-button button {
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
     background-color: rgb(0, 221, 255);
-    color: white;
+    color: rgb(255, 102, 0);
+    text-shadow: 0 0 10px rgb(255, 102, 0);
     border: 0.5px solid white;
     padding: 15px 30px;
     border-radius: 10px;
     cursor: pointer;
     font-size: 1.5em;
-    width: 150px;
+    width: 239px;
     z-index: 12;
 }
-
+/* Stats collapse Button */ 
 .collapse-button-container {
     position: relative;
     align-items: center;
@@ -954,8 +954,8 @@ header {
 /* Stats Overlay */
 
 /*
-    Intro Text (what I do, notable attributes, notable achievements)
-***********************************************************************/
+    Intro Text 
+******************/
 .intro-text {
     flex: 1 0 100%;
     text-align: left;
@@ -986,27 +986,273 @@ header {
     sections
 *****************/
 
-/* skills box
-******************/
-#skills {
+/* Technologies I Use
+*************************/
+#technologies-i-use {
+    display: flex;
+    flex-direction: column; /* Or row, depending on your content */
+    align-items: center; /* Example: Center items horizontally */
+    justify-content: center; /* Example: Center items vertically */
     position: relative;
-
-    padding: 20px; /*60 changed to test */
-    margin: 0 auto;
-    margin-top: 20px; /* 60px changed to test */
-
+    overflow: hidden;
+    min-height: 412px;
+    min-width: 412px;
+    padding: 20px;
     box-sizing: border-box;
-    min-height: 200px;
-    /*max-width: 1200px;*/
-    max-width: 95%;
-    max-height: 1000px;
+    width: 90%;
+    margin: 20px auto;
+}
 
-    border-radius: 3px;
+.section-container {
+    position: relative; /* For positioning other elements within */
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+}
+
+/* CSS for the background image container */
+.background-image-container {
+    position: relative; /* Or relative, depending on your layout needs */
+    top: 0;
+    left: 0;
+    width: 100%; /* Or a specific width */
+    height: 100%; /* Or a specific height */
+    overflow: hidden; /* Clip the image if it extends beyond the container */
+    z-index: -1; /* Place it behind other content within the section */
+}
+
+/* Initial state of the background image */
+.background-image {
+    /*position: absolute;*/
+    opacity: 0; /* Initially hidden */
+    object-position: center center;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Scale the image to cover the container */
+    transition: opacity 2s ease, transform 2s ease; /* For a smooth fade/grow if you add transform */
+    transform: scale(0); /* Optional: Start slightly smaller for a grow effect */
+    z-index: -1;
+}
+
+/* Style when the 'visible' class is added (triggered by JavaScript) */
+.background-image.visible {
+    opacity: 1;
+    transform: scale(1); /* Grow to full size (if you used an initial scale) */
+}
+
+.technologies-slide-in-window {
+    position: absolute;
+    top: 0;
+    left: -200%;
+    width: 60%;
+    /*max-width: 500px;*/
+    /*height: 100%;*/
+    min-height: 300px;
+    border: 0.5px solid lightblue;
+    border-radius: 4px;
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
-
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: left 0.5s ease-in-out;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 1;
 }
+
+.technologies-slide-in-window.visible {
+    top: 40px;
+    left: 120px;
+}
+/******************
+    top divider
+*******************/
+.title-flex-wrapper { /* Divider Box */
+    margin-top: 0;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
+.divider { /* Divider object */
+    height: 2px;
+    width: 95%;
+    margin: auto;
+    background-color: grey;
+    z-index: 2;
+    margin-top: 30px;
+    margin-left: -15px;
+    position: relative;
+    transform: translateX(-100%); /* Start off-screen to the left */
+    opacity: 0;
+    transition: transform 0.7s ease-out, opacity 0.7s ease-out; /* Slide in with window */
+}
+.divider.slide-in {
+    transform: translateX(0); /* Slide into view */
+    opacity: 1;
+}
+#technologies-i-use .top-divider { /* Top Divider (Black Background Sections) */
+    background-color: rgb(172, 238, 255);
+    box-shadow: 0 0 15px 1px rgb(0, 221, 255);
+}
+
+/******************************************
+    Autotyping Title above each Section
+*******************************************/
+section span.animated-title {
+    margin-top: 4px;
+    position: absolute;
+    top: 87%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    font-family: "Colossalis", arial, sans-serif;
+    line-height: 1;
+    text-transform: uppercase;
+    font-size: 1.7em;
+    font-weight: bold;
+    top: 0px;
+    z-index: 2; /* Ensure it's above the divider */
+    color: rgb(0, 221, 255);
+    text-shadow: 0 0 8px rgb(0, 221, 255), /* Bright blue glow */
+                 0 0 2px rgb(0, 221, 255); /* Slightly less intense blue glow */
+    overflow: hidden; /* Hide typing cursor initially */
+}
+
+
+@media (max-width: 768px) {
+    .animated-title {
+        font-size: 1.5em; /* Smaller size for smaller screens */
+    }
+}
+
+/*********************
+    Title Backing
+**********************/
+/* Title Backing White Background */
+#technologies-i-use .title-background {
+    background-color: white;
+    color: black;
+}
+/* Title Backing Object */
+.title-background {
+    position: absolute;
+    left: -100%; /* Start off-screen to the left */
+    z-index: 1; /* Place behind divider and autotyping */
+    border-radius: 15px;
+    box-shadow: 0 0 15px 1px rgb(0, 221, 255);
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 9%, black 13%, black, rgba(0, 0, 0, 0)); /* Gradient mask */
+    top: 50%; /* Vertically center */
+    height: auto; /* Adjust as needed */
+    width: auto; /* Adjust as needed */
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: left 0.7s ease-out, opacity 0.7s ease-out; /* Slide in with window */
+}
+.title-background.slide-in {
+    left: 5%; /* Adjust to the desired final left position */
+    opacity: 1;
+}
+
+.technology-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.technology-categories a {
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: white;
+    /* Style your links */
+}
+
+#technologyDetailsPopup {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 102; /* Above the slide-in window */
+    opacity: 0;
+    width: 100px; /* Initial small width */
+    height: 100px; /* Initial small height */
+    border-radius: 50%; /* Start as a circle */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.3s ease-out, height 0.3s ease-out, opacity 0.3s ease-out, border-radius 0.3s ease-out;
+}
+
+#technologyDetailsPopup.visible {
+    opacity: 1;
+    width: auto;
+    height: auto;
+    border-radius: 5px; /* Become a rectangle */
+}
+
+.details-content {
+    position: relative;
+    text-align: center;
+}
+
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+}
+
+#details-popup-title {
+    margin-bottom: 15px;
+}
+
+#technology-icons-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Adjust icon size */
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.tech-icon-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.tech-icon {
+    /* Style your icons (e.g., using image tags or icon fonts) */
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+    border: 1px solid #eee; /* Example */
+    border-radius: 5px; /* Example */
+}
+
+.tech-label {
+    font-size: 0.8em;
+}
+
+
 /* projects box
 ********************/
 #projects {
@@ -1071,23 +1317,6 @@ header {
     display: flex;
     flex-direction: column;
 }
-/* sections white background, black text */
-#skills, #resume {
-    background-color: white; /* Added background-color: white */
-    color: black;
-}
-/* sections black background, white text */
-#projects, #bio {
-    background-color: black;
-    color: white;
-}
-/* section content control */
-.section-content {
-    padding: 20px;
-    word-wrap: break-word;
-    overflow: auto;
-    width: 100%;
-}
 
 /******************
     top divider
@@ -1114,7 +1343,7 @@ header {
 .top-divider {  /* Top Divider Object */
     background-color: white;
 }
-#skills .top-divider,   /* Top Divider (Black Background Sections) */
+#technologies-i-use .top-divider,   /* Top Divider (Black Background Sections) */
 #resume .top-divider {
     background-color: rgb(172, 238, 255);
     box-shadow: 0 0 15px 1px rgb(0, 221, 255);
@@ -1136,23 +1365,9 @@ section span.animated-title {
     left: 10%;
     transform: translate(-50%, -50%);
 }
-.animated-title{
-    left: 5%;
-    white-space: nowrap;
-    font-family: "Colossalis", arial, sans-serif;
-    line-height: 1;
-    text-transform: uppercase;
-    font-size: 1.7em;
-    font-weight: bold;
-    top: 0px;
-    padding: 1px 10px; /* Add padding to create background space */
-    border-radius: 28%;
-    z-index: 2; /* Ensure it's above the divider */
-}
 
 /* Autotype White Background Sections
 ******************************************/
-#skills .animated-title,
 #resume .animated-title{
     color: rgb(0, 221, 255);
     background-color: rgba(254, 254, 254, 0.871);
@@ -1171,8 +1386,8 @@ section span.animated-title {
 }
 /* adjust left for animated title spacing
 ***********************************************/
-#skills span.animated-title{
-    left: 23%;
+#technologies-i-use span.animated-title{
+    left: 40%;
 }
 #projects span.animated-title{
     left: 11%;
@@ -1197,7 +1412,7 @@ section span.animated-title {
 }
 /* Title Backing White Background
 **************************************/
-#skills .title-background,
+#technologies-i-use .title-background,
 #resume .title-background {
     background-color: white;
     color: black;
@@ -1240,61 +1455,17 @@ section span.animated-title {
 ***************************/
 /* Background Containers for Sections
 ******************************************/
-#skills, #projects, #resume, #bio {
-    position: relative; /* Ensure relative positioning for stacking */
-}
+
 /* Background Control All Sections
 ***************************************/
-#skills::before, #projects::before, #resume::before, #bio::before {
-    content: '';
-    position: absolute;
-    top: -20px;
-    left: -10px;
-    bottom: -20px;
-    right: 0px;
-    width: 100vw; /* Make the background responsive */
-    height: auto; /* Make the background responsive */
-    z-index: -2; /* layer */
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-radius: 15px;
-}
-/* Section Background Images
-*********************************/
-#skills::before {
-    background-image: url('../img/skills_bg.png'); /* Replace with your skills image path */
-}
-
-#projects::before {
-    background-image: url('../img/projects_bg.png'); /* Replace with your projects image path */
-}
-
-#resume::before {
-    background-image: url('../img/resume_bg.png'); /* Replace with your resume image path */
-}
-
-#bio::before {
-    background-image: url('../img/bio_bg.png'); /* Replace with your bio image path */
-}
-
-/* Section Background Opacity
-**********************************/
-#skills, #resume {  /* White Background Opacity */
-    background-color: rgba(255, 255, 255, 0.5); /* White with 50% opacity */
-    color: black;
-}
-#projects, #bio {   /* Black Background Opacity */
-    background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
-    color: white;
-}
-
 
 /***********************************
     Section Content Text Control
 ************************************/
+
 /* Sections h2
 ******************/
-#skills h2 {
+#technologies-i-use h2 {
     font-family: "Colossalis"!important;
     font-size: 1.5em;
     letter-spacing:2px;
@@ -1346,7 +1517,7 @@ section span.animated-title {
 
 /* Sections p
 ******************/
-#skills p {
+#technologies-i-use p {
     font-size: 1.125em;
     font-family: "Helvetica"!important;
     font-weight: 300;

@@ -1,9 +1,9 @@
 /************************************************/
-/* Portfolio Page JavaScript                     */
+/* Portfolio Page JavaScript                         */
 /************************************************/
 /*
     Author: John-David A. Amador
-    Date:   March 2025
+    Date:    March 2025
 */
 /************************************************/
 
@@ -130,7 +130,16 @@ tooltipElements.forEach(element => {
         }
     });
 });
-//Stats Overlays
+
+function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+    } else {
+        console.error(`Section with ID '${sectionId}' not found.`);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const profileRecord = document.querySelector('.profile-record');
     const expandButton = document.querySelector('.expand-button button');
@@ -141,6 +150,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const stats2Overlay = document.querySelector('.overlay-window.stats2-overlay');
     const stats3Overlay = document.querySelector('.overlay-window.stats3-overlay');
     const allOverlays = [introTechOverlay, fingerprintOverlay, retinaOverlay, stats2Overlay, stats3Overlay];
+    const profileImage = document.getElementById('profileImage');
+    const profileImage2 = document.getElementById('profileImage2');
+    let currentImageIndex = 0;
+    let imageChangeInterval;
+    const technologiesSection = document.getElementById('technologies-i-use');
+    const backgroundBlock = technologiesSection.querySelector('.background-block');
+    const slideInWindow = technologiesSection ? technologiesSection.querySelector('.technologies-slide-in-window') : null; // First declaration
+    const categoryLinks = technologiesSection.querySelectorAll('.technology-categories a');
+    const detailsPopup = document.getElementById('technologyDetailsPopup');
+    const detailsPopupTitle = document.getElementById('details-popup-title');
+    const iconsContainer = document.getElementById('technology-icons-container');
 
     console.log("DOM Content Loaded - Animation Test");
     console.log("profileRecord:", profileRecord);
@@ -203,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     } else if (overlay.classList.contains('fingerprint-overlay') || overlay.classList.contains('retina-overlay')) {
                         overlay.style.transform = 'translateX(-200%)'; // Or your initial left position
                     } else if (overlay.classList.contains('stats2-overlay')) {
-                        overlay.style.transform = 'translateX(200%)'; // Or your initial right position
+                        overlay.style.transform = 'translateX(200px)'; // Or your initial right position
                     } else if (overlay.classList.contains('stats3-overlay')) {
                         overlay.style.transform = 'translateY(200%)'; // Or your initial bottom position
                     }
@@ -223,12 +243,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     //profile photo changes
-    const profileImage = document.getElementById('profileImage');
-    const profileImage2 = document.getElementById('profileImage2');
-    let currentImageIndex = 0;
-    let imageChangeInterval;
-
-    // Change photos with fade effect
     function changeProfileImage() {
         if (currentImageIndex === 0) {
             profileImage.style.transition = 'opacity 1s ease'; // Add transition
@@ -262,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Watch for shrink/grow condition
-    const observer = new IntersectionObserver((entries) => {
+    const observer_profile = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 growImage();
@@ -274,7 +288,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, { threshold: 0.1 });
 
-    observer.observe(profileImage);
+    observer_profile.observe(profileImage);
     imageChangeInterval = setInterval(changeProfileImage, 4000); // Start image switching initially
 
     function typeWriter(element, text, speed, callback) {
@@ -304,21 +318,110 @@ document.addEventListener('DOMContentLoaded', function() {
         textElement.classList.add('animated-title'); // Add a class for styling
         titleFlexWrapper.appendChild(textElement);
 
-        const observer = new IntersectionObserver((entries) => {
+        const observer_title = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     typeWriter(textElement, text, speed, () => {
-                        observer.unobserve(entry.target);
+                        observer_title.unobserve(entry.target);
                     });
                 }
             });
         }, { threshold: 0.1 });
 
-        observer.observe(section);
+        observer_title.observe(section);
     }
     // Call the animation functions
-    animateSection('skills', 'Technologies I Use', 100);
+    /*animateSection('technologies-i-use', 'Technologies I Use', 100);
     animateSection('projects', 'Projects', 100);
     animateSection('resume', 'Resume', 100);
-    animateSection('bio', 'My Bio', 100);
-});
+    animateSection('bio', 'My Bio', 100);*/
+
+
+    const backgroundImage = technologiesSection ? technologiesSection.querySelector('.background-image') : null;
+    const divider = technologiesSection ? technologiesSection.querySelector('.title-flex-wrapper .divider') : null;
+    const animatedTitleSpan = technologiesSection ? technologiesSection.querySelector('.title-flex-wrapper .animated-title') : null;
+    const titleBackground = technologiesSection ? technologiesSection.querySelector('.title-flex-wrapper .title-background') : null; // Get the backing element
+    const slideInDelay = 1000; // Delay for window slide-in after background
+    const textStartDelay = 700; // Delay for text animation after window lands (adjust as needed)
+    const typewriterSpeed = 125; // Speed of the typewriter animation
+    const sectionTitleText = 'Technologies I Use';
+
+    function resetAnimatedText() {
+        if (animatedTitleSpan) {
+            animatedTitleSpan.textContent = ''; // Clear the text
+        }
+    }
+
+    function startTextAnimation() {
+        if (animatedTitleSpan) {
+            typeWriter(animatedTitleSpan, sectionTitleText, typewriterSpeed);
+        }
+    }
+
+    const sectionObserver_bg_slide = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Section is in view
+                if (backgroundImage) {
+                    backgroundImage.classList.add('visible'); // Trigger background image animation
+                }
+                if (slideInWindow) {
+                    setTimeout(() => {
+                        slideInWindow.classList.add('visible'); // Trigger slide-in animation after delay
+                        // Start text animation after the window has (mostly) landed
+                        setTimeout(startTextAnimation, textStartDelay);
+                    }, slideInDelay);
+                }
+                if (divider) {
+                    setTimeout(() => {
+                        divider.classList.add('slide-in'); // Slide in the divider with the window
+                    }, slideInDelay);
+                }
+                if (titleBackground) {
+                    setTimeout(() => {
+                        titleBackground.classList.add('slide-in'); // Slide in the title background with the window
+                    }, slideInDelay);
+                }
+                // Optionally, you might want to reset the text when it comes into view again
+                resetAnimatedText();
+                setTimeout( slideInDelay + textStartDelay + 100); // Restart after slide-in
+            } else {
+                // Section is out of view
+                if (backgroundImage) {
+                    backgroundImage.classList.remove('visible'); // Reset background image
+                }
+                if (slideInWindow) {
+                    slideInWindow.classList.remove('visible'); // Reset slide-in position and opacity
+                }
+                if (divider) {
+                    divider.classList.remove('slide-in'); // Reset divider position
+                }
+                if (titleBackground) {
+                    titleBackground.classList.remove('slide-in'); // Reset title background position
+                }
+                // resetAnimatedText(); // Already reset when coming into view
+            }
+        });
+    }, { threshold: 0.2 });
+
+    if (technologiesSection) {
+        sectionObserver_bg_slide.observe(technologiesSection);
+    }
+
+    // (Keep your existing typeWriter function here)
+    function typeWriter(element, text, speed, callback) {
+        let i = 0;
+        function type() {
+            if (i < text.length) {
+                element.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            } else {
+                if (callback) {
+                    callback();
+                }
+            }
+        }
+        type();
+    }
+})

@@ -39,7 +39,7 @@
                         <!--Intro-->
                         <a href="#top" onclick="toggleNav()">Intro</a>
                         <!--Skills-->
-                        <a href="#skills" onclick="toggleNav()">Skills</a>
+                        <a href="#technologies-i-use" onclick="toggleNav()">Technologies I Use</a>
                         <!--Projects-->
                         <a href="#projects" onclick="toggleNav()">Projects</a>
                         <!--Resume-->
@@ -143,7 +143,7 @@
                     <!------------------------------------------>
                     <div class="overlay-window intro-tech">
                         <button onclick="scrollToSection('intro')">Intro</button>
-                        <button onclick="scrollToSection('skills')">Technologies I Use</button>
+                        <button onclick="scrollToSection('technologies-i-use')">Technologies I Use</button>
                     </div>
                 </div>
                 <div class="profile-row-2">
@@ -234,79 +234,45 @@
 <!-------------------->
 <!--    Sections    -->
 <!-------------------->
-    <!--Skills-->
-    <section id="skills">
-        <div class="title-flex-wrapper">
-            <div class="title-background"></div>
-            <div class="divider top-divider"></div>
-        </div>
-        <div class="section-content">
-            <h2>Skills</h2>
-            <p>Skills section content goes here...</p>
+    <!--Technologies I Use-->
+    <section id="technologies-i-use">
+        <div class="section-container">
+            <div class="background-image-container">
+                <img src="../img/skills_bg.png" alt="Background Image" class="background-image">
+            </div>
+            <div class="technologies-slide-in-window">
+                <div class="title-flex-wrapper">
+                    <h2 class="section-title">
+                        <span class="title-background"></span>
+                        <span class="animated-title"></span>
+                        <span class="divider top-divider"></span>
+                    </h2>
+                </div>
+                <div class="technology-categories">
+                    <a href="#" data-category="frontend">Frontend</a>
+                    <a href="#" data-category="backend">Backend</a>
+                    <a href="#" data-category="database">Database</a>
+                </div>
+            </div>
         </div>
     </section>
+
+    <div id="technologyDetailsPopup" class="details-popup">
+        <div class="details-content">
+            <span class="close-button" onclick="closeTechnologyDetailsPopup()">&times;</span>
+            <h3 id="details-popup-title"></h3>
+            <div id="technology-icons-container">
+                </div>
+        </div>
+    </div>
     <!--Projects-->
-    <section id="projects">
-        <div class="title-flex-wrapper">
-            <div class="title-background"></div>
-            <div class="divider top-divider"></div>
-        </div>
-        <div class="section-content">
-            <h2>Projects</h2>
-            <p>Projects section content goes here...</p>
-            <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage</p> 
-            <p>is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum</p> 
-            <p>et Malorum for use in a type specimen book. It usually begins with:</p>
-            <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”</p>
-            <p>&nbsp; </p>
-            <p>The purpose of lorem ipsum is to create a natural looking block of text (sentence, paragraph, page, etc.) that doesn't distract</p> 
-            <p>from the layout. A practice not without controversy, laying out pages with meaningless filler text can be very useful when the</p> 
-            <p>focus is meant to be on design, not content.</p>
-        </div>
-    </section>
+    
     <!--Resume-->
-    <section id="resume">
-        <div class="title-flex-wrapper">
-            <div class="title-background"></div>
-            <div class="divider top-divider"></div>
-        </div>
-        <div class="section-content">
-            <h2>Resume</h2>
-            <p>Resume section content goes here...</p>
-            <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage</p> 
-            <p>is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum</p> 
-            <p>et Malorum for use in a type specimen book. It usually begins with:</p>
-            <p>&nbsp; </p>
-            <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”</p>
-            <p>&nbsp; </p>
-            <p>The purpose of lorem ipsum is to create a natural looking block of text (sentence, paragraph, page, etc.) that doesn't distract</p> 
-            <p>from the layout. A practice not without controversy, laying out pages with meaningless filler text can be very useful when the</p> 
-            <p>focus is meant to be on design, not content.</p>
-            <p>&nbsp; </p>
-            <p>The passage experienced a surge in popularity during the 1960s when Letraset used it on their dry-transfer sheets, and again</p>
-            <p>during the 90s as desktop publishers bundled the text with their software. Today it's seen all around the web; on templates,</p> 
-            <p>websites, and stock designs. Use our generator to get your own, or read on for the authoritative history of lorem ipsum.</p>
-        </div>
-    </section>
-    <!--Bio-->
-    <section id="bio">
-        <div class="title-flex-wrapper">
-            <div class="title-background"></div>
-            <div class="divider top-divider"></div>
-        </div>
-        <div class="section-content">
-            <h2>Software Engineer</h2>
-            <h2>Amador, John-David A.</h2>
-            <p>Bio section content goes here...</p>
-            <p>John-David Amador was Born in Sacramento, CA</p> 
-            <p>He enlisted in the United States Marine Corps. He attended Marine Corps. Recruit Training at Marine Corps Recruit Depot San Diego , California. Upon completion of recruit training Pvt Amador attended Marine Corps Combat Training at Camp Pendleton, California. Pvt Amador  was assigned the military occupation specialty of 0612 Field Wireman. Pvt Amador received training for his MOS at Twentynine Palms, California.</p> 
-            <p>Pvt Amador was assigned orders to 2d Battalion, 2d Marine Regiment, Camp Lejeune, North Carolina to serve as a Field Wireman for Communications Platoon, Headquarters and Service Company. Pvt Amador was promoted to the rank of PFC during deployment work-up. In April 2008 PFC Amador deployed with 2BN 2MAR to COP Rawah, Iraq and served as a Field Wireman, Switchboard Operator, and Field Radio Operator. PFC Amador was promoted to LCpl during deployment. LCpl Amador was promoted to Cpl. Cpl Amador deployed with 2D BN 2D MAR to PB Masood and LSA Shamshad, Afghanistan and served as a Field Radio Operator, BN MUX Specialist and Watch Chief for LSA Shamshad.</p>
-            <p>&nbsp; </p>
-            <p>Cpl Amador reenlisted with a lateral move incentive and received training for his military occupational specialty at Twentynine Palms, California. Cpl Amador was assigned the MOS 5939 Aviation Communication Systems Technician and assigned orders to Marine Air Control Squadron 2, Marine Corps Air Station Cherry Point, North Carolina. Cpl Amador was promoted to the rank of Sgt. Sgt Amador deployed as a detatchment of MACS-2 as the Tactical Air Operation Center to Camp Leatherneck, Afghanistan and served as Squadron Communications Chief and Squadron Anti Terrorism Force Protection Chief.</p>
-            <p>&nbsp; </p>
-            <p>Sgt Amador reported to Drill Instructor school, Class 3-15, MCRD Parris Island, S.C.</p>
-        </div> 
-    </section>
+
+    <!--Education-->
+    
+    <!--About Me-->
+    
 
     <!-------------------->
     <!--    Scripts     -->
