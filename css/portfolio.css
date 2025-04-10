@@ -1049,7 +1049,7 @@ header {
     border: 0.5px solid lightblue;
     border-radius: 4px;
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
-    backdrop-filter: blur(5px);
+    /*backdrop-filter: blur(5px);*/
     background-color: rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
@@ -1116,7 +1116,7 @@ section span.animated-title {
     font-weight: bold;
     top: 0px;
     z-index: 2; /* Ensure it's above the divider */
-    color: rgb(0, 200, 231);
+    color: rgb(0, 46, 53);
     text-shadow: 0 0 8px rgb(0, 221, 255), /* Bright blue glow */
                  0 0 2px rgb(0, 221, 255); /* Slightly less intense blue glow */
     overflow: hidden; /* Hide typing cursor initially */
@@ -1170,12 +1170,13 @@ section span.animated-title {
     text-decoration: none;
     padding: 10px 20px;
     cursor: pointer;
-    color: rgb(0, 221, 255);;
+    font-size: 1.4em;
+    color: rgb(210, 247, 252);
     text-shadow: 0 0 10px rgb(0, 221, 255);
     border: 0.5px solid lightblue;
     border-radius: 5px;
     backdrop-filter: blur(5px);
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 102, 0, 0.318);
     box-shadow: 0 0 10px rgb(0, 221, 255); /* Add the glow shadow to the buttons */
     /* Style your links */
 }
