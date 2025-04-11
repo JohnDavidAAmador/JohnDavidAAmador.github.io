@@ -345,6 +345,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const textStartDelay = 700; // Delay for text animation after window lands (adjust as needed)
     const typewriterSpeed = 125; // Speed of the typewriter animation
     const sectionTitleText = 'Technologies I Use';
+    const frontendButton = document.querySelector('.technology-categories a[data-category="frontend"]');
+    const frontendDetailsPopup = document.getElementById('frontendDetailsPopup');
+    const frontendPopupTitle = frontendDetailsPopup ? frontendDetailsPopup.querySelector('h3') : null;
+    const frontendIconsContainer = frontendDetailsPopup ? frontendDetailsPopup.querySelector('.technology-icons-container') : null;
+
+    if (frontendButton && frontendDetailsPopup) {
+        frontendButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            frontendDetailsPopup.classList.add('open'); // Just open the popup
+        });
+
+        // Function to close the frontend popup
+        window.closeFrontendDetailsPopup = function() {
+            frontendDetailsPopup.classList.remove('open');
+        };
+    } else {
+        console.error("One or more elements for the Frontend popup were not found.");
+        console.log("frontendButton:", frontendButton);
+        console.log("frontendDetailsPopup:", frontendDetailsPopup);
+        console.log("frontendPopupTitle:", frontendPopupTitle);
+        console.log("frontendIconsContainer:", frontendIconsContainer);
+    }
 
     function resetAnimatedText() {
         if (animatedTitleSpan) {
@@ -384,7 +406,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 // Optionally, you might want to reset the text when it comes into view again
                 resetAnimatedText();
-                setTimeout( slideInDelay + textStartDelay + 100); // Restart after slide-in
+                setTimeout(slideInDelay + textStartDelay + 100); // Restart after slide-in
             } else {
                 // Section is out of view
                 if (backgroundImage) {
@@ -424,4 +446,4 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         type();
     }
-})
+}); 
