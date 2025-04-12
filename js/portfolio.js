@@ -349,7 +349,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const frontendDetailsPopup = document.getElementById('frontendDetailsPopup');
     const frontendPopupTitle = frontendDetailsPopup ? frontendDetailsPopup.querySelector('h3') : null;
     const frontendIconsContainer = frontendDetailsPopup ? frontendDetailsPopup.querySelector('.technology-icons-container') : null;
+    const backendButton = document.querySelector('.technology-categories a[data-category="backend"]');
+    const backendDetailsPopup = document.getElementById('backendDetailsPopup');
 
+    // Frontend Popup Functionality
     if (frontendButton && frontendDetailsPopup) {
         frontendButton.addEventListener('click', function(event) {
             event.preventDefault();
@@ -359,7 +362,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Function to close the frontend popup
         window.closeFrontendDetailsPopup = function() {
             frontendDetailsPopup.classList.remove('open');
+
+        
         };
+        
     } else {
         console.error("One or more elements for the Frontend popup were not found.");
         console.log("frontendButton:", frontendButton);
@@ -367,6 +373,51 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("frontendPopupTitle:", frontendPopupTitle);
         console.log("frontendIconsContainer:", frontendIconsContainer);
     }
+    function handleOutsideClick(event) {
+        if (frontendDetailsPopup.classList.contains('open') && !frontendDetailsPopup.contains(event.target) && event.target !== frontendButton) {
+            closeFrontendDetailsPopup();
+            document.removeEventListener('click', handleOutsideClick); // Remove the listener when closed
+        }
+    }
+
+    if (frontendButton && frontendDetailsPopup) {
+        frontendButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            frontendDetailsPopup.classList.add('open'); // Open the frontend popup
+            document.addEventListener('click', handleOutsideClick); // Add listener when opened
+        });
+
+        window.closeFrontendDetailsPopup = function() {
+            frontendDetailsPopup.classList.remove('open');
+            document.removeEventListener('click', handleOutsideClick); // Remove listener when closed via button
+        };
+    } else {
+        console.error("Frontend button or popup element not found.");
+    }
+
+    // Backend Popup Functionality
+    function handleOutsideClickBackend(event) {
+        if (backendDetailsPopup.classList.contains('open') && !backendDetailsPopup.contains(event.target) && event.target !== backendButton) {
+            closeBackendDetailsPopup();
+            document.removeEventListener('click', handleOutsideClickBackend);
+        }
+    }
+
+    if (backendButton && backendDetailsPopup) {
+        backendButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            backendDetailsPopup.classList.add('open');
+            document.addEventListener('click', handleOutsideClickBackend);
+        });
+
+        window.closeBackendDetailsPopup = function() {
+            backendDetailsPopup.classList.remove('open');
+            document.removeEventListener('click', handleOutsideClickBackend);
+        };
+    } else {
+        console.error("Backend button or popup element not found.");
+    }
+
 
     function resetAnimatedText() {
         if (animatedTitleSpan) {
