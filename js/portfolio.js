@@ -351,6 +351,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const frontendIconsContainer = frontendDetailsPopup ? frontendDetailsPopup.querySelector('.technology-icons-container') : null;
     const backendButton = document.querySelector('.technology-categories a[data-category="backend"]');
     const backendDetailsPopup = document.getElementById('backendDetailsPopup');
+    const databaseButton = document.querySelector('.technology-categories a[data-category="database"]');
+    const databaseDetailsPopup = document.getElementById('databaseDetailsPopup');
+    const sourceControlButton = document.querySelector('.technology-categories a[data-category="source-control"]');
+    const sourceControlDetailsPopup = document.getElementById('sourceControlDetailsPopup');
+    const applicationDevelopmentButton = document.querySelector('.technology-categories a[data-category="application-development"]');
+    const applicationDevelopmentDetailsPopup = document.getElementById('applicationDevelopmentDetailsPopup');
+    const cloudButton = document.querySelector('.technology-categories a[data-category="cloud"]');
+    const cloudDetailsPopup = document.getElementById('cloudDetailsPopup');
 
     // Frontend Popup Functionality
     if (frontendButton && frontendDetailsPopup) {
@@ -416,6 +424,98 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     } else {
         console.error("Backend button or popup element not found.");
+    }
+
+    // Database Popup
+    function handleOutsideClickDatabase(event) {
+        if (databaseDetailsPopup.classList.contains('open') && !databaseDetailsPopup.contains(event.target) && event.target !== databaseButton) {
+            closeDatabaseDetailsPopup();
+            document.removeEventListener('click', handleOutsideClickDatabase);
+        }
+    }
+
+    if (databaseButton && databaseDetailsPopup) {
+        databaseButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            databaseDetailsPopup.classList.add('open');
+            document.addEventListener('click', handleOutsideClickDatabase);
+        });
+
+        window.closeDatabaseDetailsPopup = function() {
+            databaseDetailsPopup.classList.remove('open');
+            document.removeEventListener('click', handleOutsideClickDatabase);
+        };
+    } else {
+        console.error("Database button or popup element not found.");
+    }
+
+    // Source/Version Control Popup
+    function handleOutsideClickSourceControl(event) {
+        if (sourceControlDetailsPopup.classList.contains('open') && !sourceControlDetailsPopup.contains(event.target) && event.target !== sourceControlButton) {
+            closeSourceControlDetailsPopup();
+            document.removeEventListener('click', handleOutsideClickSourceControl);
+        }
+    }
+
+    if (sourceControlButton && sourceControlDetailsPopup) {
+        sourceControlButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            sourceControlDetailsPopup.classList.add('open');
+            document.addEventListener('click', handleOutsideClickSourceControl);
+        });
+
+        window.closeSourceControlDetailsPopup = function() {
+            sourceControlDetailsPopup.classList.remove('open');
+            document.removeEventListener('click', handleOutsideClickSourceControl);
+        };
+    } else {
+        console.error("Source/Version Control button or popup element not found.");
+    }
+
+    // Application Development Popup
+    function handleOutsideClickApplicationDevelopment(event) {
+        if (applicationDevelopmentDetailsPopup.classList.contains('open') && !applicationDevelopmentDetailsPopup.contains(event.target) && event.target !== applicationDevelopmentButton) {
+            closeApplicationDevelopmentDetailsPopup();
+            document.removeEventListener('click', handleOutsideClickApplicationDevelopment);
+        }
+    }
+
+    if (applicationDevelopmentButton && applicationDevelopmentDetailsPopup) {
+        applicationDevelopmentButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            applicationDevelopmentDetailsPopup.classList.add('open');
+            document.addEventListener('click', handleOutsideClickApplicationDevelopment);
+        });
+
+        window.closeApplicationDevelopmentDetailsPopup = function() {
+            applicationDevelopmentDetailsPopup.classList.remove('open');
+            document.removeEventListener('click', handleOutsideClickApplicationDevelopment);
+        };
+    } else {
+        console.error("Application Development button or popup element not found.");
+    }
+
+    // Cloud Popup
+    function handleOutsideClickCloud(event) {
+        if (cloudDetailsPopup.classList.contains('open') && !cloudDetailsPopup.contains(event.target) && event.target !== cloudButton) {
+            closeCloudDetailsPopup();
+            document.removeEventListener('click', handleOutsideClickCloud);
+        }
+    }
+
+    if (cloudButton && cloudDetailsPopup) {
+        cloudButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            cloudDetailsPopup.classList.add('open');
+            document.addEventListener('click', handleOutsideClickCloud);
+        });
+
+        window.closeCloudDetailsPopup = function() {
+            cloudDetailsPopup.classList.remove('open');
+            document.removeEventListener('click', handleOutsideClickCloud);
+        };
+    } else {
+        console.error("Cloud button or popup element not found.");
     }
 
 
