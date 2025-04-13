@@ -1162,7 +1162,7 @@ section span.animated-title {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 30px;
     align-items: center;
     margin-top: 50px;
 }
@@ -1196,7 +1196,7 @@ section span.animated-title {
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
     backdrop-filter: blur(5px);
     color: white;
-    padding: 10px;
+    padding: 25px;
     box-sizing: border-box;
     z-index: 2; /* Ensure it's above the main slide-in window content */
     opacity: 0;
@@ -1249,8 +1249,9 @@ section span.animated-title {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
     margin-top: 20px;
+
 }
 
 #frontendDetailsPopup .tech-item {
@@ -1268,7 +1269,7 @@ section span.animated-title {
 }
 
 #frontendDetailsPopup .tech-label {
-    font-size: 1.1em; /* Adjust label size */
+    font-size: 1.2em; /* Adjust label size */
     color: white; /* Style the label text */
 }
 /* Backend Popup */
@@ -1341,7 +1342,7 @@ section span.animated-title {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
     margin-top: 20px;
 }
 
@@ -1359,7 +1360,7 @@ section span.animated-title {
 }
 
 #backendDetailsPopup .tech-label {
-    font-size: 1.1em; /* Adjust label size */
+    font-size: 1.2em; /* Adjust label size */
     color: white;
 }
 /* CSS for the Database Technology Popup */
@@ -1433,7 +1434,7 @@ section span.animated-title {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
     margin-top: 20px;
 }
 
@@ -1451,7 +1452,7 @@ section span.animated-title {
 }
 
 #databaseDetailsPopup .tech-label {
-    font-size: 1.1em;
+    font-size: 1.2em;
     color: white;
 }
 
@@ -1526,7 +1527,7 @@ section span.animated-title {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
     margin-top: 20px;
 }
 
@@ -1544,7 +1545,7 @@ section span.animated-title {
 }
 
 #sourceControlDetailsPopup .tech-label {
-    font-size: 1.1em;
+    font-size: 1.2em;
     color: white;
 }
 
@@ -1619,7 +1620,7 @@ section span.animated-title {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
     margin-top: 20px;
 }
 
@@ -1637,7 +1638,7 @@ section span.animated-title {
 }
 
 #applicationDevelopmentDetailsPopup .tech-label {
-    font-size: 1.1em;
+    font-size: 1.2em;
     color: white;
 }
 
@@ -1712,7 +1713,7 @@ section span.animated-title {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
     margin-top: 20px;
 }
 
@@ -1730,7 +1731,7 @@ section span.animated-title {
 }
 
 #cloudDetailsPopup .tech-label {
-    font-size: 1.1em;
+    font-size: 1.2em;
     color: white;
 }
 
