@@ -969,6 +969,21 @@ header {
     box-sizing: border-box;
     /* Remove max-width and margin: 0 auto; */
 }
+.intro-text p {
+    flex: 1 0 100%;
+    text-align: left;
+    padding: 20px;
+    color: white;
+    font-family: stabil_grotesk, sans-serif;
+    font-size: 1.125em;
+    letter-spacing: 2px;
+    line-height: 1.5em;
+    /*margin-top: 20px;*/
+    /*margin-left: 40px;*/
+    /*width: 100%; /* Stretch across full width */
+    box-sizing: border-box;
+    /* Remove max-width and margin: 0 auto; */
+}
 
 /* bullet for intro text */
 .intro-text ul {
