@@ -1031,7 +1031,7 @@ header {
     margin: 20px auto;
 }
 
-.section-container {
+#technologies-i-use .section-container {
     position: relative; /* For positioning other elements within */
     width: 100%;
     max-width: 100%;
@@ -1040,7 +1040,7 @@ header {
 }
 
 /* CSS for the background image container */
-.background-image-container {
+#technologies-i-use .background-image-container {
     position: relative; /* Or relative, depending on your layout needs */
     top: 0;
     left: 0;
@@ -1051,7 +1051,7 @@ header {
 }
 
 /* Initial state of the background image */
-.background-image {
+#technologies-i-use .background-image {
     /*position: absolute;*/
     opacity: 0; /* Initially hidden */
     object-position: center center;
@@ -1064,12 +1064,12 @@ header {
 }
 
 /* Style when the 'visible' class is added (triggered by JavaScript) */
-.background-image.visible {
+#technologies-i-use .background-image.visible {
     opacity: 1;
     transform: scale(1); /* Grow to full size (if you used an initial scale) */
 }
 
-.technologies-slide-in-window {
+#technologies-i-use .technologies-slide-in-window {
     position: absolute;
     left: -200%;
     width: 90%;
@@ -1091,14 +1091,14 @@ header {
     z-index: 1;
 }
 
-.technologies-slide-in-window.visible {
+#technologies-i-use .technologies-slide-in-window.visible {
     top: 200px;
     left: 20px;
 }
 /******************
     top divider
 *******************/
-.title-flex-wrapper { /* Divider Box */
+#technologies-i-use .title-flex-wrapper { /* Divider Box */
     margin-top: 0;
     display: flex;
     align-items: left;
@@ -1108,7 +1108,7 @@ header {
     width: 100%;
     top: 0;
 }
-.divider { /* Divider object */
+#technologies-i-use .divider { /* Divider object */
     height: 2px;
     width: 95%;
     margin: auto;
@@ -1121,7 +1121,7 @@ header {
     opacity: 0;
     transition: transform 0.7s ease-out, opacity 0.7s ease-out; /* Slide in with window */
 }
-.divider.slide-in {
+#technologies-i-use .divider.slide-in {
     transform: translateX(0); /* Slide into view */
     opacity: 1;
 }
@@ -1133,11 +1133,11 @@ header {
 /******************************************
     Autotyping Title above each Section
 *******************************************/
-section span.animated-title {
+#technologies-i-use span.animated-title {
     margin-top: 4px;
     position: absolute;
     top: 87%;
-    left: 10%;
+    left: 40%;
     transform: translate(-50%, -50%);
     white-space: nowrap;
     font-family: "Colossalis", arial, sans-serif;
@@ -1155,7 +1155,7 @@ section span.animated-title {
 
 
 @media (max-width: 768px) {
-    .animated-title {
+    #technologies-i-use .animated-title {
         font-size: 1.5em; /* Smaller size for smaller screens */
     }
 }
@@ -1169,7 +1169,7 @@ section span.animated-title {
     color: black;
 }
 /* Title Backing Object */
-.title-background {
+#technologies-i-use .title-background {
     position: absolute;
     left: -100%; /* Start off-screen to the left */
     z-index: 1; /* Place behind divider and autotyping */
@@ -1183,7 +1183,7 @@ section span.animated-title {
     opacity: 0;
     transition: left 0.7s ease-out, opacity 0.7s ease-out; /* Slide in with window */
 }
-.title-background.slide-in {
+#technologies-i-use .title-background.slide-in {
     left: 5%; /* Adjust to the desired final left position */
     opacity: 1;
 }
@@ -1579,7 +1579,7 @@ section span.animated-title {
     color: white;
 }
 
-/* CSS for the Application Development Technology Popup */
+/* Application Development Technology Popup */
 #applicationDevelopmentDetailsPopup {
     /* Inherits most styles from #frontendDetailsPopup */
     position: absolute;
@@ -1672,7 +1672,7 @@ section span.animated-title {
     color: white;
 }
 
-/* CSS for the Cloud Technology Popup */
+/* Cloud Technology Popup */
 #cloudDetailsPopup {
     /* Inherits most styles from #frontendDetailsPopup */
     position: absolute;
@@ -1765,27 +1765,317 @@ section span.animated-title {
     color: white;
 }
 
-/* projects box
-********************/
+/* Projects Section Styles 
+******************************/
 #projects {
+    display: flex;
+    flex-direction: column; /* Or row, depending on your content */
+   	align-items: center; /* Example: Center items horizontally */
+    justify-content: center; /* Example: Center items vertically */
     position: relative;
-
-    padding: 20px; /*60px changed to test*/
-    margin: 0 auto;
-    margin-top: 20px;/*680px changed to test*/
-
+    overflow: hidden;
+    min-height: 412px;
+    min-width: 412px;
+    padding: 20px;
     box-sizing: border-box;
-    min-height: 200px;
-    /*max-width: 1200px;*/
-    max-width: 95%;
-    max-height: 1000px;
+    width: 90%;
+    margin: 20px auto;
+}
 
+#projects .section-container {
+    position: relative; /* For positioning other elements within */
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+
+}
+
+#projects .background-image-container {
+    position: relative; /* Or relative, depending on your layout needs */
+    top: 0;
+    left: 0;
+    width: 100%; /* Or a specific width */
+    height: 100%; /* Or a specific height */
+    overflow: hidden; /* Clip the image if it extends beyond the container */
+    z-index: -1; /* Place it behind other content within the section */
+}
+
+#projects .background-image {
+    /*position: absolute;*/
+    opacity: 0; /* Initially hidden */
+    object-position: center center;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Scale the image to cover the container */
+    transition: opacity 2s ease, transform 1.5s ease; /* For a smooth fade/grow if you add transform */
+    transform: scale(0); /* Optional: Start slightly smaller for a grow effect */
+    z-index: -1;
+}
+#projects .background-image.visible {
+    opacity: 1;
+    transform: scale(1); /* Grow to full size (if you used an initial scale)*/
+}
+#projects .projects-slide-in-window {
+    position: absolute;
+    left: -200%;
+    width: 90%;
+    /*max-width: 500px;*/
+    /*height: 100%;*/
+    min-height: 300px;
+    border: 0.5px solid lightblue;
+    border-radius: 4px;
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
-    border-radius: 3px;
-
+    /*backdrop-filter: blur(5px);*/
+    background-color: rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: left 0.5s ease-in-out;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 1;
 }
+
+#projects .projects-slide-in-window.visible {
+    top: 200px;
+    left: 20px;
+}
+
+#projects .title-flex-wrapper {
+    margin-top: 0;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    position: absolute;
+    left: 10%;
+    width: 100%;
+    top: 0;
+}
+#projects .divider { /* Divider object */
+    height: 2px;
+    width: 95%;
+    margin: auto;
+    background-color: grey;
+    z-index: 2;
+    margin-top: 30px;
+    margin-left: -15px;
+    position: relative;
+    transform: translateX(-100%); /* Start off-screen to the left */
+    opacity: 0;
+    transition: transform 0.7s ease-out, opacity 0.7s ease-out; /* Slide in with window */
+}
+#projects .divider.slide-in {
+    transform: translateX(0); /* Slide into view */
+    opacity: 1;
+}
+#projects .top-divider { /* Top Divider (Black Background Sections) */
+    background-color: rgb(172, 238, 255);
+    box-shadow: 0 0 15px 1px rgb(0, 221, 255);
+}
+/******************************************
+    Autotyping Title above each Section
+*******************************************/
+#projects span.animated-title {
+    margin-top: 4px;
+    position: absolute;
+    top: 87%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    font-family: "Colossalis", arial, sans-serif;
+    line-height: 1;
+    text-transform: uppercase;
+    font-size: 1.5em; 
+    font-weight: bold;
+    top: 0px;
+    z-index: 2; /* Ensure it's above the divider */
+    color: rgb(0, 46, 53);
+    text-shadow: 0 0 8px rgb(0, 221, 255), /* Bright blue glow */
+                 0 0 2px rgb(0, 221, 255); /* Slightly less intense blue glow */
+    overflow: hidden; /* Hide typing cursor initially */
+}
+
+
+@media (max-width: 768px) {
+    #projects .animated-title {
+        font-size: 1.5em; /* Smaller size for smaller screens */
+    }
+}
+
+/*********************
+    Title Backing
+**********************/
+/* Title Backing White Background */
+#projects .title-background {
+    background-color: white;
+    color: black;
+}
+/* Title Backing Object */
+#projects .title-background {
+    position: absolute;
+    left: -100%; /* Start off-screen to the left */
+    z-index: 1; /* Place behind divider and autotyping */
+    border-radius: 15px;
+    box-shadow: 0 0 15px 1px rgb(0, 221, 255);
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 9%, black 13%, black, rgba(0, 0, 0, 0)); /* Gradient mask */
+    top: 50%; /* Vertically center */
+    height: auto; /* Adjust as needed */
+    width: auto; /* Adjust as needed */
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: left 0.7s ease-out, opacity 0.7s ease-out; /* Slide in with window */
+}
+#projects .title-background.slide-in {
+    left: 5%; /* Adjust to the desired final left position */
+    opacity: 1;
+}
+
+/*#projects .section-title {
+    position: relative;
+    font-size: 2.5em; /* Adjust title size */
+/*    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}*/
+
+#projects .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 30px; /* Spacing between project cards */
+}
+
+#projects .project-card {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer; /* Make it look clickable */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+#projects .project-card:hover {
+    transform: scale(1.05); /* Slightly grow on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+#projects .project-info {
+    padding: 15px;
+    text-align: center;
+}
+
+#projects .project-info h3 {
+    margin-bottom: 5px;
+    font-size: 1.5em;
+}
+
+#projects .project-info p {
+    font-size: 0.9em;
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+#projects .technology-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+#projects .technology-tags .tag {
+    background-color: rgba(0, 221, 255, 0.2);
+    color: rgb(0, 221, 255);
+    font-size: 0.75em;
+    padding: 5px 8px;
+    border-radius: 3px;
+}
+
+/* Project Detail Popup Styles */
+.project-details-popup {
+    position: fixed; /* Stay in place on scroll */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+    z-index: 1000; /* Ensure it's on top */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s; /* Fade in/out */
+    max-width: 80%;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.project-details-popup.open {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.project-details-popup .details-content {
+    position: relative;
+}
+
+.project-details-popup h3 {
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+.project-details-popup p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.project-details-popup .project-links {
+    margin-bottom: 20px;
+}
+
+.project-details-popup .project-links a {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: rgb(0, 221, 255);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.project-details-popup .project-links a:hover {
+    background-color: rgb(0, 180, 200);
+}
+
+.project-details-popup .technology-tags {
+    /* Inherit styles or customize */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 15px;
+}
+
+.project-details-popup .close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5em;
+    color: #ccc;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.project-details-popup .close-button:hover {
+    color: white;
+}
+
 /* resume box
 ******************/
 #resume {
@@ -1889,21 +2179,13 @@ section span.animated-title {
 }
 /* Autotype Black Background Sections
 ******************************************/
-#projects .animated-title,
 #bio .animated-title{
     color: rgb(0, 221, 255);
     background-color: rgba(0, 0, 0, 0.943);
     text-shadow: 0 0 8px rgb(0, 221, 255), /* Bright blue glow */
                 0 0 2px rgb(0, 221, 255); /* Slightly less intense blue glow */
 }
-/* adjust left for animated title spacing
-***********************************************/
-#technologies-i-use span.animated-title{
-    left: 40%;
-}
-#projects span.animated-title{
-    left: 11%;
-}
+
 #resume span.animated-title{
     left: 9%;
 }
@@ -1991,7 +2273,7 @@ section span.animated-title {
 }
 #projects h2 {
     font-family: "Colossalis"!important;
-    font-size: 5em;
+    font-size: 1.5em;
     letter-spacing:2px;
     line-height: 28.8px;
     font-weight: 100;

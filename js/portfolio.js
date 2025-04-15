@@ -154,13 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const profileImage2 = document.getElementById('profileImage2');
     let currentImageIndex = 0;
     let imageChangeInterval;
-    const technologiesSection = document.getElementById('technologies-i-use');
-    const backgroundBlock = technologiesSection.querySelector('.background-block');
-    const slideInWindow = technologiesSection ? technologiesSection.querySelector('.technologies-slide-in-window') : null; // First declaration
-    const categoryLinks = technologiesSection.querySelectorAll('.technology-categories a');
-    const detailsPopup = document.getElementById('technologyDetailsPopup');
-    const detailsPopupTitle = document.getElementById('details-popup-title');
-    const iconsContainer = document.getElementById('technology-icons-container');
+    
 
     console.log("DOM Content Loaded - Animation Test");
     console.log("profileRecord:", profileRecord);
@@ -330,36 +324,123 @@ document.addEventListener('DOMContentLoaded', function() {
 
         observer_title.observe(section);
     }
-    // Call the animation functions
-    /*animateSection('technologies-i-use', 'Technologies I Use', 100);
-    animateSection('projects', 'Projects', 100);
-    animateSection('resume', 'Resume', 100);
-    animateSection('bio', 'My Bio', 100);*/
 
+    
+    /**********************************
+        Technologies I Use Section
+    **********************************/
+    
+    const technologiesSection = document.getElementById('technologies-i-use');
+    
+    // Section Header Variables
+    const techDivider = technologiesSection ? technologiesSection.querySelector('.title-flex-wrapper .divider') : null;
+    const techTitleBackground = technologiesSection ? technologiesSection.querySelector('.title-flex-wrapper .title-background') : null; // Get the backing element
+    
+    
 
-    const backgroundImage = technologiesSection ? technologiesSection.querySelector('.background-image') : null;
-    const divider = technologiesSection ? technologiesSection.querySelector('.title-flex-wrapper .divider') : null;
-    const animatedTitleSpan = technologiesSection ? technologiesSection.querySelector('.title-flex-wrapper .animated-title') : null;
-    const titleBackground = technologiesSection ? technologiesSection.querySelector('.title-flex-wrapper .title-background') : null; // Get the backing element
-    const slideInDelay = 1000; // Delay for window slide-in after background
+    //technology animated autotype section title
+    // Auto Type Animation Variable
+    const techAnimatedTitleSpan = technologiesSection ? technologiesSection.querySelector('.title-flex-wrapper .animated-title') : null;
     const textStartDelay = 700; // Delay for text animation after window lands (adjust as needed)
     const typewriterSpeed = 125; // Speed of the typewriter animation
-    const sectionTitleText = 'Technologies I Use';
+    const techSectionTitleText = 'Technologies I Use';
+
+    function resetTechAnimatedText() {
+        if (techAnimatedTitleSpan) {
+            techAnimatedTitleSpan.textContent = ''; // Clear the text
+        }
+    }
+
+    function startTechTextAnimation() {
+        if (techAnimatedTitleSpan) {
+            techTypeWriter(techAnimatedTitleSpan, techSectionTitleText, typewriterSpeed);
+        }
+    }
+
+    // Make technology section's background visible
+    // Background and Window Slide-In Variables
+    //const techBackgroundBlock = technologiesSection.querySelector('.background-block');
+    const techSlideInWindow = technologiesSection ? technologiesSection.querySelector('.technologies-slide-in-window') : null; 
+    //const techCategoryLinks = technologiesSection.querySelectorAll('.technology-categories a');
+    const slideInDelay = 1000; // Delay for window slide-in after background
+    const techBackgroundImage = technologiesSection ? technologiesSection.querySelector('.background-image') : null;
+ 
+    const technologiesSectionObserver_bg_slide = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Section is in view
+                if (techBackgroundImage) {
+                    techBackgroundImage.classList.add('visible'); // Trigger background image animation
+                }
+                if (techSlideInWindow) {
+                    setTimeout(() => {
+                        techSlideInWindow.classList.add('visible'); // Trigger slide-in animation after delay
+                        // Start text animation after the window has (mostly) landed
+                        setTimeout(startTechTextAnimation, textStartDelay);
+                    }, slideInDelay);
+                }
+                if (techDivider) {
+                    setTimeout(() => {
+                        techDivider.classList.add('slide-in'); // Slide in the divider with the window
+                    }, slideInDelay);
+                }
+                if (techTitleBackground) {
+                    setTimeout(() => {
+                        techTitleBackground.classList.add('slide-in'); // Slide in the title background with the window
+                    }, slideInDelay);
+                }
+                // Optionally, you might want to reset the text when it comes into view again
+                resetTechAnimatedText();
+                setTimeout(slideInDelay + textStartDelay + 100); // Restart after slide-in
+            } else {
+                // Section is out of view
+                if (techBackgroundImage) {
+                    techBackgroundImage.classList.remove('visible'); // Reset background image
+                }
+                if (techSlideInWindow) {
+                    techSlideInWindow.classList.remove('visible'); // Reset slide-in position and opacity
+                }
+                if (techDivider) {
+                    techDivider.classList.remove('slide-in'); // Reset divider position
+                }
+                if (techTitleBackground) {
+                    techTitleBackground.classList.remove('slide-in'); // Reset title background position
+                }
+                // resetAnimatedText(); // Already reset when coming into view
+            }
+        });
+    }, { threshold: 0.2 });
+
+    if (technologiesSection) {
+        technologiesSectionObserver_bg_slide.observe(technologiesSection);
+    }
+
+    // (Keep your technolgies typeWriter function here)
+    function techTypeWriter(element, text, speed, callback) {
+        let i = 0;
+        function type() {
+            if (i < text.length) {
+                element.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            } else {
+                if (callback) {
+                    callback();
+                }
+            }
+        }
+        type();
+    }
+    /* Technology Popups */
+    // Popup Windows and Icons
+    //const detailsPopup = document.getElementById('technologyDetailsPopup');
+    //const techDetailsPopupTitle = document.getElementById('details-popup-title');
+    //const techIconsContainer = document.getElementById('technology-icons-container');
+
     const frontendButton = document.querySelector('.technology-categories a[data-category="frontend"]');
     const frontendDetailsPopup = document.getElementById('frontendDetailsPopup');
     const frontendPopupTitle = frontendDetailsPopup ? frontendDetailsPopup.querySelector('h3') : null;
     const frontendIconsContainer = frontendDetailsPopup ? frontendDetailsPopup.querySelector('.technology-icons-container') : null;
-    const backendButton = document.querySelector('.technology-categories a[data-category="backend"]');
-    const backendDetailsPopup = document.getElementById('backendDetailsPopup');
-    const databaseButton = document.querySelector('.technology-categories a[data-category="database"]');
-    const databaseDetailsPopup = document.getElementById('databaseDetailsPopup');
-    const sourceControlButton = document.querySelector('.technology-categories a[data-category="source-control"]');
-    const sourceControlDetailsPopup = document.getElementById('sourceControlDetailsPopup');
-    const applicationDevelopmentButton = document.querySelector('.technology-categories a[data-category="application-development"]');
-    const applicationDevelopmentDetailsPopup = document.getElementById('applicationDevelopmentDetailsPopup');
-    const cloudButton = document.querySelector('.technology-categories a[data-category="cloud"]');
-    const cloudDetailsPopup = document.getElementById('cloudDetailsPopup');
-
     // Frontend Popup Functionality
     if (frontendButton && frontendDetailsPopup) {
         frontendButton.addEventListener('click', function(event) {
@@ -404,6 +485,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Backend Popup Functionality
+    const backendButton = document.querySelector('.technology-categories a[data-category="backend"]');
+    const backendDetailsPopup = document.getElementById('backendDetailsPopup');
+
     function handleOutsideClickBackend(event) {
         if (backendDetailsPopup.classList.contains('open') && !backendDetailsPopup.contains(event.target) && event.target !== backendButton) {
             closeBackendDetailsPopup();
@@ -427,6 +511,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Database Popup
+    const databaseButton = document.querySelector('.technology-categories a[data-category="database"]');
+    const databaseDetailsPopup = document.getElementById('databaseDetailsPopup');
+
     function handleOutsideClickDatabase(event) {
         if (databaseDetailsPopup.classList.contains('open') && !databaseDetailsPopup.contains(event.target) && event.target !== databaseButton) {
             closeDatabaseDetailsPopup();
@@ -450,6 +537,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Source/Version Control Popup
+    const sourceControlButton = document.querySelector('.technology-categories a[data-category="source-control"]');
+    const sourceControlDetailsPopup = document.getElementById('sourceControlDetailsPopup');
+
     function handleOutsideClickSourceControl(event) {
         if (sourceControlDetailsPopup.classList.contains('open') && !sourceControlDetailsPopup.contains(event.target) && event.target !== sourceControlButton) {
             closeSourceControlDetailsPopup();
@@ -473,6 +563,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Application Development Popup
+    const applicationDevelopmentButton = document.querySelector('.technology-categories a[data-category="application-development"]');
+    const applicationDevelopmentDetailsPopup = document.getElementById('applicationDevelopmentDetailsPopup');
+
     function handleOutsideClickApplicationDevelopment(event) {
         if (applicationDevelopmentDetailsPopup.classList.contains('open') && !applicationDevelopmentDetailsPopup.contains(event.target) && event.target !== applicationDevelopmentButton) {
             closeApplicationDevelopmentDetailsPopup();
@@ -496,6 +589,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Cloud Popup
+    const cloudButton = document.querySelector('.technology-categories a[data-category="cloud"]');
+    const cloudDetailsPopup = document.getElementById('cloudDetailsPopup');
+
     function handleOutsideClickCloud(event) {
         if (cloudDetailsPopup.classList.contains('open') && !cloudDetailsPopup.contains(event.target) && event.target !== cloudButton) {
             closeCloudDetailsPopup();
@@ -518,71 +614,40 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error("Cloud button or popup element not found.");
     }
 
+    /*********************
+     Projects section
+    *********************/
+    // Projects section elements
+    const projectsSection = document.getElementById('projects');
+    // Section Header Variables
+    const projectsDivider = technologiesSection ? technologiesSection.querySelector('.title-flex-wrapper .divider') : null;
+    const projectsTitleBackground = technologiesSection ? technologiesSection.querySelector('.title-flex-wrapper .title-background') : null; // Get the backing element
 
-    function resetAnimatedText() {
-        if (animatedTitleSpan) {
-            animatedTitleSpan.textContent = ''; // Clear the text
+    // project cards and popups
+    const projectCards = document.querySelectorAll('.projects-grid .project-card');
+    const projectDetailPopups = document.querySelectorAll('.project-details-popup');
+    const projectsTitleSpan = projectsSection ? projectsSection.querySelector('.title-flex-wrapper .animated-title') : null;
+    const projectsTitleText = 'My Projects';
+
+    //Projects Animated Autotype Section Title
+    // Auto Type Animation Variable
+    const projectsAnimatedTitleSpan = projectsSection ? projectsSection.querySelector('.title-flex-wrapper .animated-title') : null;
+    const projectSectionTitleText = 'Projects';
+
+    function resetProjectsAnimatedText() {
+        if (projectsAnimatedTitleSpan) {
+            projectsAnimatedTitleSpan.textContent = ''; // Clear the text
         }
     }
 
-    function startTextAnimation() {
-        if (animatedTitleSpan) {
-            typeWriter(animatedTitleSpan, sectionTitleText, typewriterSpeed);
+    function startProjectsTextAnimation() {
+        if (projectsAnimatedTitleSpan) {
+            projectsTypeWriter(projectsAnimatedTitleSpan, projectSectionTitleText, typewriterSpeed);
         }
     }
 
-    const sectionObserver_bg_slide = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Section is in view
-                if (backgroundImage) {
-                    backgroundImage.classList.add('visible'); // Trigger background image animation
-                }
-                if (slideInWindow) {
-                    setTimeout(() => {
-                        slideInWindow.classList.add('visible'); // Trigger slide-in animation after delay
-                        // Start text animation after the window has (mostly) landed
-                        setTimeout(startTextAnimation, textStartDelay);
-                    }, slideInDelay);
-                }
-                if (divider) {
-                    setTimeout(() => {
-                        divider.classList.add('slide-in'); // Slide in the divider with the window
-                    }, slideInDelay);
-                }
-                if (titleBackground) {
-                    setTimeout(() => {
-                        titleBackground.classList.add('slide-in'); // Slide in the title background with the window
-                    }, slideInDelay);
-                }
-                // Optionally, you might want to reset the text when it comes into view again
-                resetAnimatedText();
-                setTimeout(slideInDelay + textStartDelay + 100); // Restart after slide-in
-            } else {
-                // Section is out of view
-                if (backgroundImage) {
-                    backgroundImage.classList.remove('visible'); // Reset background image
-                }
-                if (slideInWindow) {
-                    slideInWindow.classList.remove('visible'); // Reset slide-in position and opacity
-                }
-                if (divider) {
-                    divider.classList.remove('slide-in'); // Reset divider position
-                }
-                if (titleBackground) {
-                    titleBackground.classList.remove('slide-in'); // Reset title background position
-                }
-                // resetAnimatedText(); // Already reset when coming into view
-            }
-        });
-    }, { threshold: 0.2 });
-
-    if (technologiesSection) {
-        sectionObserver_bg_slide.observe(technologiesSection);
-    }
-
-    // (Keep your existing typeWriter function here)
-    function typeWriter(element, text, speed, callback) {
+    // (Keep your project section typeWriter function here)
+    function projectsTypeWriter(element, text, speed, callback) {
         let i = 0;
         function type() {
             if (i < text.length) {
@@ -597,4 +662,98 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         type();
     }
+    // Make technology section's background visible
+    // Background and Window Slide-In Variables
+    const projectsSlideInWindow = projectsSection ? projectsSection.querySelector('.projects-slide-in-window') : null;
+    //const slideInDelay = 1000; // Delay for window slide-in after background // declared in the first section the same across all sections
+    const projectsBackgroundImage = projectsSection ? projectsSection.querySelector('.background-image') : null;
+
+    // Intersection Observer for Projects section slide-in and title animation
+    const projectsSectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (projectsBackgroundImage) {
+                    projectsBackgroundImage.classList.add('visible'); // Trigger background image animation
+                }
+                if (projectsSlideInWindow) {
+                    setTimeout(() => {
+                    projectsSlideInWindow.classList.add('visible');
+                    // Trigger text animation
+                    setTimeout(startProjectsTextAnimation, textStartDelay);
+                    }, slideInDelay);
+                }
+                if (projectsDivider) {
+                    setTimeout(() => {
+                        projectsDivider.classList.add('slide-in'); // Slide in the divider with the window
+                    }, slideInDelay);
+                }
+                if (projectsTitleBackground) {
+                    setTimeout(() => {
+                        projectsTitleBackground.classList.add('slide-in'); // Slide in the title background with the window
+                    }, slideInDelay);
+                }
+                // Optionally, you might want to reset the text when it comes into view again
+                resetProjectsAnimatedText();
+                setTimeout(slideInDelay + textStartDelay + 100); // Restart after slide-in
+            } else {
+                // Section is out of view
+                if (projectsBackgroundImage) {
+                    projectsBackgroundImage.classList.remove('visible'); // Reset background image
+                }
+                if (projectsSlideInWindow) {
+                    projectsSlideInWindow.classList.remove('visible'); // Reset slide-in position and opacity
+                }
+                if (projectsDivider) {
+                    projectsDivider.classList.remove('slide-in'); // Reset divider position
+                }
+                if (projectsTitleBackground) {
+                    projectsTitleBackground.classList.remove('slide-in'); // Reset title background position
+                }
+                // resetAnimatedText(); // Already reset when coming into view
+            }
+        });
+    }, { threshold: 0.2 });
+    if (projectsSection) {
+        projectsSectionObserver.observe(projectsSection);
+    }
+
+    let currentlyOpenPopup = null;
+
+    function openProjectDetails(projectId) {
+        const popup = document.getElementById(projectId + 'Details');
+        if (popup) {
+            popup.classList.add('open');
+            document.addEventListener('click', handleOutsideClickProjectDetails);
+            currentlyOpenPopup = popup;
+        }
+    }
+
+    function closeProjectDetails(projectId) {
+        const popup = document.getElementById(projectId + 'Details');
+        if (popup) {
+            popup.classList.remove('open');
+            document.removeEventListener('click', handleOutsideClickProjectDetails);
+            currentlyOpenPopup = null;
+        }
+    }
+
+    function handleOutsideClickProjectDetails(event) {
+        if (currentlyOpenPopup && !currentlyOpenPopup.contains(event.target) && !event.target.classList.contains('project-card')) {
+            const openPopupId = currentlyOpenPopup.id.replace('Details', '');
+            closeProjectDetails(openPopupId);
+        }
+    }
+
+    projectCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const projectId = this.dataset.project;
+            openProjectDetails(projectId);
+        });
+    });
+
+    projectDetailPopups.forEach(popup => {
+        popup.classList.remove('open'); // Ensure they are hidden initially
+    });
+
+    window.closeProjectDetails = closeProjectDetails; // Make it global for HTML onclick
 }); 
