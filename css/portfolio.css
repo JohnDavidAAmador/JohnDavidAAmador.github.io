@@ -1092,7 +1092,7 @@ header {
 }
 
 #technologies-i-use .technologies-slide-in-window.visible {
-    top: 200px;
+    top: 105px;
     left: 20px;
 }
 /******************
@@ -1823,7 +1823,7 @@ header {
     /*max-width: 500px;*/
     /*height: 100%;*/
     min-height: 300px;
-    height: 70%;
+    height: 85%;
     max-height: 90%;
     border: 0.5px solid lightblue;
     border-radius: 4px;
@@ -1842,7 +1842,7 @@ header {
 }
 
 #projects .projects-slide-in-window.visible {
-    top: 200px;
+    top: 65px;
     left: 20px;
 }
 
@@ -1946,10 +1946,13 @@ header {
 
 /* Project Grid and Cards */
 #projects .projects-grid {
-    max-height: 90%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
-    gap: 30px; /* Spacing between project cards */
+    display: flex;
+    flex-direction: row;
+    max-width: 115%;
+    gap: 30px;
+    padding-bottom: 40px; /* Space for the slider indicator */
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; /* Optional: Snap to the edges of the 1.5 cards */
 }
 
 #projects .project-card {
@@ -1960,11 +1963,68 @@ header {
     cursor: pointer; /* Make it look clickable */
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     
+    flex-shrink: 0;
+    height: 100%;
+    width: calc(86.3% - 20px); /* Try this as a starting point */
+    scroll-snap-align: start; /* Optional: Align to the start of the card */
+}
+/* Adjust card widths for different screen sizes */
+@media (min-width: 768px) {
+    #projects .project-card {
+        width: 60%; /* Example */
+    }
+}
+
+@media (min-width: 1200px) {
+    #projects .project-card {
+        width: 40%; /* Example */
+    }
+}
+
+#projects .slider-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 0;
+    position: absolute; /* Position relative to the #projects section */
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+#projects .slider-indicator .dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#projects .slider-indicator .dot.active {
+    background-color: white;
 }
 
 #projects .project-card:hover {
     transform: scale(1.05); /* Slightly grow on hover */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+#projects .projects-grid .project-card img {
+    width: 93%; /* Adjust this value as needed */
+    height: 80%; /* Adjust this value as needed */
+    object-fit: cover; /* Ensures the image covers the defined area without distortion (crops if necessary) */
+}
+
+/* If you want to add some margin below the image for spacing with the text */
+#projects .projects-grid .project-card img {
+    margin-bottom: 10px; /* Adjust as needed */
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+
 }
 
 #projects .project-info {

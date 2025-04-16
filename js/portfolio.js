@@ -713,6 +713,50 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }, { threshold: 0.2 });
+    // Dot Slider
+    const projectsGrid = projectsSection ? projectsSection.querySelector('.projects-grid') : null;
+    const sliderIndicator = projectsSection ? projectsSection.querySelector('.slider-indicator') : null;
+    
+
+    if (projectsGrid && sliderIndicator && projectCards.length > 0) {
+        const numCards = projectCards.length;
+
+        function createDots() {
+            sliderIndicator.innerHTML = ''; // Clear existing dots
+            for (let i = 0; i < numCards; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                dot.addEventListener('click', () => {
+                    projectsGrid.scrollTo({
+                        left: projectsGrid.offsetWidth * i,
+                        behavior: 'smooth'
+                    });
+                });
+                sliderIndicator.appendChild(dot);
+            }
+            updateActiveDot();
+        }
+
+        function updateActiveDot() {
+            const scrollPosition = projectsGrid.scrollLeft;
+            const cardWidth = projectsGrid.offsetWidth;
+            const activeIndex = Math.round(scrollPosition / cardWidth);
+
+            const dots = sliderIndicator.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                dot.classList.remove('active');
+                if (index === activeIndex) {
+                    dot.classList.add('active');
+                }
+            });
+        }
+
+        projectsGrid.addEventListener('scroll', updateActiveDot);
+
+        // Re-initialize dots if the number of cards might change dynamically
+        createDots();
+    }
+    // Projects popups
     if (projectsSection) {
         projectsSectionObserver.observe(projectsSection);
     }
