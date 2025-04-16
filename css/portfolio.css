@@ -1292,14 +1292,14 @@ header {
 }
 
 #frontendDetailsPopup .tech-item img {
-    width: 50px; /* Adjust icon size */
-    height: 50px; /* Adjust icon size */
+    width: 69px; /* Adjust icon size */
+    height: 69px; /* Adjust icon size */
     margin-bottom: 5px;
     /* Add any other image styling */
 }
 
 #frontendDetailsPopup .tech-label {
-    font-size: 1.2em; /* Adjust label size */
+    font-size: 1.4em; /* Adjust label size */
     color: white; /* Style the label text */
 }
 /* Backend Popup */
@@ -1384,13 +1384,13 @@ header {
 }
 
 #backendDetailsPopup .tech-item img {
-    width: 50px; /* Adjust icon size */
-    height: 50px; /* Adjust icon size */
+    width: 69px; /* Adjust icon size */
+    height: 69px; /* Adjust icon size */
     margin-bottom: 5px;
 }
 
 #backendDetailsPopup .tech-label {
-    font-size: 1.2em; /* Adjust label size */
+    font-size: 1.4em; /* Adjust label size */
     color: white;
 }
 /* CSS for the Database Technology Popup */
@@ -1476,13 +1476,13 @@ header {
 }
 
 #databaseDetailsPopup .tech-item img {
-    width: 50px;
-    height: 50px;
+    width: 69px;
+    height: 69px;
     margin-bottom: 5px;
 }
 
 #databaseDetailsPopup .tech-label {
-    font-size: 1.2em;
+    font-size: 1.4em;
     color: white;
 }
 
@@ -1569,13 +1569,13 @@ header {
 }
 
 #sourceControlDetailsPopup .tech-item img {
-    width: 50px;
-    height: 50px;
+    width: 69px;
+    height: 69px;
     margin-bottom: 5px;
 }
 
 #sourceControlDetailsPopup .tech-label {
-    font-size: 1.2em;
+    font-size: 1.4em;
     color: white;
 }
 
@@ -1662,13 +1662,13 @@ header {
 }
 
 #applicationDevelopmentDetailsPopup .tech-item img {
-    width: 50px;
-    height: 50px;
+    width: 69px;
+    height: 69px;
     margin-bottom: 5px;
 }
 
 #applicationDevelopmentDetailsPopup .tech-label {
-    font-size: 1.2em;
+    font-size: 1.4em;
     color: white;
 }
 
@@ -1755,13 +1755,13 @@ header {
 }
 
 #cloudDetailsPopup .tech-item img {
-    width: 50px;
-    height: 50px;
+    width: 69px;
+    height: 69px;
     margin-bottom: 5px;
 }
 
 #cloudDetailsPopup .tech-label {
-    font-size: 1.2em;
+    font-size: 1.4em;
     color: white;
 }
 
