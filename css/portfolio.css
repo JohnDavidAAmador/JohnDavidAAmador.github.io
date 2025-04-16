@@ -1964,9 +1964,13 @@ header {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     
     flex-shrink: 0;
-    height: 100%;
     width: calc(86.3% - 20px); /* Try this as a starting point */
     scroll-snap-align: start; /* Optional: Align to the start of the card */
+
+    height: auto; /* Or a specific pixel value like 300px, adjust as needed */
+    min-height: 250px; /* Set a minimum height to ensure enough space even with shorter content */
+    display: flex; /* Use flexbox to control the layout of elements within the card */
+    flex-direction: column; /* Stack the image, info, and tags vertically */
 }
 /* Adjust card widths for different screen sizes */
 @media (min-width: 768px) {
