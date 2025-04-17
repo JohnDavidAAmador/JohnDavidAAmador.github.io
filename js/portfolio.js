@@ -800,4 +800,126 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     window.closeProjectDetails = closeProjectDetails; // Make it global for HTML onclick
+
+    // Resume Section Variables
+    const resumeSection = document.getElementById('resume');
+    // Resume Header Variablres
+    const resumeDivider = resumeSection ? resumeSection.querySelector('.title-flex-wrapper .divider') : null;
+    const resumeTitleBackground = resumeSection ? resumeSection.querySelector('.title-flex-wrapper .title-background') : null; // Get the backing element
+    
+    //Resume Animated Autotype Section Title
+    // Auto Type Animation Variables
+    const resumeAnimatedTitleSpan = resumeSection ? resumeSection.querySelector('.title-flex-wrapper .animated-title') : null;
+    const resumeSectionTitleText = 'Resume';
+
+    function resetResumeAnimatedText() {
+        if (resumeAnimatedTitleSpan) {
+            resumeAnimatedTitleSpan.textContent = ''; // Clear the text
+        }
+    }
+
+    function startResumeTextAnimation() {
+        if (resumeAnimatedTitleSpan) {
+            resumeTypeWriter(resumeAnimatedTitleSpan, resumeSectionTitleText, typewriterSpeed);
+        }
+    }
+
+    // (Keep your project section typeWriter function here)
+    function resumeTypeWriter(element, text, speed, callback) {
+        let i = 0;
+        function type() {
+            if (i < text.length) {
+                element.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            } else {
+                if (callback) {
+                    callback();
+                }
+            }
+        }
+        type();
+    }
+    // Make Resume section's background visible
+    // Background and Window Slide-In Variables
+    const resumeSlideInWindow = resumeSection ? resumeSection.querySelector('.resume-slide-in-window') : null;
+    //const slideInDelay = 1000; // Delay for window slide-in after background // declared in the first section the same across all sections
+    const resumeBackgroundImage = resumeSection ? resumeSection.querySelector('.background-image') : null;
+
+    // Intersection Observer for Projects section slide-in and title animation
+    const resumeSectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (resumeBackgroundImage) {
+                    resumeBackgroundImage.classList.add('visible'); // Trigger background image animation
+                }
+                if (resumeSlideInWindow) {
+                    setTimeout(() => {
+                        resumeSlideInWindow.classList.add('visible');
+                    // Trigger text animation
+                    setTimeout(startResumeTextAnimation, textStartDelay);
+                    }, slideInDelay);
+                }
+                if (resumeDivider) {
+                    setTimeout(() => {
+                        resumeDivider.classList.add('visible'); // Slide in the divider with the window
+                    }, slideInDelay);
+                }
+                if (resumeTitleBackground) {
+                    setTimeout(() => {
+                        resumeTitleBackground.classList.add('visible'); // Slide in the title background with the window
+                    }, slideInDelay);
+                }
+                // Optionally, you might want to reset the text when it comes into view again
+                resetResumeAnimatedText();
+                setTimeout(slideInDelay + textStartDelay + 100); // Restart after slide-in
+            } else {
+                // Section is out of view
+                if (resumeBackgroundImage) {
+                    resumeBackgroundImage.classList.remove('visible'); // Reset background image
+                }
+                if (resumeSlideInWindow) {
+                    resumeSlideInWindow.classList.remove('visible'); // Reset slide-in position and opacity
+                }
+                if (resumeDivider) {
+                    resumeDivider.classList.remove('visible'); // Reset divider position
+                }
+                if (resumeTitleBackground) {
+                    resumeTitleBackground.classList.remove('visible'); // Reset title background position
+                }
+                // resetAnimatedText(); // Already reset when coming into view
+            }
+        });
+    }, { threshold: 0.2 });
+
+    if (resumeSection) {
+        resumeSectionObserver.observe(resumeSection);
+    }
+
+    // Resume Actions - Download
+    const downloadResumeButton = document.getElementById('download-resume');
+    if (downloadResumeButton) {
+        downloadResumeButton.addEventListener('click', function() {
+            const pdfUrl = 'path/to/your/resume.pdf'; // Ensure this is the correct path
+            const link = document.createElement('a');
+            link.href = pdfUrl;
+            link.download = 'Your_Resume.pdf'; // Set the desired download filename
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    }
+
+    // Resume Actions - Print
+    const printResumeButton = document.getElementById('print-resume');
+    if (printResumeButton) {
+        printResumeButton.addEventListener('click', function() {
+            const iframe = document.getElementById('resume-pdf-viewer');
+            if (iframe) {
+                iframe.contentWindow.print();
+            } else {
+                alert('Resume viewer not loaded yet.');
+            }
+        });
+    }
 }); 
