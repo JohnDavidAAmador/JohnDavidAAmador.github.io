@@ -922,4 +922,33 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // Education Section Animation
+    const educationSection = document.getElementById('education');
+    const educationBackgroundImage = educationSection ? educationSection.querySelector('.background-image') : null;
+    const educationSlideInWindow = educationSection ? educationSection.querySelector('.education-slide-in-window') : null;
+
+    const educationObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (educationBackgroundImage) {
+                    educationBackgroundImage.classList.add('visible');
+                }
+                if (educationSlideInWindow) {
+                    educationSlideInWindow.classList.add('visible');
+                }
+            } else {
+                if (educationBackgroundImage) {
+                    educationBackgroundImage.classList.remove('visible');
+                }
+                if (educationSlideInWindow) {
+                    educationSlideInWindow.classList.remove('visible');
+                }
+            }
+        });
+    }, { threshold: 0.2 });
+
+    if (educationSection) {
+        educationObserver.observe(educationSection);
+    }
 }); 

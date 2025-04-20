@@ -2336,6 +2336,168 @@ header {
         padding: 20px;
     }
 }
+/***********************
+/* Education Section 
+************************/
+#education {
+    display: flex;
+    flex-direction: column; /* Or row, depending on your content */
+   	align-items: center; /* Example: Center items horizontally */
+    justify-content: center; /* Example: Center items vertically */
+    position: relative;
+    overflow: hidden;
+    min-height: 412px;
+    min-width: 412px;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 90%;
+    margin: 20px auto;
+}
+
+#education .section-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+}
+
+#education .background-image-container {
+    position: relative; /* Or relative, depending on your layout needs */
+    top: 0;
+    left: 0;
+    width: 100%; /* Or a specific width */
+    height: 100%; /* Or a specific height */
+    overflow: hidden; /* Clip the image if it extends beyond the container */
+    z-index: -1; /* Place it behind other content within the section */
+}
+
+#education .background-image {
+    /*position: absolute;*/
+    opacity: 0; /* Initially hidden */
+    object-position: center center;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Scale the image to cover the container */
+    transition: opacity 2s ease, transform 1.5s ease; /* For a smooth fade/grow if you add transform */
+    transform: scale(0); /* Optional: Start slightly smaller for a grow effect */
+    z-index: -1;
+}
+
+#education .background-image.visible {
+    opacity: 1;
+    transform: scale(1); /* Grow to full size (if you used an initial scale)*/
+}
+
+#education .education-slide-in-window {
+    position: absolute;
+    left: -200%;
+    width: 90%;
+    /*max-width: 500px;*/
+    /*height: 100%;*/
+    min-height: 300px;
+    height: 85%;
+    max-height: 90%;
+    border: 0.5px solid lightblue;
+    border-radius: 4px;
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    /*backdrop-filter: blur(5px);*/
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: left 0.5s ease-in-out;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+#education .education-slide-in-window.visible {
+    top: 65px;
+    left: 20px;
+}
+
+#education .title-flex-wrapper {
+    margin-top: 0;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    position: absolute;
+    left: 10%;
+    width: 100%;
+    top: 0;
+}
+
+#education .section-title {
+    font-size: 2.5em; /* Adjust as needed */
+    color: white; /* Adjust as needed */
+}
+#education .slider-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 0;
+    position: absolute; /* Position relative to the #projects section */
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+#education .slider-indicator .dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#education .slider-indicator .dot.active {
+    background-color: white;
+}
+
+
+#education .education-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; /* Optional: Snap to cards */
+    padding-bottom: 20px; /* Space for the scrollbar */
+    gap: 20px; /* Spacing between cards */
+}
+
+#education .education-card {
+    flex: 0 0 auto;
+    width: 80%; /* Adjust for desired card width (e.g., 80% for 1.25 cards visible) */
+    scroll-snap-align: start; /* Optional: Snap to start of card */
+    background-color: rgba(255, 255, 255, 0.9); /* Card background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#education .education-card-image {
+    width: 93%; /* Adjust this value as needed */
+    height: 50%; /* Adjust this value as needed */
+    object-fit: cover; /* Ensures the image covers the defined area without distortion (crops if necessary) */
+}
+
+#education .education-card h3 {
+    margin-top: 0;
+    font-size: 1.2em; /* Adjust as needed */
+}
+
+#education .education-card p {
+    margin: 5px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #education .education-card {
+        width: 100%; /* One card visible on smaller screens */
+    }
+}
 /* bio box
 ***************/
 #bio {
