@@ -2428,11 +2428,85 @@ header {
     width: 100%;
     top: 0;
 }
-
-#education .section-title {
-    font-size: 2.5em; /* Adjust as needed */
-    color: white; /* Adjust as needed */
+#education .divider { /* Divider object */
+    height: 2px;
+    width: 95%;
+    margin: auto;
+    background-color: grey;
+    z-index: 2;
+    margin-top: 30px;
+    margin-left: -15px;
+    position: relative;
+    transform: translateX(-100%); /* Start off-screen to the left */
+    opacity: 0;
+    transition: transform 0.7s ease-out, opacity 0.7s ease-out; /* Slide in with window */
 }
+#education .divider.slide-in {
+    transform: translateX(0); /* Slide into view */
+    opacity: 1;
+}
+#education .top-divider { /* Top Divider (Black Background Sections) */
+    background-color: rgb(172, 238, 255);
+    box-shadow: 0 0 15px 1px rgb(0, 221, 255);
+}
+/******************************************
+    Autotyping Title above each Section
+*******************************************/
+#education span.animated-title {
+    margin-top: 4px;
+    position: absolute;
+    top: 87%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    font-family: "Colossalis", arial, sans-serif;
+    line-height: 1;
+    text-transform: uppercase;
+    font-size: 1.5em; 
+    font-weight: bold;
+    top: 0px;
+    z-index: 2; /* Ensure it's above the divider */
+    color: rgb(0, 46, 53);
+    text-shadow: 0 0 8px rgb(0, 221, 255), /* Bright blue glow */
+                 0 0 2px rgb(0, 221, 255); /* Slightly less intense blue glow */
+    overflow: hidden; /* Hide typing cursor initially */
+}
+
+
+@media (max-width: 768px) {
+    #projects .animated-title {
+        font-size: 1.5em; /* Smaller size for smaller screens */
+    }
+}
+
+/*********************
+    Title Backing
+**********************/
+/* Title Backing White Background */
+#education .title-background {
+    background-color: white;
+    color: black;
+}
+/* Title Backing Object */
+#education .title-background {
+    position: absolute;
+    left: -100%; /* Start off-screen to the left */
+    z-index: 1; /* Place behind divider and autotyping */
+    border-radius: 15px;
+    box-shadow: 0 0 15px 1px rgb(0, 221, 255);
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 9%, black 13%, black, rgba(0, 0, 0, 0)); /* Gradient mask */
+    top: 50%; /* Vertically center */
+    height: auto; /* Adjust as needed */
+    width: auto; /* Adjust as needed */
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: left 0.7s ease-out, opacity 0.7s ease-out; /* Slide in with window */
+}
+#education .title-background.slide-in {
+    left: 5%; /* Adjust to the desired final left position */
+    opacity: 1;
+}
+
 #education .slider-indicator {
     display: flex;
     justify-content: center;
@@ -2461,37 +2535,93 @@ header {
 
 #education .education-grid {
     display: flex;
+    flex-direction: row;
+    max-width: 115%;
+    gap: 30px;
+    padding-bottom: 40px; /* Space for the slider indicator */
     overflow-x: auto;
-    scroll-snap-type: x mandatory; /* Optional: Snap to cards */
-    padding-bottom: 20px; /* Space for the scrollbar */
-    gap: 20px; /* Spacing between cards */
+    scroll-snap-type: x mandatory; /* Optional: Snap to the edges of the 1.5 cards */
 }
 
 #education .education-card {
-    flex: 0 0 auto;
-    width: 80%; /* Adjust for desired card width (e.g., 80% for 1.25 cards visible) */
-    scroll-snap-align: start; /* Optional: Snap to start of card */
-    background-color: rgba(255, 255, 255, 0.9); /* Card background */
-    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer; /* Make it look clickable */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    
+    flex-shrink: 0;
+    width: calc(86.3% - 20px); /* Try this as a starting point */
+    scroll-snap-align: start; /* Optional: Align to the start of the card */
+
+    height: auto; /* Or a specific pixel value like 300px, adjust as needed */
+    min-height: 250px; /* Set a minimum height to ensure enough space even with shorter content */
+    display: flex; /* Use flexbox to control the layout of elements within the card */
+    flex-direction: column; /* Stack the image, info, and tags vertically */
+}
+/* Adjust card widths for different screen sizes */
+@media (min-width: 768px) {
+    #projects .project-card {
+        width: 60%; /* Example */
+    }
 }
 
-#education .education-card-image {
+@media (min-width: 1200px) {
+    #projects .project-card {
+        width: 40%; /* Example */
+    }
+}
+
+#education .education-grid .education-card img {
     width: 93%; /* Adjust this value as needed */
-    height: 50%; /* Adjust this value as needed */
+    height: 65%; /* Adjust this value as needed */
     object-fit: cover; /* Ensures the image covers the defined area without distortion (crops if necessary) */
+}
+#education .education-grid .education-card img {
+    margin-bottom: 10px; /* Adjust as needed */
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+
 }
 
 #education .education-card h3 {
     margin-top: 0;
-    font-size: 1.2em; /* Adjust as needed */
+    font-size: 1.5em; /* Adjust as needed */
+    color: #ccc;
+    text-shadow: 0 0 8px rgb(0, 221, 255), /* Bright blue glow */
+                 0 0 2px rgb(0, 221, 255); /* Slightly less intense blue glow */
 }
 
 #education .education-card p {
     margin: 5px 0;
 }
 
+#education .education-info {
+    overflow-y: auto; /* Enable vertical scrolling for the details */
+    padding: 15px;
+    text-align: center;
+}
+
+#education .education-info p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+/* bullet for intro text */
+#education .education-info ul {
+    color:#ccc;
+    text-align: left;
+    margin-left: 40px; /* Add some left margin for indentation */
+    padding-left: 0; /* Remove default padding */
+}
+
+#education .education-info li {
+    margin-bottom: 5px; /* Add some spacing between list items */
+}
 /* Responsive adjustments */
 @media (max-width: 768px) {
     #education .education-card {
@@ -2664,6 +2794,18 @@ section span.animated-title {
                 0 0 15px rgb(0, 221, 255); /* Slightly less intense blue glow */
 }
 #resume h2 {
+    font-family: "Colossalis"!important;
+    font-size: 1.5em;
+    letter-spacing:2px;
+    line-height: 1.5em;
+    font-weight: 100;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgb(0, 221, 255), /* Bright blue glow */
+                0 0 15px rgb(0, 221, 255); /* Slightly less intense blue glow */
+}
+#education h2 {
     font-family: "Colossalis"!important;
     font-size: 1.5em;
     letter-spacing:2px;

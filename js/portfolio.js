@@ -923,11 +923,55 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Education Section Animation
+    /*********************
+     Education Section
+    *********************/
+    // Education section elements
     const educationSection = document.getElementById('education');
-    const educationBackgroundImage = educationSection ? educationSection.querySelector('.background-image') : null;
-    const educationSlideInWindow = educationSection ? educationSection.querySelector('.education-slide-in-window') : null;
+    // Section Header Variables
+    const educationDivider = educationSection ? educationSection.querySelector('.title-flex-wrapper .divider') : null;
+    const educationTitleBackground = educationSection ? educationSection.querySelector('.title-flex-wrapper .title-background') : null; // Get the backing element
+    
+    //Education Animated Autotype Section Title
+    // Auto Type Animation Variable
+    const educationAnimatedTitleSpan = educationSection ? educationSection.querySelector('.title-flex-wrapper .animated-title') : null;
+    const educationSectionTitleText = 'Education';
 
+    function resetEducationAnimatedText() {
+        if (educationAnimatedTitleSpan) {
+            educationAnimatedTitleSpan.textContent = ''; // Clear the text
+        }
+    }
+
+    function startEducationTextAnimation() {
+        if (educationAnimatedTitleSpan) {
+            educationTypeWriter(educationAnimatedTitleSpan, educationSectionTitleText, typewriterSpeed);
+        }
+    }
+
+    // education typewriter
+    function educationTypeWriter(element, text, speed, callback) {
+        let i = 0;
+        function type() {
+            if (i < text.length) {
+                element.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            } else {
+                if (callback) {
+                    callback();
+                }
+            }
+        }
+        type();
+    }
+    // Make Education section's background visible
+    // Background and Window Slide-In Variables
+    const educationSlideInWindow = educationSection ? educationSection.querySelector('.education-slide-in-window') : null;
+    //const slideInDelay = 1000; // Delay for window slide-in after background // declared in the first section the same across all sections
+    const educationBackgroundImage = educationSection ? educationSection.querySelector('.background-image') : null;
+
+    // Intersection Observer for Education section slide-in and title animation
     const educationObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -935,8 +979,25 @@ document.addEventListener('DOMContentLoaded', function() {
                     educationBackgroundImage.classList.add('visible');
                 }
                 if (educationSlideInWindow) {
+                    setTimeout(() => {
                     educationSlideInWindow.classList.add('visible');
+                    // Trigger text animation
+                    setTimeout(startEducationTextAnimation, textStartDelay);
+                    }, slideInDelay);
                 }
+                if (educationDivider) {
+                    setTimeout(() => {
+                        educationDivider.classList.add('slide-in'); // Slide in the divider with the window
+                    }, slideInDelay);
+                }
+                if (educationTitleBackground) {
+                    setTimeout(() => {
+                        educationTitleBackground.classList.add('slide-in'); // Slide in the title background with the window
+                    }, slideInDelay);
+                }
+                // Optionally, you might want to reset the text when it comes into view again
+                resetEducationAnimatedText();
+                setTimeout(slideInDelay + textStartDelay + 100); // Restart after slide-in
             } else {
                 if (educationBackgroundImage) {
                     educationBackgroundImage.classList.remove('visible');
@@ -944,11 +1005,64 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (educationSlideInWindow) {
                     educationSlideInWindow.classList.remove('visible');
                 }
+                if (educationDivider) {
+                    educationDivider.classList.remove('slide-in'); // Reset divider position
+                }
+                if (educationTitleBackground) {
+                    educationTitleBackground.classList.remove('slide-in'); // Reset title background position
+                }
+                resetEducationAnimatedText(); // Already reset when coming into view
             }
         });
     }, { threshold: 0.2 });
-
     if (educationSection) {
         educationObserver.observe(educationSection);
+    }
+
+    // Dot Slider
+    const educationGrid = educationSection ? educationSection.querySelector('.education-grid') : null;
+    const educationSliderIndicator = educationSection ? educationSection.querySelector('.slider-indicator') : null;
+    const educationCards = document.querySelectorAll('.education-grid .education-card');
+
+    if (educationGrid && educationSliderIndicator && educationCards.length > 0) 
+        {
+        const numEducationCards = educationCards.length;
+
+        function createDots() 
+        {
+            educationSliderIndicator.innerHTML = ''; // Clear existing dots
+            for (let i = 0; i < numEducationCards; i++) 
+            {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                dot.addEventListener('click', () => {
+                    educationGrid.scrollTo({
+                        left: educationGrid.offsetWidth * i,
+                        behavior: 'smooth'
+                    });
+                });
+                educationSliderIndicator.appendChild(dot);
+            }
+            updateActiveDot();
+        }
+
+        function updateActiveDot() {
+            const scrollPosition = educationGrid.scrollLeft;
+            const cardWidth = educationGrid.offsetWidth;
+            const activeIndex = Math.round(scrollPosition / cardWidth);
+
+            const dots = educationSliderIndicator.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                dot.classList.remove('active');
+                if (index === activeIndex) {
+                    dot.classList.add('active');
+                }
+            });
+        }
+
+        educationGrid.addEventListener('scroll', updateActiveDot);
+
+        // Re-initialize dots if the number of cards might change dynamically
+        createDots();
     }
 }); 
