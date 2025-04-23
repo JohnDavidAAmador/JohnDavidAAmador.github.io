@@ -2593,22 +2593,40 @@ header {
     color: #ccc;
     text-shadow: 0 0 8px rgb(0, 221, 255), /* Bright blue glow */
                  0 0 2px rgb(0, 221, 255); /* Slightly less intense blue glow */
+    text-align: center;
+}
+
+#education .education-card h4 {
+    margin-top: 0;
+    font-size: 1.5em; /* Adjust as needed */
+    color: #ccc;
+    text-align: center;
+    margin-bottom: 20px;
+}
+#education .education-card h {
+    margin-top: 0;
+    font-size: 1.5em; /* Adjust as needed */
+    color: #ccc;
+    text-align: left;
+    margin-bottom: 20px;
 }
 
 #education .education-card p {
     margin: 5px 0;
+    text-align: left;
+    margin-bottom: 20px;
 }
 
 #education .education-info {
     overflow-y: auto; /* Enable vertical scrolling for the details */
     padding: 15px;
-    text-align: center;
 }
 
 #education .education-info p {
     font-size: 1.2em;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     color: #ccc;
+
 }
 
 /* bullet for intro text */
@@ -2617,6 +2635,7 @@ header {
     text-align: left;
     margin-left: 40px; /* Add some left margin for indentation */
     padding-left: 0; /* Remove default padding */
+    padding-bottom: 10px;
 }
 
 #education .education-info li {
