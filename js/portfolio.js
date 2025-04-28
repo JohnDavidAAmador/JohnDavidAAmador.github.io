@@ -1065,4 +1065,121 @@ document.addEventListener('DOMContentLoaded', function() {
         // Re-initialize dots if the number of cards might change dynamically
         createDots();
     }
+
+    /*********************
+     About Me Section
+    *********************/
+   // About Me section elements
+   const aboutMeSection = document.getElementById('about-me');
+   // Section Header Variables
+   const aboutMeDivider = aboutMeSection ? aboutMeSection.querySelector('.title-flex-wrapper .divider') : null;
+   const aboutMeTitleBackground = aboutMeSection ? aboutMeSection.querySelector('.title-flex-wrapper .title-background') : null; // Get the backing element
+   
+   //About Me Animated Autotype Section Title
+   // Auto Type Animation Variable
+   const aboutMeAnimatedTitleSpan = aboutMeSection ? aboutMeSection.querySelector('.title-flex-wrapper .animated-title') : null;
+   const aboutMeSectionTitleText = 'About Me';
+
+   function resetAboutMeAnimatedText() {
+       if (aboutMeAnimatedTitleSpan) {
+        aboutMeAnimatedTitleSpan.textContent = ''; // Clear the text
+       }
+   }
+
+   function startAboutMeTextAnimation() {
+       if (aboutMeAnimatedTitleSpan) {
+        aboutMeTypeWriter(aboutMeAnimatedTitleSpan, aboutMeSectionTitleText, typewriterSpeed);
+       }
+   }
+
+   // About Me typewriter
+   function aboutMeTypeWriter(element, text, speed, callback) {
+       let i = 0;
+       function type() {
+           if (i < text.length) {
+               element.textContent += text.charAt(i);
+               i++;
+               setTimeout(type, speed);
+           } else {
+               if (callback) {
+                   callback();
+               }
+           }
+       }
+       type();
+   }
+   // Make Education section's background visible
+   // Background and Window Slide-In Variables
+   const aboutMeSlideInWindow = aboutMeSection ? aboutMeSection.querySelector('.about-me-slide-in-window') : null;
+   //const slideInDelay = 1000; // Delay for window slide-in after background // declared in the first section the same across all sections
+   const aboutMeBackgroundImage = aboutMeSection ? aboutMeSection.querySelector('.background-image') : null;
+
+   // Intersection Observer for Education section slide-in and title animation
+   const aboutMeObserver = new IntersectionObserver((entries) => {
+       entries.forEach(entry => {
+           if (entry.isIntersecting) {
+               if (aboutMeBackgroundImage) {
+                aboutMeBackgroundImage.classList.add('visible');
+               }
+               if (aboutMeSlideInWindow) {
+                   setTimeout(() => {
+                        aboutMeSlideInWindow.classList.add('visible');
+                   // Trigger text animation
+                   setTimeout(startAboutMeTextAnimation, textStartDelay);
+                   }, slideInDelay);
+               }
+               if (aboutMeDivider) {
+                   setTimeout(() => {
+                        aboutMeDivider.classList.add('slide-in'); // Slide in the divider with the window
+                   }, slideInDelay);
+               }
+               if (aboutMeTitleBackground) {
+                   setTimeout(() => {
+                        aboutMeTitleBackground.classList.add('slide-in'); // Slide in the title background with the window
+                   }, slideInDelay);
+               }
+               // Optionally, you might want to reset the text when it comes into view again
+               resetAboutMeAnimatedText();
+               setTimeout(slideInDelay + textStartDelay + 100); // Restart after slide-in
+           } else {
+               if (aboutMeBackgroundImage) {
+                    aboutMeBackgroundImage.classList.remove('visible');
+               }
+               if (aboutMeSlideInWindow) {
+                    aboutMeSlideInWindow.classList.remove('visible');
+               }
+               if (aboutMeDivider) {
+                    aboutMeDivider.classList.remove('slide-in'); // Reset divider position
+               }
+               if (aboutMeTitleBackground) {
+                    aboutMeTitleBackground.classList.remove('slide-in'); // Reset title background position
+               }
+               resetAboutMeAnimatedText(); // Already reset when coming into view
+           }
+       });
+   }, { threshold: 0.2 });
+   if (aboutMeSection) {
+        aboutMeObserver.observe(aboutMeSection);
+   }
+    // Toggle Functionality for About Me Section
+    const toggleHeadings = document.querySelectorAll('.toggle-heading');
+
+    // Get the border color of the slide-in window
+    const windowBorderColor = aboutMeSlideInWindow ? getComputedStyle(aboutMeSlideInWindow).borderColor : null;
+
+    toggleHeadings.forEach(heading => {
+        const content = heading.nextElementSibling;
+
+        // Apply the window border color to the toggle content
+        if (content && content.classList.contains('toggle-content') && windowBorderColor) {
+            content.style.borderColor = windowBorderColor;
+        }
+
+        heading.addEventListener('click', function() {
+            if (content && content.classList.contains('toggle-content')) {
+                content.classList.toggle('open');
+                heading.classList.toggle('open'); // Toggles the 'open' class on the heading for chevron rotation
+            }
+        });
+    });
 }); 
