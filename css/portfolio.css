@@ -100,6 +100,7 @@ header {
     background-color: rgba(0, 0, 0, 0.3); /* Adjust opacity */
     border: 2px solid lightblue;
     box-shadow: 0 0 15px 1px rgb(0, 221, 255);
+    backdrop-filter: brightness(0.5);
     padding: 20px;
     position: fixed;
     flex-direction: column;
@@ -107,7 +108,7 @@ header {
     /*align-items: center; /* Center content horizontally */
     top: 60px;
     right: 10px; /* Aligned to the right */
-    width: 50vw;
+    width: 67vw;
     height: auto;
     z-index: 99; /* Lower z-index */
     border-bottom-left-radius: 10px; /* Adjusted radius */
@@ -128,6 +129,9 @@ header {
     text-shadow: 0 0 20px rgb(0, 221, 255), /* Bright blue glow */
                 0 0 0px rgb(0, 221, 255); /* Slightly less intense blue glow */
 }
+.nav-menu a:nth-child(1){
+    margin-top: 70px;
+}
 /* nav menu hover */
 .nav-menu a:hover {
     background-color: #555;
@@ -147,26 +151,41 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80vw;
+    width: 89vw;
     height: auto;
     background-color: rgba(0, 0, 0, 0.3); /* Adjust opacity */
+    backdrop-filter: brightness(0.7);
     border: 2px solid lightblue;
     box-shadow: 0 0 15px 1px rgb(0, 221, 255);
     color: white;
-    text-shadow: 0 0 20px rgb(0, 221, 255), /* Bright blue glow */
-                0 0 0px rgb(0, 221, 255); /* Slightly less intense blue glow */
-    padding: 20px;
+    /*text-shadow: 0 0 20px rgb(0, 221, 255), /* Bright blue glow */
+                /*0 0 0px rgb(0, 221, 255); /* Slightly less intense blue glow */
+    padding: 25px;
     overflow-y: auto;
     z-index: 101; /* Ensure it's on top */
+}
+#contactWindow h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color:#ff6600;
+    text-decoration: underline;
+    text-shadow:0 0 10px rgb(0, 17, 19), /* Bright blue glow */
+                0 -10px 20px rgb(0, 17, 19), /* Slightly less intense blue glow */
+                0 0 10px rgb(0, 17, 19), /* Bright blue glow */
+                0 -10px 20px rgb(0, 17, 19), /* Slightly less intense blue glow */
+                0 0 10px rgb(0, 17, 19), /* Bright blue glow */
+                0 -10px 20px rgb(0, 17, 19), /* Slightly less intense blue glow */
+                0 0 10px rgb(0, 17, 19), /* Bright blue glow */
+                0 -10px 20px rgb(0, 17, 19); /* Slightly less intense blue glow */
 }
 
 .close-button {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 5px;
+    right: 5px;
     width: 20px;
     height: 20px;
-    font-size: 3em;
+    font-size: 1.5em;
     background-color: rgb(0, 221, 255);
     box-shadow: 0 0 15px 1px rgb(0, 221, 255);
     color: white;
@@ -188,41 +207,39 @@ header {
     align-items: center;
     text-decoration: none;
     color: white;
-    margin: 10px;
+    margin: 30px;
 }
 
 #contactWindow .contact-buttons .icon-circle {
-    width: 50px;
-    height: 50px;
+    width: 92px;
+    height: 92px;
     border-radius: 50%;
     background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 5px;
+    margin-bottom: 13px;
     box-shadow: 0 0 15px 1px rgb(0, 221, 255);
 }
 
 #contactWindow .contact-buttons i {
-    font-size: 1.5em;
+    font-size: 4em;
     color: lightgreen;
 }
 
-@media (max-width: 768px) {
-    #contactWindow .contact-buttons i {
-        font-size: 3em; /* Adjust for mobile if needed */
-    }
-}
 
 #contactWindow .contact-buttons .contact-text {
     text-align: center;
-    font-size: 0.9em;
+    font-size: 1.1em;
     white-space: nowrap;
-}
-@media (max-width: 768px) {
-    #contactWindow .contact-buttons .contact-text {
-        font-size: 1em; /* Adjust for mobile if needed */
-    }
+    text-shadow: 0 0 10px rgb(0, 17, 19), /* Bright blue glow */ 
+    0 0px 10px rgb(0, 17, 19), /* Slightly less intense blue glow */ 
+    0 0 10px rgb(0, 17, 19), /* Bright blue glow */ 
+    0 0px 10px rgb(0, 17, 19), /* Slightly less intense blue glow */ 
+    0 0 10px rgb(0, 17, 19), /* Bright blue glow */ 
+    0 0px 10px rgb(0, 17, 19), /* Slightly less intense blue glow */ 
+    0 0 10px rgb(0, 17, 19), /* Bright blue glow */ 
+    0 0px 10px rgb(0, 17, 19);
 }
 
 #contactWindow .contact-buttons a:hover .icon-circle,
@@ -271,13 +288,9 @@ header {
 
 #contactWindow .contact-buttons a:nth-child(4) i {
     color: rgb(144, 203, 92);
-    font-size: 2.5em;
+    font-size: 5.4em;
 }
-@media (max-width: 768px) {
-    #contactWindow .contact-buttons a:nth-child(4) i {
-        font-size: 4em; /* Adjust for mobile if needed */
-    }
-}
+
 
 /* Tooltips/ text that appear on hover
 ********************************************/
@@ -354,30 +367,32 @@ header {
     width: 100%; /* Use 100% of the parent's width */
     max-width: 1200px; /* Optional: Limit width on larger screens */
     text-align: left; /* Left align text inside */
-    padding: 60px; /* Add padding for spacing */
+    padding: 40px; /* Add padding for spacing */
     box-sizing: border-box; /* Include padding in width */
     margin: 0 auto; /* Center the text block */
 }
 
 .text-block h2 {
-    font-size: 2.5em;
+    font-size: 2.1em;
     margin-bottom: 10px;
     font-family: stabil_grotesk;
 }
 
 .text-block h3 {
-    font-size: 2.2em;
+    font-size: 2.0em;
     margin: 5px 0;
     font-family: stabil_grotesk;
     font-weight: normal;
 }
 
 .text-block p {
-    font-size: 1.7em;
+    font-size: 1.2em;
     margin: 0px 0;
     text-align: left;
     font-family: stabil;
     display: block;
+    line-height: 1.6em;
+    transform: scale(1, 1.2);
 }
 
 .jd-name {
@@ -963,7 +978,7 @@ header {
     font-size: 1.125em;
     letter-spacing: 2px;
     line-height: 1.5em;
-    margin-top: 300px;
+    margin-top: 915px;
     /*margin-left: 40px;*/
     /*width: 100%; /* Stretch across full width */
     box-sizing: border-box;
@@ -979,7 +994,7 @@ header {
     letter-spacing: 2px;
     line-height: 1.5em;
     /*margin-top: 20px;*/
-    /*margin-left: 40px;*/
+    margin-left: -20px;
     /*width: 100%; /* Stretch across full width */
     box-sizing: border-box;
     /* Remove max-width and margin: 0 auto; */
@@ -987,13 +1002,13 @@ header {
 .intro-text p {
     flex: 1 0 100%;
     text-align: left;
-    padding: 20px;
+    /*padding: 20px;*/
     color: white;
     font-family: stabil_grotesk, sans-serif;
     font-size: 1.125em;
     letter-spacing: 2px;
     line-height: 1.5em;
-    /*margin-top: 20px;*/
+    margin-top: 20px;
     /*margin-left: 40px;*/
     /*width: 100%; /* Stretch across full width */
     box-sizing: border-box;
@@ -1028,7 +1043,7 @@ header {
     padding: 20px;
     box-sizing: border-box;
     width: 90%;
-    margin: 20px auto;
+    margin-top: 915px;
 }
 
 #technologies-i-use .section-container {
@@ -1134,16 +1149,17 @@ header {
     Autotyping Title above each Section
 *******************************************/
 #technologies-i-use span.animated-title {
-    margin-top: 4px;
+    margin-top: -3%;
     position: absolute;
     top: 87%;
-    left: 40%;
+    left: -10%;
     transform: translate(-50%, -50%);
     white-space: nowrap;
     font-family: "Colossalis", arial, sans-serif;
     line-height: 1;
     text-transform: uppercase;
-    font-size: 1.5em;
+    font-size: 1.12em;
+    transform: scale(1, 1.3);
     font-weight: bold;
     top: 0px;
     z-index: 2; /* Ensure it's above the divider */
@@ -1326,6 +1342,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 35%;
 }
 
 #backendDetailsPopup.open {
@@ -1418,6 +1435,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 24%;
 }
 
 #databaseDetailsPopup.open {
@@ -1697,6 +1715,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 16%;
 }
 
 #cloudDetailsPopup.open {
@@ -1779,7 +1798,7 @@ header {
     padding: 20px;
     box-sizing: border-box;
     width: 90%;
-    margin: 20px auto;
+    margin-top: 915px;
 }
 
 #projects .section-container {
@@ -1788,7 +1807,6 @@ header {
     max-width: 100%;
     height: 100%;
     max-height: 100%;
-
 }
 
 #projects .background-image-container {
@@ -1884,7 +1902,7 @@ header {
     margin-top: 4px;
     position: absolute;
     top: 87%;
-    left: 20%;
+    left: 25%;
     transform: translate(-50%, -50%);
     white-space: nowrap;
     font-family: "Colossalis", arial, sans-serif;
@@ -1971,19 +1989,9 @@ header {
     min-height: 250px; /* Set a minimum height to ensure enough space even with shorter content */
     display: flex; /* Use flexbox to control the layout of elements within the card */
     flex-direction: column; /* Stack the image, info, and tags vertically */
-}
-/* Adjust card widths for different screen sizes */
-@media (min-width: 768px) {
-    #projects .project-card {
-        width: 60%; /* Example */
-    }
+    margin-top: 20px;
 }
 
-@media (min-width: 1200px) {
-    #projects .project-card {
-        width: 40%; /* Example */
-    }
-}
 
 #projects .slider-indicator {
     display: flex;
@@ -2162,7 +2170,7 @@ header {
     padding: 20px;
     box-sizing: border-box;
     width: 90%;
-    margin: 20px auto;
+    margin-top: 915px;
 }
 #resume .section-container {
     position: relative; /* For positioning other elements within */
@@ -2351,7 +2359,7 @@ header {
     padding: 20px;
     box-sizing: border-box;
     width: 90%;
-    margin: 20px auto;
+    margin-top: 915px;
 }
 
 #education .section-container {
@@ -2456,7 +2464,7 @@ header {
     margin-top: 4px;
     position: absolute;
     top: 87%;
-    left: 20%;
+    left: 25%;
     transform: translate(-50%, -50%);
     white-space: nowrap;
     font-family: "Colossalis", arial, sans-serif;
@@ -2544,7 +2552,7 @@ header {
 }
 
 #education .education-card {
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    backdrop-filter: brightness(0.1);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -2575,7 +2583,7 @@ header {
 
 #education .education-grid .education-card img {
     width: 93%; /* Adjust this value as needed */
-    height:50; /* Adjust this value as needed */
+    height:93%; /* Adjust this value as needed */
     object-fit: cover; /* Ensures the image covers the defined area without distortion (crops if necessary) */
 }
 #education .education-grid .education-card img {
@@ -2661,7 +2669,7 @@ header {
     padding: 20px;
     box-sizing: border-box;
     width: 90%;
-    margin: 20px auto;
+    margin-top: 915px;
 }
 
 #about-me .section-container {
@@ -2767,7 +2775,7 @@ header {
     margin-top: 4px;
     position: absolute;
     top: 87%;
-    left: 20%;
+    left: 25%;
     transform: translate(-50%, -50%);
     white-space: nowrap;
     font-family: "Colossalis", arial, sans-serif;
@@ -2777,7 +2785,7 @@ header {
     font-weight: bold;
     top: 0px;
     z-index: 2; /* Ensure it's above the divider */
-    color: rgb(0, 46, 53);
+    color: rgb(255, 255, 255);
     text-shadow: 0 0 8px rgb(0, 221, 255), /* Bright blue glow */
                  0 0 2px rgb(0, 221, 255); /* Slightly less intense blue glow */
     overflow: hidden; /* Hide typing cursor initially */
