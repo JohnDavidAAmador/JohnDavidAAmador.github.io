@@ -285,8 +285,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const portfolioContentsSection = document.getElementById('portfolio-contents');
     const contentsScrollTrigger = document.querySelector('#contentsScrollTrigger'); // ADD THE #
 
-    //test to see if portfolio contents section is found
-    let initialLoad = true; // Flag to prevent the initial trigger
+
+    if (!portfolioContentsSection) {
+        console.error("Error: #portfolio-contents element not found!");
+    } else {
+        console.log("#portfolio-contents element found:", portfolioContentsSection);
+    }
+
+    if (!contentsScrollTrigger) {
+        console.error("Error: #contentsScrollTrigger element not found!");
+    } else {
+        console.log("#contentsScrollTrigger element found:", contentsScrollTrigger);
+    }
+
+    let initialLoad = true; // Flag to handle the initial state
 
     if (portfolioContentsSection && contentsScrollTrigger && profileRecord) {
         const contentsScrollObserver = new IntersectionObserver((entries) => {
@@ -333,13 +345,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 } else if (entry.isIntersecting && profileRecord.classList.contains('expanded')) {
                     console.log("Contents scroll trigger is in view, and profile-record is expanded. Not attempting scroll.");
                 } else if (entry.isIntersecting && initialLoad) {
-                    console.log("Contents scroll trigger is in view on initial load. Not scrolling.");
+                    console.log("Contents scroll trigger is in view on initial load. Not scrolling (yet).");
                 }
             });
-            // After the first intersection (even if it's on initial load), set initialLoad to false
+            // After any intersection, set initialLoad to false
             if (initialLoad) {
                 initialLoad = false;
-                console.log("Initial load complete. Subsequent intersections will be considered for scrolling.");
+                console.log("Initial load completed. Subsequent intersections will be considered for scrolling.");
             }
         }, {
             rootMargin: '0px 0px 0px 0px',
@@ -356,7 +368,6 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error("Error: .profile-record element not found!");
         }
     }
-
 
     //typewriter
     function typeWriter(element, text, speed, callback) {
