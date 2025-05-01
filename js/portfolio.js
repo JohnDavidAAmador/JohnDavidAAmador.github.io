@@ -166,8 +166,6 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("stats2Overlay:", stats2Overlay);
     console.log("stats3Overlay:", stats3Overlay);
 
-    if (profileRecord && expandButton && collapseButton && introTechOverlay && fingerprintOverlay && retinaOverlay && stats2Overlay && stats3Overlay) {
-        // Initially hide the overlays by default in CSS
 
         expandButton.addEventListener('click', function() {
             console.log("Expand button clicked - Animation Test");
@@ -232,9 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         });
-    } else {
-        console.log("Key elements for profile animation not found.");
-    }
+            
 
     //profile photo changes
     function changeProfileImage() {
@@ -285,6 +281,39 @@ document.addEventListener('DOMContentLoaded', function() {
     observer_profile.observe(profileImage);
     imageChangeInterval = setInterval(changeProfileImage, 4000); // Start image switching initially
 
+    
+    const portfolioContentsSection = document.getElementById('portfolio-contents');
+    const contentsScrollTrigger = document.querySelector('#contentsScrollTrigger'); // ADD THE #
+
+    //test to see if portfolio contents section is found
+    if (!portfolioContentsSection) {
+        console.error("Error: #portfolio-contents element not found!");
+    } else {
+        console.log("#portfolio-contents element found:", portfolioContentsSection);
+    }
+
+    if (portfolioContentsSection && contentsScrollTrigger && profileRecord) {
+        const contentsScrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !profileRecord.classList.contains('expanded')) {
+                    console.log("Contents scroll trigger is in view, and profile-record is not expanded. Attempting scroll.");
+                    portfolioContentsSection.scrollIntoView({ behavior: 'smooth', block: 'start'});
+                }
+                else if (entry.isIntersecting && !profileRecord.classList.contains('collapsed')) {
+                    console.log("Contents scroll trigger is in view, and profile-record is not collapsed. Not attempting scroll.");
+                }
+            });
+        }, {
+            rootMargin: '0px 0px 0px 0px',
+            threshold: 0.3 // Trigger when 10% of the trigger is visible
+        });
+    
+        contentsScrollObserver.observe(contentsScrollTrigger);
+        console.log("contentsScrollObserver observing:", contentsScrollTrigger);
+    }
+
+
+    //typewriter
     function typeWriter(element, text, speed, callback) {
         let i = 0;
         function type() {

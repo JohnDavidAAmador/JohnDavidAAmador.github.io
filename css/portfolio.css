@@ -23,7 +23,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    margin: 0;
+    margin: 0;  
     padding: 0;
     overflow-x: hidden; /* Prevent horizontal scrolling */
     font-size: 16px;
@@ -436,11 +436,11 @@ header {
     display: flex;
     flex-direction: column;
     margin-top: 100px;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 .profile-record {
     position: relative;
-    overflow: hidden;
+    /*overflow: hidden;*/
     width: 100%;
     max-width: 1200px;
     margin: 20px auto;
@@ -964,7 +964,21 @@ header {
     left: 100px;
     z-index: 12;
 }
-/* Stats Overlay */
+#contentsScrollTrigger {
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    background-color: rgb(0, 221, 255);
+    color: white;
+    border: 0.5px solid white;
+    margin-top: 50%;
+    /* Make it invisible */
+    opacity: 1;
+    /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
+       depending on exactly when you want the trigger to fire. A small height
+       might make the triggering feel more precise. */
+    width: 100%;
+    height: 50px; /* Or adjust as needed */
+    /* Optional: Add some margin to position it relative to the expandButton */
+}
 
 /*
     Intro Text 
