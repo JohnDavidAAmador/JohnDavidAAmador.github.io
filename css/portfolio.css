@@ -73,7 +73,7 @@ header {
     justify-content: center;
     color: lightblue;
     box-shadow: 0 0 15px 1px rgb(0, 221, 255);
-    font-size: 2em;
+    font-size: 3em;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -84,13 +84,9 @@ header {
     /*z-index: 100; /* Higher z-index */
 }
 .hamburger-menu.sticky {
-    background-color: rgba(11, 169, 222, 0.614);;
+    background-color: rgba(11, 169, 222, 0.614);
 }
-@media (max-width: 768px) {
-    .hamburger-menu {
-        font-size: 3em; /* Adjust for mobile if needed */
-    }
-}
+
 /************************
 /* Navigation Menu
 *************************/

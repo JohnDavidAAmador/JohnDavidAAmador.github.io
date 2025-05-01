@@ -286,30 +286,75 @@ document.addEventListener('DOMContentLoaded', function() {
     const contentsScrollTrigger = document.querySelector('#contentsScrollTrigger'); // ADD THE #
 
     //test to see if portfolio contents section is found
-    if (!portfolioContentsSection) {
-        console.error("Error: #portfolio-contents element not found!");
-    } else {
-        console.log("#portfolio-contents element found:", portfolioContentsSection);
-    }
+    let initialLoad = true; // Flag to prevent the initial trigger
 
     if (portfolioContentsSection && contentsScrollTrigger && profileRecord) {
         const contentsScrollObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting && !profileRecord.classList.contains('expanded')) {
-                    console.log("Contents scroll trigger is in view, and profile-record is not expanded. Attempting scroll.");
-                    portfolioContentsSection.scrollIntoView({ behavior: 'smooth', block: 'start'});
-                }
-                else if (entry.isIntersecting && !profileRecord.classList.contains('collapsed')) {
-                    console.log("Contents scroll trigger is in view, and profile-record is not collapsed. Not attempting scroll.");
+                if (entry.isIntersecting && !profileRecord.classList.contains('expanded') && !initialLoad) {
+                    console.log("Contents scroll trigger is in view, profile-record is not expanded, and it's not the initial load. Attempting scroll and expand.");
+                    portfolioContentsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                    // *** After scrolling, *then* expand the profileRecord ***
+                    setTimeout(() => { // Add a small delay after the scroll
+                        console.log("Contents scroll trigger is in view. Attempting expand.");
+                        console.log("Expand on scroll trigger - Animation Test");
+                        profileRecord.classList.add('expanded');
+                        profileRecord.classList.remove('collapsed'); // Ensure 'collapsed' is removed
+
+                        // Handle the overlays (keep this logic here if it's what you want)
+                        const allOverlays = [
+                            document.querySelector('.overlay-window.intro-tech'),
+                            document.querySelector('.overlay-window.fingerprint-overlay'),
+                            document.querySelector('.overlay-window.retina-overlay'),
+                            document.querySelector('.overlay-window.stats2-overlay'),
+                            document.querySelector('.overlay-window.stats3-overlay')
+                        ];
+
+                        allOverlays.forEach(overlay => {
+                            if (overlay) {
+                                // Reset and then set transform for animation
+                                if (overlay.classList.contains('intro-tech')) {
+                                    overlay.style.transform = 'translateX(200px)';
+                                } else if (overlay.classList.contains('fingerprint-overlay') || overlay.classList.contains('retina-overlay')) {
+                                    overlay.style.transform = 'translateX(-200%)';
+                                } else if (overlay.classList.contains('stats2-overlay')) {
+                                    overlay.style.transform = 'translateX(200%)';
+                                } else if (overlay.classList.contains('stats3-overlay')) {
+                                    overlay.style.transform = 'translateY(200%)';
+                                }
+                                overlay.offsetHeight; // Force reflow
+                                overlay.style.transform = 'translateX(0)';
+                                overlay.style.opacity = '1';
+                                overlay.classList.add('show');
+                            }
+                        });
+                    }, 500); // Adjust delay as needed
+                } else if (entry.isIntersecting && profileRecord.classList.contains('expanded')) {
+                    console.log("Contents scroll trigger is in view, and profile-record is expanded. Not attempting scroll.");
+                } else if (entry.isIntersecting && initialLoad) {
+                    console.log("Contents scroll trigger is in view on initial load. Not scrolling.");
                 }
             });
+            // After the first intersection (even if it's on initial load), set initialLoad to false
+            if (initialLoad) {
+                initialLoad = false;
+                console.log("Initial load complete. Subsequent intersections will be considered for scrolling.");
+            }
         }, {
             rootMargin: '0px 0px 0px 0px',
-            threshold: 0.3 // Trigger when 10% of the trigger is visible
+            threshold: 0.8 // Adjust as needed
         });
-    
+
+        // Start observing the trigger
         contentsScrollObserver.observe(contentsScrollTrigger);
-        console.log("contentsScrollObserver observing:", contentsScrollTrigger);
+        console.log("Observing contentsScrollTrigger.");
+
+    } else {
+        console.log("One or more required elements for the IntersectionObserver were not found.");
+        if (!profileRecord) {
+            console.error("Error: .profile-record element not found!");
+        }
     }
 
 
