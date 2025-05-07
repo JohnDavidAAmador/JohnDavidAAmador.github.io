@@ -308,7 +308,7 @@ header {
 .main-title-container{
         position: absolute;
         padding: 0px; /* Adjust padding as needed */
-        width: 100%; /* Full viewport width */
+        width: 110%; /* Full viewport width */
         height: 70px;
         top:0px;
         left:0px;
