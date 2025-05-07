@@ -965,13 +965,14 @@ header {
     background-color: rgb(0, 221, 255);
     color: white;
     border: 0.5px solid white;
-    margin-top: 50%;
+    margin-top: 200px;
+    margin-left: 50px;
     /* Make it invisible */
     opacity: 1;
     /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
        depending on exactly when you want the trigger to fire. A small height
        might make the triggering feel more precise. */
-    width: 50%;
+    width: 50px;
     height: 50px; /* Or adjust as needed */
     /* Optional: Add some margin to position it relative to the expandButton */
 }
