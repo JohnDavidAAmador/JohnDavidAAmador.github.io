@@ -308,10 +308,11 @@ header {
 .main-title-container{
         position: absolute;
         padding: 0px; /* Adjust padding as needed */
-        width: 110%; /* Full viewport width */
+        width: 100%; /* Full viewport width */
         height: 70px;
         top:0px;
         left:0px;
+        overflow-x: clip;
 }
 .main-title-container :after, :before {
     box-sizing: border-box;
@@ -432,11 +433,11 @@ header {
     display: flex;
     flex-direction: column;
     margin-top: 100px;
-    /*overflow: hidden;*/
+    overflow: hidden;
 }
 .profile-record {
     position: relative;
-    /*overflow: hidden;*/
+    overflow: hidden;
     width: 100%;
     max-width: 1200px;
     margin: 20px auto;
