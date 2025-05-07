@@ -971,7 +971,7 @@ header {
     /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
        depending on exactly when you want the trigger to fire. A small height
        might make the triggering feel more precise. */
-    width: 100%;
+    width: 50%;
     height: 50px; /* Or adjust as needed */
     /* Optional: Add some margin to position it relative to the expandButton */
 }
