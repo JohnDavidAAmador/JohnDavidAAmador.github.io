@@ -157,7 +157,7 @@ header {
     /*text-shadow: 0 0 20px rgb(0, 221, 255), /* Bright blue glow */
                 /*0 0 0px rgb(0, 221, 255); /* Slightly less intense blue glow */
     padding: 25px;
-    overflow-y: auto;
+    /*overflow-y: auto;*/
     z-index: 101; /* Ensure it's on top */
 }
 #contactWindow h2 {
