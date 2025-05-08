@@ -45,10 +45,17 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
 
+        isSnapping = true;
+        console.log("NavMenu Triggered, isSnapping set to True.")
         document.querySelector(this.getAttribute('href')).scrollIntoView({
             behavior: 'smooth'
         });
+        setTimeout(() => {
+            isSnapping = false;
+            console.log("NavMenu Triggered Complete, isSnapping set to False.");
+        }, 700); // Changed to 700ms for consistency with other smooth scrolls
     });
+    
 });
 
 // Change Hamburger Menu (green) on scroll
@@ -134,7 +141,13 @@ tooltipElements.forEach(element => {
 function scrollToSection(sectionId) {
     const section = document.getElementById(sectionId);
     if (section) {
+        isSnapping = true;
+        console.log("NavMenu Scroll-to Ttiggered, isSnapping set to True.")
         section.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => {
+            isSnapping = false;
+            console.log("NavMenu Scroll-to Triggered Complete, isSnapping set to False.");
+        }, 700); // Changed to 700ms for consistency with other smooth scrolls
     } else {
         console.error(`Section with ID '${sectionId}' not found.`);
     }
@@ -281,9 +294,10 @@ document.addEventListener('DOMContentLoaded', function() {
     observer_profile.observe(profileImage);
     imageChangeInterval = setInterval(changeProfileImage, 4000); // Start image switching initially
 
-    
+    // Contents Expand Trigger
+
     const portfolioContentsSection = document.getElementById('portfolio-contents');
-    const contentsScrollTrigger = document.querySelector('#contentsScrollTrigger'); // ADD THE #
+    const contentsExpandTrigger = document.querySelector('#contentsExpandTrigger'); // ADD THE #
 
 
     if (!portfolioContentsSection) {
@@ -292,25 +306,28 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("#portfolio-contents element found:", portfolioContentsSection);
     }
 
-    if (!contentsScrollTrigger) {
-        console.error("Error: #contentsScrollTrigger element not found!");
+    if (!contentsExpandTrigger) {
+        console.error("Error: #contentsExpandTrigger element not found!");
     } else {
-        console.log("#contentsScrollTrigger element found:", contentsScrollTrigger);
+        console.log("#contentsExpandTrigger element found:", contentsExpandTrigger);
     }
 
     let initialLoad = true; // Flag to handle the initial state
+    let isSnapping = false;
 
-    if (portfolioContentsSection && contentsScrollTrigger && profileRecord) {
-        const contentsScrollObserver = new IntersectionObserver((entries) => {
+    if (portfolioContentsSection && contentsExpandTrigger && profileRecord) {
+        const contentsExpandObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting && !profileRecord.classList.contains('expanded') && !initialLoad) {
-                    console.log("Contents scroll trigger is in view, profile-record is not expanded, and it's not the initial load. Attempting scroll and expand.");
+                if (entry.isIntersecting && !profileRecord.classList.contains('expanded') && !initialLoad && !isSnapping) {
+                    console.log("Contents expand trigger is in view, profile-record is not expanded, and it's not the initial load. Attempting scroll and expand.");
+                    isSnapping = true;
+                    console.log("Contents Expand Triggered, isSnapping set to True")
                     portfolioContentsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
                     // *** After scrolling, *then* expand the profileRecord ***
                     setTimeout(() => { // Add a small delay after the scroll
-                        console.log("Contents scroll trigger is in view. Attempting expand.");
-                        console.log("Expand on scroll trigger - Animation Test");
+                        console.log("Contents expand trigger is in view. Attempting expand.");
+                        console.log("Expand on scroll trigger - Animation executing");
                         profileRecord.classList.add('expanded');
                         profileRecord.classList.remove('collapsed'); // Ensure 'collapsed' is removed
 
@@ -340,12 +357,31 @@ document.addEventListener('DOMContentLoaded', function() {
                                 overlay.style.opacity = '1';
                                 overlay.classList.add('show');
                             }
+                            
                         });
+                        // --- TURN OFF THIS OBSERVER RIGHT AFTER EXPAND IS EXECUTED ---
+                        if (contentsExpandObserver) { // Check if observer exists
+                            contentsExpandObserver.unobserve(contentsExpandTrigger);
+                            console.log("Contents Expand Observer: Stopped observing (contents profile expanded).");
+                        }
+                        // -- Activate ONLY the contentsIntroScrollObserver now
+                        if (contentsIntroScrollObserver && contentsIntroScrollTrigger) {
+                            contentsIntroScrollObserver.observe(contentsIntroScrollTrigger);
+                            console.log('Scroll Observer for ${contentsIntroScrollTrigger}: Started observing.');
+                        } else {
+                            console.error("Cannot activate contentsIntroScrollObserver: Observer or its trigger element not found.");
+                        }
+
+                         
                     }, 500); // Adjust delay as needed
+                    setTimeout(() => {
+                        isSnapping = false;
+                        console.log("Contents Expand Triggered complete, isSnapping set to False.");
+                    }, 700); // Changed to 700ms for consistency with other smooth scrolls
                 } else if (entry.isIntersecting && profileRecord.classList.contains('expanded')) {
-                    console.log("Contents scroll trigger is in view, and profile-record is expanded. Not attempting scroll.");
+                    console.log("Contents expand trigger is in view, and profile-record is expanded. Not attempting scroll.");
                 } else if (entry.isIntersecting && initialLoad) {
-                    console.log("Contents scroll trigger is in view on initial load. Not scrolling (yet).");
+                    console.log("Contents expand trigger is in view on initial load. Not scrolling (yet).");
                 }
             });
             // After any intersection, set initialLoad to false
@@ -359,15 +395,59 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Start observing the trigger
-        contentsScrollObserver.observe(contentsScrollTrigger);
-        console.log("Observing contentsScrollTrigger.");
+        contentsExpandObserver.observe(contentsExpandTrigger);
+        console.log("Observing contentsExpandTrigger.");
 
     } else {
-        console.log("One or more required elements for the IntersectionObserver were not found.");
+        console.log("One or more required elements for the contentsExpandObserver were not found.");
         if (!profileRecord) {
             console.error("Error: .profile-record element not found!");
         }
     }
+
+    // Contents Intro Trigger
+    //const portfolioContentsSection = document.getElementById('portfolio-contents'); / already previously declared above
+    console.log("Contents/ Intro Smooth Scroll Trigger, portfolio-contents address found", portfolioContentsSection);
+    const introSection = document.getElementById('intro'); // Make sure introSection is declared
+    console.log("Contents/ Intro Smooth Scroll Trigger, introSection address found", introSection);
+    const contentsIntroScrollTrigger = document.getElementById('contentsIntroScrollTrigger'); // Select by ID
+    console.log("Contents/ Intro Smooth Scroll Trigger, contentsIntroScrollTrigger found", contentsIntroScrollTrigger);
+
+    
+    console.log("Contents/ Intro Smooth Scroll Trigger, isSnapping set to false.");
+
+    // Declare the observer globally (within DOMContentLoaded) so it can be accessed later.
+    // If you have other snap observers, you'll need to declare them similarly.
+    let contentsIntroScrollObserver; // Changed 'const observer' to 'let contentsIntroSnapObserver'
+    console.log("let contentsIntroScrollObserver;");
+
+    if (portfolioContentsSection && introSection && contentsIntroScrollTrigger) {
+        console.log("Contents/ Intro Smooth Scroll Trigger, portfolioContentsSection && introSection && contentsIntroScrollTrigger found");
+        contentsIntroScrollObserver = new IntersectionObserver((entries) => { // Use the global variable
+            entries.forEach(entry => {
+                // --- CRITICAL CHANGE 1: Add the 'expanded' check ---
+                if (profileRecord.classList.contains('expanded') && entry.isIntersecting && !isSnapping) {
+                    isSnapping = true;
+                    console.log("Contents/ Intro Smooth Scroll Trigger, isSnapping set to true.");
+
+                    introSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    console.log("Scrolling to intro:", introSection);
+
+                    setTimeout(() => {
+                        isSnapping = false;
+                        console.log("Contents/ Intro Smooth Scroll Trigger, isSnapping set to false.");
+                    }, 700); // Changed to 700ms for consistency with other smooth scrolls
+                }
+            });
+        }, {
+            threshold: 0.1 // Changed to 0.1 for consistency with other triggers
+        });
+
+    } else {
+        console.error("Could not find the contents section, intro section, or the contentsIntroScrollTrigger.");
+    }
+
+    //
 
     //typewriter
     function typeWriter(element, text, speed, callback) {

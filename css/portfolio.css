@@ -961,7 +961,7 @@ header {
     left: 100px;
     z-index: 12;
 }
-#contentsScrollTrigger {
+#contentsExpandTrigger {
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
     background-color: rgb(0, 221, 255);
     color: white;
@@ -970,6 +970,41 @@ header {
     margin-left: 50px;
     /* Make it invisible */
     opacity: 0;
+    /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
+       depending on exactly when you want the trigger to fire. A small height
+       might make the triggering feel more precise. */
+    width: 50px;
+    height: 50px; /* Or adjust as needed */
+    /* Optional: Add some margin to position it relative to the expandButton */
+}
+
+#contentsIntroScrollTrigger
+{
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    background-color: rgb(0, 221, 255);
+    color: white;
+    border: 0.5px solid white;
+    margin-top: 50px;
+    margin-left: 50px;
+    /* Make it invisible */
+    opacity: 1;
+    /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
+       depending on exactly when you want the trigger to fire. A small height
+       might make the triggering feel more precise. */
+    width: 50px;
+    height: 50px; /* Or adjust as needed */
+    /* Optional: Add some margin to position it relative to the expandButton */
+}
+#introContentsScrollTrigger
+{
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    background-color: rgb(255, 132, 0);
+    color: white;
+    border: 0.5px solid white;
+    margin-top: 915px;
+    margin-left: 50px;
+    /* Make it invisible */
+    opacity: 1;
     /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
        depending on exactly when you want the trigger to fire. A small height
        might make the triggering feel more precise. */
@@ -990,7 +1025,7 @@ header {
     font-size: 1.125em;
     letter-spacing: 2px;
     line-height: 1.5em;
-    margin-top: 915px;
+    margin-top: 50px;
     /*margin-left: 40px;*/
     /*width: 100%; /* Stretch across full width */
     box-sizing: border-box;
