@@ -447,7 +447,50 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error("Could not find the contents section, intro section, or the contentsIntroScrollTrigger.");
     }
 
-    //
+    //Intro Contents Trigger
+     // Contents Intro Trigger
+    //const portfolioContentsSection = document.getElementById('portfolio-contents'); / already previously declared above
+    console.log("introContents Smooth Scroll Trigger, portfolio-contents address found", portfolioContentsSection);
+    const introContentsScrollTrigger = document.getElementById('introContentsScrollTrigger'); // Select by ID
+    console.log("introContents Smooth Scroll Trigger, introContentsScrollTrigger found", introContentsScrollTrigger);
+
+    
+    console.log("introContents Smooth Scroll Trigger, isSnapping set to false.");
+
+    // Declare the observer globally (within DOMContentLoaded) so it can be accessed later.
+    // If you have other snap observers, you'll need to declare them similarly.
+    let introContentsScrollObserver; // Changed 'const observer' to 'let contentsIntroSnapObserver'
+    console.log("let introContentsScrollObserver;");
+
+    if (portfolioContentsSection && introContentsScrollTrigger) {
+        console.log("introContents: portfolioContentsSection && introContentsScrollTrigger found");
+        introContentsScrollObserver = new IntersectionObserver((entries) => { // Use the global variable
+            entries.forEach(entry => {
+                // --- CRITICAL CHANGE 1: Add the 'expanded' check ---
+                if (entry.isIntersecting && isSnapping==false) {
+                    isSnapping = true;
+                    console.log("introContents Smooth Scroll Trigger, isSnapping set to true.");
+
+                    portfolioContentsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    console.log("Scrolling to intro:", portfolioContentsSection);
+
+                    setTimeout(() => {
+                        isSnapping = false;
+                        console.log("introContents Smooth Scroll Trigger, isSnapping set to false.");
+                    }, 700); // Changed to 700ms for consistency with other smooth scrolls
+                }
+            });
+        }, {
+            threshold: 0.1 // Changed to 0.1 for consistency with other triggers
+        });
+        // Start observing the trigger
+        introContentsScrollObserver.observe(introContentsScrollTrigger);
+        console.log("Observing introContentsScrollTrigger.");
+
+    } else {
+        console.error("Could not find the portfolioContentsSection or the introContentsScrollTrigger.");
+    }
+
 
     //typewriter
     function typeWriter(element, text, speed, callback) {
