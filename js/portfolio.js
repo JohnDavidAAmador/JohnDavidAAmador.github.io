@@ -53,7 +53,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         setTimeout(() => {
             isSnapping = false;
             console.log("NavMenu Triggered Complete, isSnapping set to False.");
-        }, 700); // Changed to 700ms for consistency with other smooth scrolls
+        }, 3000); // Changed to 700ms for consistency with other smooth scrolls
     });
     
 });
@@ -147,7 +147,7 @@ function scrollToSection(sectionId) {
         setTimeout(() => {
             isSnapping = false;
             console.log("NavMenu Scroll-to Triggered Complete, isSnapping set to False.");
-        }, 700); // Changed to 700ms for consistency with other smooth scrolls
+        }, 3000); // Changed to 700ms for consistency with other smooth scrolls
     } else {
         console.error(`Section with ID '${sectionId}' not found.`);
     }
