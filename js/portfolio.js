@@ -318,7 +318,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (portfolioContentsSection && contentsExpandTrigger && profileRecord) {
         const contentsExpandObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting && !profileRecord.classList.contains('expanded') && !initialLoad && !isSnapping) {
+                if (entry.isIntersecting && !profileRecord.classList.contains('expanded') && !initialLoad && isSnapping==false) {
                     console.log("Contents expand trigger is in view, profile-record is not expanded, and it's not the initial load. Attempting scroll and expand.");
                     isSnapping = true;
                     console.log("Contents Expand Triggered, isSnapping set to True")
@@ -426,7 +426,7 @@ document.addEventListener('DOMContentLoaded', function() {
         contentsIntroScrollObserver = new IntersectionObserver((entries) => { // Use the global variable
             entries.forEach(entry => {
                 // --- CRITICAL CHANGE 1: Add the 'expanded' check ---
-                if (profileRecord.classList.contains('expanded') && entry.isIntersecting && !isSnapping) {
+                if (profileRecord.classList.contains('expanded') && entry.isIntersecting && isSnapping==false) {
                     isSnapping = true;
                     console.log("Contents/ Intro Smooth Scroll Trigger, isSnapping set to true.");
 
