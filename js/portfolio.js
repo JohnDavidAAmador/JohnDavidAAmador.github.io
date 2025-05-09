@@ -53,7 +53,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         setTimeout(() => {
             isSnapping = false;
             console.log("NavMenu Triggered Complete, isSnapping set to False.");
-        }, 3000); // Changed to 700ms for consistency with other smooth scrolls
+        }, 700); // Changed to 700ms for consistency with other smooth scrolls
     });
     
 });
@@ -147,7 +147,7 @@ function scrollToSection(sectionId) {
         setTimeout(() => {
             isSnapping = false;
             console.log("NavMenu Scroll-to Triggered Complete, isSnapping set to False.");
-        }, 3000); // Changed to 700ms for consistency with other smooth scrolls
+        }, 700); // Changed to 700ms for consistency with other smooth scrolls
     } else {
         console.error(`Section with ID '${sectionId}' not found.`);
     }
@@ -367,7 +367,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         // -- Activate ONLY the contentsIntroScrollObserver now
                         if (contentsIntroScrollObserver && contentsIntroScrollTrigger) {
                             contentsIntroScrollObserver.observe(contentsIntroScrollTrigger);
-                            console.log('Scroll Observer for ${contentsIntroScrollTrigger}: Started observing.');
+                            console.log(`Scroll Observer for '${contentsIntroScrollTrigger}' : Started observing.`);
                         } else {
                             console.error("Cannot activate contentsIntroScrollObserver: Observer or its trigger element not found.");
                         }
