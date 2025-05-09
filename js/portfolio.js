@@ -313,12 +313,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     let initialLoad = true; // Flag to handle the initial state
-    let isSnapping = false;
 
     if (portfolioContentsSection && contentsExpandTrigger && profileRecord) {
         const contentsExpandObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting && !profileRecord.classList.contains('expanded') && !initialLoad && isSnapping==false) {
+                if (entry.isIntersecting && !profileRecord.classList.contains('expanded') && !initialLoad) {
                     console.log("Contents expand trigger is in view, profile-record is not expanded, and it's not the initial load. Attempting scroll and expand.");
                     isSnapping = true;
                     console.log("Contents Expand Triggered, isSnapping set to True")
@@ -358,20 +357,14 @@ document.addEventListener('DOMContentLoaded', function() {
                                 overlay.classList.add('show');
                             }
                             
-                        });
-                        // --- TURN OFF THIS OBSERVER RIGHT AFTER EXPAND IS EXECUTED ---
-                        if (contentsExpandObserver) { // Check if observer exists
+                            //unobserve contents-expand
                             contentsExpandObserver.unobserve(contentsExpandTrigger);
                             console.log("Contents Expand Observer: Stopped observing (contents profile expanded).");
-                        }
-                        // -- Activate ONLY the contentsIntroScrollObserver now
-                        if (contentsIntroScrollObserver && contentsIntroScrollTrigger) {
+
+                            //start contents-intro observer
                             contentsIntroScrollObserver.observe(contentsIntroScrollTrigger);
                             console.log(`Scroll Observer for '${contentsIntroScrollTrigger}' : Started observing.`);
-                        } else {
-                            console.error("Cannot activate contentsIntroScrollObserver: Observer or its trigger element not found.");
-                        }
-
+                        });
                          
                     }, 500); // Adjust delay as needed
                     setTimeout(() => {
