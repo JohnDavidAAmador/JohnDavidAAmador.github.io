@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (portfolioContentsSection && contentsExpandTrigger && profileRecord) {
         const contentsExpandObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting && !profileRecord.classList.contains('expanded') && !initialLoad && !isSnapping == true) {
+                if (entry.isIntersecting && !profileRecord.classList.contains('expanded') && !initialLoad && !isSnapping) {
                     console.log("Contents expand trigger is in view, profile-record is not expanded, and it's not the initial load. Attempting scroll and expand.");
                     isSnapping = true;
                     console.log("Contents Expand Triggered, isSnapping set to True")
