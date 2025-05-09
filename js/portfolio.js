@@ -363,7 +363,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                             //start contents-intro observer
                             contentsIntroScrollObserver.observe(contentsIntroScrollTrigger);
-                            console.log(`Scroll Observer for '${contentsIntroScrollTrigger}' : Started observing.`);
+                            console.log(`Scroll Observer for '${contentsIntroScrollTrigger.id}' : Started observing.`);
                         });
                          
                     }, 500); // Adjust delay as needed
