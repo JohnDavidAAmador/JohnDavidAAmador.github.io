@@ -169,15 +169,15 @@ document.addEventListener('DOMContentLoaded', function() {
     let imageChangeInterval;
     
 
-    console.log("DOM Content Loaded - Animation Test");
-    console.log("profileRecord:", profileRecord);
-    console.log("expandButton:", expandButton);
-    console.log("collapseButton:", collapseButton);
-    console.log("overlayWindow:", introTechOverlay);
-    console.log("fingerprintOverlay:", fingerprintOverlay);
-    console.log("retinaOverlay:", retinaOverlay);
-    console.log("stats2Overlay:", stats2Overlay);
-    console.log("stats3Overlay:", stats3Overlay);
+    console.log("DOM Content Loaded - Animations and Portfolio Functionalities are Ready");
+    //console.log("profileRecord:", profileRecord);
+    //console.log("expandButton:", expandButton);
+    //console.log("collapseButton:", collapseButton);
+    //console.log("overlayWindow:", introTechOverlay);
+    //console.log("fingerprintOverlay:", fingerprintOverlay);
+    //console.log("retinaOverlay:", retinaOverlay);
+    //console.log("stats2Overlay:", stats2Overlay);
+    //console.log("stats3Overlay:", stats3Overlay);
 
 
         expandButton.addEventListener('click', function() {
@@ -303,13 +303,13 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!portfolioContentsSection) {
         console.error("Error: #portfolio-contents element not found!");
     } else {
-        console.log("#portfolio-contents element found:", portfolioContentsSection);
+        //console.log("#portfolio-contents element found:", portfolioContentsSection);
     }
 
     if (!contentsExpandTrigger) {
         console.error("Error: #contentsExpandTrigger element not found!");
     } else {
-        console.log("#contentsExpandTrigger element found:", contentsExpandTrigger);
+        //console.log("#contentsExpandTrigger element found:", contentsExpandTrigger);
     }
 
     let initialLoad = true; // Flag to handle the initial state
@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (portfolioContentsSection && contentsExpandTrigger && profileRecord) {
         const contentsExpandObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting && !profileRecord.classList.contains('expanded') && !initialLoad && !isSnapping) {
+                if (entry.isIntersecting && !profileRecord.classList.contains('expanded') && !initialLoad) {
                     console.log("Contents expand trigger is in view, profile-record is not expanded, and it's not the initial load. Attempting scroll and expand.");
                     isSnapping = true;
                     console.log("Contents Expand Triggered, isSnapping set to True")
@@ -400,35 +400,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Contents Intro Trigger
     //const portfolioContentsSection = document.getElementById('portfolio-contents'); / already previously declared above
-    console.log("Contents/ Intro Smooth Scroll Trigger, portfolio-contents address found", portfolioContentsSection);
+    //console.log("Contents/ Intro Smooth Scroll Trigger, portfolio-contents address found", portfolioContentsSection);
     const introSection = document.getElementById('intro'); // Make sure introSection is declared
-    console.log("Contents/ Intro Smooth Scroll Trigger, introSection address found", introSection);
+    //console.log("Contents/ Intro Smooth Scroll Trigger, introSection address found", introSection);
     const contentsIntroScrollTrigger = document.getElementById('contentsIntroScrollTrigger'); // Select by ID
-    console.log("Contents/ Intro Smooth Scroll Trigger, contentsIntroScrollTrigger found", contentsIntroScrollTrigger);
+    //console.log("Contents/ Intro Smooth Scroll Trigger, contentsIntroScrollTrigger found", contentsIntroScrollTrigger);
 
-    
-    console.log("Contents/ Intro Smooth Scroll Trigger, isSnapping set to false.");
 
     // Declare the observer globally (within DOMContentLoaded) so it can be accessed later.
     // If you have other snap observers, you'll need to declare them similarly.
     let contentsIntroScrollObserver; // Changed 'const observer' to 'let contentsIntroSnapObserver'
-    console.log("let contentsIntroScrollObserver;");
+    //console.log("let contentsIntroScrollObserver;");
 
     if (portfolioContentsSection && introSection && contentsIntroScrollTrigger) {
-        console.log("Contents/ Intro Smooth Scroll Trigger, portfolioContentsSection && introSection && contentsIntroScrollTrigger found");
+        //console.log("Contents/ Intro Smooth Scroll Trigger, portfolioContentsSection && introSection && contentsIntroScrollTrigger found");
         contentsIntroScrollObserver = new IntersectionObserver((entries) => { // Use the global variable
             entries.forEach(entry => {
                 // --- CRITICAL CHANGE 1: Add the 'expanded' check ---
                 if (profileRecord.classList.contains('expanded') && entry.isIntersecting && isSnapping==false) {
                     isSnapping = true;
-                    console.log("Contents/ Intro Smooth Scroll Trigger, isSnapping set to true.");
+                    console.log("Contents/ Intro Smooth Scroll Trigger, isSnapping set to true. Because trigger intersecting and contents are expanded.");
 
                     introSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     console.log("Scrolling to intro:", introSection);
 
                     setTimeout(() => {
                         isSnapping = false;
-                        console.log("Contents/ Intro Smooth Scroll Trigger, isSnapping set to false.");
+                        console.log("Contents/ Intro Smooth Scroll Trigger, isSnapping set to false. because scroll is complete.");
                     }, 700); // Changed to 700ms for consistency with other smooth scrolls
                 }
             });
@@ -443,20 +441,17 @@ document.addEventListener('DOMContentLoaded', function() {
     //Intro Contents Trigger
      // Contents Intro Trigger
     //const portfolioContentsSection = document.getElementById('portfolio-contents'); / already previously declared above
-    console.log("introContents Smooth Scroll Trigger, portfolio-contents address found", portfolioContentsSection);
+    //console.log("introContents Smooth Scroll Trigger, portfolio-contents address found", portfolioContentsSection);
     const introContentsScrollTrigger = document.getElementById('introContentsScrollTrigger'); // Select by ID
-    console.log("introContents Smooth Scroll Trigger, introContentsScrollTrigger found", introContentsScrollTrigger);
-
-    
-    console.log("introContents Smooth Scroll Trigger, isSnapping set to false.");
+    //console.log("introContents Smooth Scroll Trigger, introContentsScrollTrigger found", introContentsScrollTrigger);
 
     // Declare the observer globally (within DOMContentLoaded) so it can be accessed later.
     // If you have other snap observers, you'll need to declare them similarly.
     let introContentsScrollObserver; // Changed 'const observer' to 'let contentsIntroSnapObserver'
-    console.log("let introContentsScrollObserver;");
+    //console.log("let introContentsScrollObserver;");
 
     if (portfolioContentsSection && introContentsScrollTrigger) {
-        console.log("introContents: portfolioContentsSection && introContentsScrollTrigger found");
+        //console.log("introContents: portfolioContentsSection && introContentsScrollTrigger found");
         introContentsScrollObserver = new IntersectionObserver((entries) => { // Use the global variable
             entries.forEach(entry => {
                 // --- CRITICAL CHANGE 1: Add the 'expanded' check ---
