@@ -552,27 +552,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //Technologies/ Projects Scroll Trigger
     const projectsSection = document.getElementById('projects'); 
-    console.log("Technologies/ Projects Smooth Scroll Trigger, projects address found", projectsSection);
+    //console.log("Technologies/ Projects Smooth Scroll Trigger, projects address found", projectsSection);
     const technologiesIUseProjectsScrollTrigger = document.getElementById('technologiesIUseProjectsScrollTrigger'); 
-    console.log("Technologies/ Projects Smooth Scroll Trigger, technoligiesIUseProjectsScrollTrigger found", technologiesIUseProjectsScrollTrigger);
+    //console.log("Technologies/ Projects Smooth Scroll Trigger, technoligiesIUseProjectsScrollTrigger found", technologiesIUseProjectsScrollTrigger);
     
 
     let technologiesIUseProjectsScrollObserver;
 
     if (projectsSection && technologiesIUseProjectsScrollTrigger) {
-        console.log("Technologies/ Projects Smooth Scroll Trigger: projectsSection && technologiesIUseProjectsScrollTrigger found");
+        //console.log("Technologies/ Projects Smooth Scroll Trigger: projectsSection && technologiesIUseProjectsScrollTrigger found");
         technologiesIUseProjectsScrollObserver = new IntersectionObserver((entries) => { // Use the global variable
             entries.forEach(entry => {
                 if (entry.isIntersecting && isSnapping==false) {
                     isSnapping = true;
-                    console.log("Technologies/ Projects Smooth Scroll Trigger: isSnapping set to true. because trigger is intersecting and isSnapping is set to false");
+                    //console.log("Technologies/ Projects Smooth Scroll Trigger: isSnapping set to true. because trigger is intersecting and isSnapping is set to false");
 
                     projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    console.log("Technologies/ Projects Smooth Scroll Trigger: Scrolling to Projects Section", projectsSection);
+                    //console.log("Technologies/ Projects Smooth Scroll Trigger: Scrolling to Projects Section", projectsSection);
 
                     setTimeout(() => {
                         isSnapping = false;
-                        console.log("Technologies/ Projects Smooth Scroll Trigger: isSnapping set to false. because scrolling is complete.");
+                        //console.log("Technologies/ Projects Smooth Scroll Trigger: isSnapping set to false. because scrolling is complete.");
                     }, 700); // Changed to 700ms for consistency with other smooth scrolls
                 }
             });
@@ -581,10 +581,47 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         // Start observing the trigger
         technologiesIUseProjectsScrollObserver.observe(technologiesIUseProjectsScrollTrigger);
-        console.log("Observing technologiesIUseProjectsScrollTrigger.");
+        //console.log("Observing technologiesIUseProjectsScrollTrigger.");
 
     } else {
         console.error("Technologies/ Projects Smooth Scroll Trigger: ERROR Could not find the projectsSection or the technologiesIUseProjectsScrollTrigger.");
+    }
+
+    // Projects/ Technologies Scroll Trigger
+    
+    console.log("Projects/ Technologies Smooth Scroll Trigger, technologiesIUseSection address found", technologiesIUseSection);
+    const projectsTechnologiesIUseIntroScrollTrigger = document.getElementById('projectsTechnologiesIUseIntroScrollTrigger'); 
+    console.log("Projects/ Technologies Smooth Scroll Trigger, projectsTechnologiesIUseIntroScrollTrigge found", projectsTechnologiesIUseIntroScrollTrigger);
+    
+
+    let projectsTechnologiesIUseIntroScrollObserver;
+
+    if (technologiesIUseSection && projectsTechnologiesIUseIntroScrollTrigger) {
+        console.log("Projects/ Technologies Smooth Scroll Trigger: technologiesIUseSection && projectsTechnologiesIUseIntroScrollTrigger found");
+        projectsTechnologiesIUseIntroScrollObserver = new IntersectionObserver((entries) => { // Use the global variable
+            entries.forEach(entry => {
+                if (entry.isIntersecting && isSnapping==false) {
+                    isSnapping = true;
+                    console.log("Projects/ Technologies Smooth Scroll Trigger: isSnapping set to true. because trigger is intersecting and isSnapping is set to false");
+
+                    technologiesIUseSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    console.log("Projects/ Technologies Smooth Scroll Trigger: Scrolling to technologiesIUseSection", technologiesIUseSection);
+
+                    setTimeout(() => {
+                        isSnapping = false;
+                        console.log("Projects/ Technologies Smooth Scroll Trigger: isSnapping set to false. because scrolling is complete.");
+                    }, 700); // Changed to 700ms for consistency with other smooth scrolls
+                }
+            });
+        }, {
+            threshold: 0.1 // Changed to 0.1 for consistency with other triggers
+        });
+        // Start observing the trigger
+        projectsTechnologiesIUseIntroScrollObserver.observe(projectsTechnologiesIUseIntroScrollTrigger);
+        console.log("Observing projectsTechnologiesIUseIntroScrollTrigger.");
+
+    } else {
+        console.error("Projects/ Technologies Smooth Scroll Trigger: ERROR Could not find the technologiesIUseSection or the projectsTechnologiesIUseIntroScrollTrigger.");
     }
 
 
