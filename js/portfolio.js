@@ -318,15 +318,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const contentsExpandObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting && !profileRecord.classList.contains('expanded') && !initialLoad) {
-                    console.log("Contents expand trigger is in view, profile-record is not expanded, and it's not the initial load. Attempting scroll and expand.");
+                    //console.log("Contents expand trigger is in view, profile-record is not expanded, and it's not the initial load. Attempting scroll and expand.");
                     isSnapping = true;
-                    console.log("Contents Expand Triggered, isSnapping set to True")
+                    //console.log("Contents Expand Triggered, isSnapping set to True")
                     portfolioContentsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
                     // *** After scrolling, *then* expand the profileRecord ***
                     setTimeout(() => { // Add a small delay after the scroll
-                        console.log("Contents expand trigger is in view. Attempting expand.");
-                        console.log("Expand on scroll trigger - Animation executing");
+                        //console.log("Contents expand trigger is in view. Attempting expand.");
+                        //console.log("Expand on scroll trigger - Animation executing");
                         profileRecord.classList.add('expanded');
                         profileRecord.classList.remove('collapsed'); // Ensure 'collapsed' is removed
 
@@ -359,28 +359,28 @@ document.addEventListener('DOMContentLoaded', function() {
                             
                             //unobserve contents-expand
                             contentsExpandObserver.unobserve(contentsExpandTrigger);
-                            console.log("Contents Expand Observer: Stopped observing (contents profile expanded).");
+                            //console.log("Contents Expand Observer: Stopped observing (contents profile expanded).");
 
                             //start contents-intro observer
                             contentsIntroScrollObserver.observe(contentsIntroScrollTrigger);
-                            console.log(`Scroll Observer for '${contentsIntroScrollTrigger.id}' : Started observing.`);
+                            //console.log(`Scroll Observer for '${contentsIntroScrollTrigger.id}' : Started observing.`);
                         });
                          
                     }, 500); // Adjust delay as needed
                     setTimeout(() => {
                         isSnapping = false;
-                        console.log("Contents Expand Triggered complete, isSnapping set to False.");
+                        //console.log("Contents Expand Triggered complete, isSnapping set to False.");
                     }, 700); // Changed to 700ms for consistency with other smooth scrolls
                 } else if (entry.isIntersecting && profileRecord.classList.contains('expanded')) {
-                    console.log("Contents expand trigger is in view, and profile-record is expanded. Not attempting scroll.");
+                    //console.log("Contents expand trigger is in view, and profile-record is expanded. Not attempting scroll.");
                 } else if (entry.isIntersecting && initialLoad) {
-                    console.log("Contents expand trigger is in view on initial load. Not scrolling (yet).");
+                    //console.log("Contents expand trigger is in view on initial load. Not scrolling (yet).");
                 }
             });
             // After any intersection, set initialLoad to false
             if (initialLoad) {
                 initialLoad = false;
-                console.log("Initial load completed. Subsequent intersections will be considered for scrolling.");
+                //console.log("Initial load completed. Subsequent intersections will be considered for scrolling.");
             }
         }, {
             rootMargin: '0px 0px 0px 0px',
@@ -389,16 +389,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Start observing the trigger
         contentsExpandObserver.observe(contentsExpandTrigger);
-        console.log("Observing contentsExpandTrigger.");
+        //console.log("Observing contentsExpandTrigger.");
 
     } else {
-        console.log("One or more required elements for the contentsExpandObserver were not found.");
+        //console.log("One or more required elements for the contentsExpandObserver were not found.");
         if (!profileRecord) {
-            console.error("Error: .profile-record element not found!");
+            //console.error("Error: .profile-record element not found!");
         }
     }
 
     // Contents Intro Trigger
+
     //const portfolioContentsSection = document.getElementById('portfolio-contents'); / already previously declared above
     //console.log("Contents/ Intro Smooth Scroll Trigger, portfolio-contents address found", portfolioContentsSection);
     const introSection = document.getElementById('intro'); // Make sure introSection is declared
@@ -406,9 +407,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const contentsIntroScrollTrigger = document.getElementById('contentsIntroScrollTrigger'); // Select by ID
     //console.log("Contents/ Intro Smooth Scroll Trigger, contentsIntroScrollTrigger found", contentsIntroScrollTrigger);
 
-
-    // Declare the observer globally (within DOMContentLoaded) so it can be accessed later.
-    // If you have other snap observers, you'll need to declare them similarly.
     let contentsIntroScrollObserver; // Changed 'const observer' to 'let contentsIntroSnapObserver'
     //console.log("let contentsIntroScrollObserver;");
 
@@ -419,14 +417,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 // --- CRITICAL CHANGE 1: Add the 'expanded' check ---
                 if (profileRecord.classList.contains('expanded') && entry.isIntersecting && isSnapping==false) {
                     isSnapping = true;
-                    console.log("Contents/ Intro Smooth Scroll Trigger, isSnapping set to true. Because trigger intersecting and contents are expanded.");
+                    //console.log("Contents/ Intro Smooth Scroll Trigger, isSnapping set to true. Because trigger intersecting and contents are expanded.");
 
                     introSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    console.log("Scrolling to intro:", introSection);
+                    //console.log("Scrolling to intro:", introSection);
 
                     setTimeout(() => {
                         isSnapping = false;
-                        console.log("Contents/ Intro Smooth Scroll Trigger, isSnapping set to false. because scroll is complete.");
+                        //console.log("Contents/ Intro Smooth Scroll Trigger, isSnapping set to false. because scroll is complete.");
                     }, 700); // Changed to 700ms for consistency with other smooth scrolls
                 }
             });
@@ -439,14 +437,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     //Intro Contents Trigger
-     // Contents Intro Trigger
+
     //const portfolioContentsSection = document.getElementById('portfolio-contents'); / already previously declared above
     //console.log("introContents Smooth Scroll Trigger, portfolio-contents address found", portfolioContentsSection);
     const introContentsScrollTrigger = document.getElementById('introContentsScrollTrigger'); // Select by ID
     //console.log("introContents Smooth Scroll Trigger, introContentsScrollTrigger found", introContentsScrollTrigger);
 
-    // Declare the observer globally (within DOMContentLoaded) so it can be accessed later.
-    // If you have other snap observers, you'll need to declare them similarly.
     let introContentsScrollObserver; // Changed 'const observer' to 'let contentsIntroSnapObserver'
     //console.log("let introContentsScrollObserver;");
 
@@ -457,14 +453,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 // --- CRITICAL CHANGE 1: Add the 'expanded' check ---
                 if (entry.isIntersecting && isSnapping==false) {
                     isSnapping = true;
-                    console.log("introContents Smooth Scroll Trigger, isSnapping set to true.");
+                    //console.log("introContents Smooth Scroll Trigger, isSnapping set to true.");
 
                     portfolioContentsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    console.log("Scrolling to intro:", portfolioContentsSection);
+                    //console.log("Scrolling to intro:", portfolioContentsSection);
 
                     setTimeout(() => {
                         isSnapping = false;
-                        console.log("introContents Smooth Scroll Trigger, isSnapping set to false.");
+                        //console.log("introContents Smooth Scroll Trigger, isSnapping set to false.");
                     }, 700); // Changed to 700ms for consistency with other smooth scrolls
                 }
             });
@@ -473,10 +469,122 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         // Start observing the trigger
         introContentsScrollObserver.observe(introContentsScrollTrigger);
-        console.log("Observing introContentsScrollTrigger.");
+        //console.log("Observing introContentsScrollTrigger.");
 
     } else {
         console.error("Could not find the portfolioContentsSection or the introContentsScrollTrigger.");
+    }
+
+    //Intro Technologies Trigger
+
+    const technologiesIUseSection = document.getElementById('technologies-i-use');
+    //console.log("intro/ Technologies I Use: , technologies-i-use address found", technologiesIUseSection);
+    const introTechnologiesIUseScrollTrigger = document.getElementById('introTechnologiesIUseScrollTrigger');
+    //console.log("intro/ Technologies I Use: , introTechnologiesIUseScrollTrigger found", introTechnologiesIUseScrollTrigger);
+
+   
+    let introTechnologiesIUseScrollObserver; // Changed 'const observer' to 'let contentsIntroSnapObserver'
+    //console.log("let introContentsScrollObserver;");
+
+    if (technologiesIUseSection && introTechnologiesIUseScrollTrigger) {
+        //console.log("intro/ Technologies I Use: technologiesIUseSection && introTechnologiesIUseScrollTrigger found");
+        introTechnologiesIUseScrollObserver = new IntersectionObserver((entries) => { // Use the global variable
+            entries.forEach(entry => {
+                if (entry.isIntersecting && isSnapping==false) {
+                    isSnapping = true;
+                    //console.log("intro/ Technologies I Use Smooth Scroll Trigger, isSnapping set to true.");
+
+                    technologiesIUseSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                   //console.log("intro/ Technologies I Use: Scrolling to Technologies I Use:", technologiesIUseSection);
+
+                    setTimeout(() => {
+                        isSnapping = false;
+                        //console.log("intro/ Technologies I Use Smooth Scroll Trigger, isSnapping set to false.");
+                    }, 700); // Changed to 700ms for consistency with other smooth scrolls
+                }
+            });
+        }, {
+            threshold: 0.1 // Changed to 0.1 for consistency with other triggers
+        });
+        // Start observing the trigger
+        introTechnologiesIUseScrollObserver.observe(introTechnologiesIUseScrollTrigger);
+        //console.log("Observing introTechnologiesIUseScrollTrigger.");
+
+    } else {
+        console.error("Could not find the technologiesIUseSection or the introTechnologiesIUseScrollTrigger.");
+    }
+
+    //Technologies/ Intro Scroll Trigger
+
+    //console.log ("Technologies/ Intro Scroll Trigger: intro section found", introSection)
+    const technologiesIUseIntroScrollTrigger = document.getElementById('technologiesIUseIntroScrollTrigger');
+    //console.log ("Technologies/ Intro Scroll Trigger: technologiesIUseIntroScrollTrigger found", technologiesIUseIntroScrollTrigger)
+    
+    let technologiesIUseIntroScrollObserver; 
+
+    if (introSection && technologiesIUseIntroScrollTrigger) {
+        //console.log("Technologies/ Intro Scroll Trigger: introSection && technologiesIUseIntroScrollTrigger found");
+        technologiesIUseIntroScrollObserver = new IntersectionObserver((entries) => { 
+            entries.forEach(entry => {
+                if (entry.isIntersecting && isSnapping==false) {
+                    isSnapping = true;
+                    //console.log("Technologies/Intro Smooth Scroll Trigger, isSnapping set to true. because trigger is intersecting and snapping was false");
+
+                    introSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    //console.log("Technologies/ Intro Scroll Trigger: Scrolling to intro:", introSection);
+
+                    setTimeout(() => {
+                        isSnapping = false;
+                        //console.log("Technologies/Intro Smooth Scroll Trigger, isSnapping set to false. because scroll has been completed");
+                    }, 700); // Changed to 700ms for consistency with other smooth scrolls
+                }
+            });
+        }, {
+            threshold: 0.1 // Changed to 0.1 for consistency with other triggers
+        });
+        // Start observing the trigger
+        technologiesIUseIntroScrollObserver.observe(technologiesIUseIntroScrollTrigger);
+        //console.log("Observing technologiesIUseIntroScrollTrigger.");
+
+    } else {
+        console.error("Technologies/Intro Smooth Scroll Trigger, ERROR: Could not find the introSection or the technologiesIUseIntroScrollTrigger.");
+    }
+
+    //Technologies/ Projects Scroll Trigger
+    const projectsSection = document.getElementById('projects'); 
+    console.log("Technologies/ Projects Smooth Scroll Trigger, projects address found", projectsSection);
+    const technologiesIUseProjectsScrollTrigger = document.getElementById('technologiesIUseProjectsScrollTrigger'); 
+    console.log("Technologies/ Projects Smooth Scroll Trigger, technoligiesIUseProjectsScrollTrigger found", technologiesIUseProjectsScrollTrigger);
+    
+
+    let technologiesIUseProjectsScrollObserver;
+
+    if (projectsSection && technologiesIUseProjectsScrollTrigger) {
+        console.log("Technologies/ Projects Smooth Scroll Trigger: projectsSection && technologiesIUseProjectsScrollTrigger found");
+        technologiesIUseProjectsScrollObserver = new IntersectionObserver((entries) => { // Use the global variable
+            entries.forEach(entry => {
+                if (entry.isIntersecting && isSnapping==false) {
+                    isSnapping = true;
+                    console.log("Technologies/ Projects Smooth Scroll Trigger: isSnapping set to true. because trigger is intersecting and isSnapping is set to false");
+
+                    projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    console.log("Technologies/ Projects Smooth Scroll Trigger: Scrolling to Projects Section", projectsSection);
+
+                    setTimeout(() => {
+                        isSnapping = false;
+                        console.log("Technologies/ Projects Smooth Scroll Trigger: isSnapping set to false. because scrolling is complete.");
+                    }, 700); // Changed to 700ms for consistency with other smooth scrolls
+                }
+            });
+        }, {
+            threshold: 0.1 // Changed to 0.1 for consistency with other triggers
+        });
+        // Start observing the trigger
+        technologiesIUseProjectsScrollObserver.observe(technologiesIUseProjectsScrollTrigger);
+        console.log("Observing technologiesIUseProjectsScrollTrigger.");
+
+    } else {
+        console.error("Technologies/ Projects Smooth Scroll Trigger: ERROR Could not find the projectsSection or the technologiesIUseProjectsScrollTrigger.");
     }
 
 
@@ -814,7 +922,7 @@ document.addEventListener('DOMContentLoaded', function() {
      Projects section
     *********************/
     // Projects section elements
-    const projectsSection = document.getElementById('projects');
+    //const projectsSection = document.getElementById('projects'); //declared earlier in script
     // Section Header Variables
     const projectsDivider = technologiesSection ? technologiesSection.querySelector('.title-flex-wrapper .divider') : null;
     const projectsTitleBackground = technologiesSection ? technologiesSection.querySelector('.title-flex-wrapper .title-background') : null; // Get the backing element

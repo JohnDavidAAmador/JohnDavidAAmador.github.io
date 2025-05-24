@@ -987,7 +987,7 @@ header {
     margin-top: 50px;
     margin-left: 50px;
     /* Make it invisible */
-    opacity: 1;
+    opacity: 0;
     /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
        depending on exactly when you want the trigger to fire. A small height
        might make the triggering feel more precise. */
@@ -999,6 +999,176 @@ header {
 {
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
     background-color: rgb(255, 132, 0);
+    color: white;
+    border: 0.5px solid white;
+    margin-top: 915px;
+    margin-left: 50px;
+    /* Make it invisible */
+    opacity: 0;
+    /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
+       depending on exactly when you want the trigger to fire. A small height
+       might make the triggering feel more precise. */
+    width: 50px;
+    height: 50px; /* Or adjust as needed */
+    /* Optional: Add some margin to position it relative to the expandButton */
+}
+#introTechnologiesIUseScrollTrigger
+{
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    background-color: rgb(255, 132, 0);
+    color: white;
+    border: 0.5px solid white;
+    margin-top: 300px;
+    margin-left: 50px;
+    /* Make it invisible */
+    opacity: 1;
+    /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
+       depending on exactly when you want the trigger to fire. A small height
+       might make the triggering feel more precise. */
+    width: 50px;
+    height: 50px; /* Or adjust as needed */
+    /* Optional: Add some margin to position it relative to the expandButton */
+}
+#technologiesIUseIntroScrollTrigger
+{
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    background-color: rgb(243, 242, 242);
+    color: white;
+    border: 0.5px solid white;
+    margin-top: 915px;
+    margin-left: 50px;
+    /* Make it invisible */
+    opacity: 1;
+    /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
+       depending on exactly when you want the trigger to fire. A small height
+       might make the triggering feel more precise. */
+    width: 50px;
+    height: 50px; /* Or adjust as needed */
+    /* Optional: Add some margin to position it relative to the expandButton */
+}
+#technologiesIUseProjectsScrollTrigger
+{
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    background-color: rgb(255, 132, 0);
+    color: white;
+    border: 0.5px solid white;
+    margin-top: 150px;
+    margin-left: 50px;
+    /* Make it invisible */
+    opacity: 1;
+    /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
+       depending on exactly when you want the trigger to fire. A small height
+       might make the triggering feel more precise. */
+    width: 50px;
+    height: 50px; /* Or adjust as needed */
+    /* Optional: Add some margin to position it relative to the expandButton */
+}
+#projectsTechnologiesIUseIntroScrollTrigger
+{
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    background-color: rgb(243, 242, 242);
+    color: white;
+    border: 0.5px solid white;
+    margin-top: 915px;
+    margin-left: 50px;
+    /* Make it invisible */
+    opacity: 1;
+    /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
+       depending on exactly when you want the trigger to fire. A small height
+       might make the triggering feel more precise. */
+    width: 50px;
+    height: 50px; /* Or adjust as needed */
+    /* Optional: Add some margin to position it relative to the expandButton */
+}
+#projectsResumeScrollTrigger
+{
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    background-color: rgb(255, 132, 0);
+    color: white;
+    border: 0.5px solid white;
+    margin-top: 150px;
+    margin-left: 50px;
+    /* Make it invisible */
+    opacity: 1;
+    /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
+       depending on exactly when you want the trigger to fire. A small height
+       might make the triggering feel more precise. */
+    width: 50px;
+    height: 50px; /* Or adjust as needed */
+    /* Optional: Add some margin to position it relative to the expandButton */
+}
+#resumeProjectsScrollTrigger
+{
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    background-color: rgb(243, 242, 242);
+    color: white;
+    border: 0.5px solid white;
+    margin-top: 915px;
+    margin-left: 50px;
+    /* Make it invisible */
+    opacity: 1;
+    /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
+       depending on exactly when you want the trigger to fire. A small height
+       might make the triggering feel more precise. */
+    width: 50px;
+    height: 50px; /* Or adjust as needed */
+    /* Optional: Add some margin to position it relative to the expandButton */
+}
+#resumeEducationScrollTrigger
+{
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    background-color: rgb(255, 132, 0);
+    color: white;
+    border: 0.5px solid white;
+    margin-top: 150px;
+    margin-left: 50px;
+    /* Make it invisible */
+    opacity: 1;
+    /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
+       depending on exactly when you want the trigger to fire. A small height
+       might make the triggering feel more precise. */
+    width: 50px;
+    height: 50px; /* Or adjust as needed */
+    /* Optional: Add some margin to position it relative to the expandButton */
+}
+#educationResumeScrollTrigger
+{
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    background-color: rgb(243, 242, 242);
+    color: white;
+    border: 0.5px solid white;
+    margin-top: 915px;
+    margin-left: 50px;
+    /* Make it invisible */
+    opacity: 1;
+    /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
+       depending on exactly when you want the trigger to fire. A small height
+       might make the triggering feel more precise. */
+    width: 50px;
+    height: 50px; /* Or adjust as needed */
+    /* Optional: Add some margin to position it relative to the expandButton */
+}
+#educationAboutMeScrollTrigger
+{
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    background-color: rgb(255, 132, 0);
+    color: white;
+    border: 0.5px solid white;
+    margin-top: 150px;
+    margin-left: 50px;
+    /* Make it invisible */
+    opacity: 1;
+    /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
+       depending on exactly when you want the trigger to fire. A small height
+       might make the triggering feel more precise. */
+    width: 50px;
+    height: 50px; /* Or adjust as needed */
+    /* Optional: Add some margin to position it relative to the expandButton */
+}
+#AboutMeEducationScrollTrigger
+{
+    box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
+    background-color: rgb(243, 242, 242);
     color: white;
     border: 0.5px solid white;
     margin-top: 915px;
@@ -1090,7 +1260,7 @@ header {
     padding: 20px;
     box-sizing: border-box;
     width: 90%;
-    margin-top: 915px;
+    margin-top: 150px;
 }
 
 #technologies-i-use .section-container {
@@ -1845,7 +2015,7 @@ header {
     padding: 20px;
     box-sizing: border-box;
     width: 90%;
-    margin-top: 915px;
+    margin-top: 150px;
 }
 
 #projects .section-container {
@@ -2217,7 +2387,7 @@ header {
     padding: 20px;
     box-sizing: border-box;
     width: 90%;
-    margin-top: 915px;
+    margin-top: 150px;
 }
 #resume .section-container {
     position: relative; /* For positioning other elements within */
@@ -2406,7 +2576,7 @@ header {
     padding: 20px;
     box-sizing: border-box;
     width: 90%;
-    margin-top: 915px;
+    margin-top: 150px;
 }
 
 #education .section-container {
@@ -2716,7 +2886,7 @@ header {
     padding: 20px;
     box-sizing: border-box;
     width: 90%;
-    margin-top: 915px;
+    margin-top: 150px;
 }
 
 #about-me .section-container {
