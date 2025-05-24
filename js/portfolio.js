@@ -589,27 +589,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Projects/ Technologies Scroll Trigger
     
-    console.log("Projects/ Technologies Smooth Scroll Trigger, technologiesIUseSection address found", technologiesIUseSection);
+    //console.log("Projects/ Technologies Smooth Scroll Trigger, technologiesIUseSection address found", technologiesIUseSection);
     const projectsTechnologiesIUseIntroScrollTrigger = document.getElementById('projectsTechnologiesIUseIntroScrollTrigger'); 
-    console.log("Projects/ Technologies Smooth Scroll Trigger, projectsTechnologiesIUseIntroScrollTrigge found", projectsTechnologiesIUseIntroScrollTrigger);
+    //console.log("Projects/ Technologies Smooth Scroll Trigger, projectsTechnologiesIUseIntroScrollTrigge found", projectsTechnologiesIUseIntroScrollTrigger);
     
 
     let projectsTechnologiesIUseIntroScrollObserver;
 
     if (technologiesIUseSection && projectsTechnologiesIUseIntroScrollTrigger) {
-        console.log("Projects/ Technologies Smooth Scroll Trigger: technologiesIUseSection && projectsTechnologiesIUseIntroScrollTrigger found");
+        //console.log("Projects/ Technologies Smooth Scroll Trigger: technologiesIUseSection && projectsTechnologiesIUseIntroScrollTrigger found");
         projectsTechnologiesIUseIntroScrollObserver = new IntersectionObserver((entries) => { // Use the global variable
             entries.forEach(entry => {
                 if (entry.isIntersecting && isSnapping==false) {
                     isSnapping = true;
-                    console.log("Projects/ Technologies Smooth Scroll Trigger: isSnapping set to true. because trigger is intersecting and isSnapping is set to false");
+                    //console.log("Projects/ Technologies Smooth Scroll Trigger: isSnapping set to true. because trigger is intersecting and isSnapping is set to false");
 
                     technologiesIUseSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    console.log("Projects/ Technologies Smooth Scroll Trigger: Scrolling to technologiesIUseSection", technologiesIUseSection);
+                    //console.log("Projects/ Technologies Smooth Scroll Trigger: Scrolling to technologiesIUseSection", technologiesIUseSection);
 
                     setTimeout(() => {
                         isSnapping = false;
-                        console.log("Projects/ Technologies Smooth Scroll Trigger: isSnapping set to false. because scrolling is complete.");
+                        //console.log("Projects/ Technologies Smooth Scroll Trigger: isSnapping set to false. because scrolling is complete.");
                     }, 700); // Changed to 700ms for consistency with other smooth scrolls
                 }
             });
@@ -618,11 +618,50 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         // Start observing the trigger
         projectsTechnologiesIUseIntroScrollObserver.observe(projectsTechnologiesIUseIntroScrollTrigger);
-        console.log("Observing projectsTechnologiesIUseIntroScrollTrigger.");
+        //console.log("Observing projectsTechnologiesIUseIntroScrollTrigger.");
 
     } else {
         console.error("Projects/ Technologies Smooth Scroll Trigger: ERROR Could not find the technologiesIUseSection or the projectsTechnologiesIUseIntroScrollTrigger.");
     }
+
+    // Projects/ Resume Scroll Trigger
+    
+    const resumeSection = document.getElementById('resume'); 
+    console.log("Projects/ Resume Smooth Scroll Trigger, resumeSection address found", resumeSection);
+    const projectsResumeScrollTrigger = document.getElementById('projectsResumeScrollTrigger'); 
+    console.log("Projects/ Resume Smooth Scroll Trigger, projectsResumeScrollTrigger found", projectsResumeScrollTrigger);
+    
+
+    let projectsResumeScrollObserver;
+
+    if (resumeSection && projectsResumeScrollTrigger) {
+        console.log("Projects/ Resume Smooth Scroll Trigger: resumeSection && projectsResumeScrollTrigger found");
+        projectsResumeScrollObserver = new IntersectionObserver((entries) => { // Use the global variable
+            entries.forEach(entry => {
+                if (entry.isIntersecting && isSnapping==false) {
+                    isSnapping = true;
+                    console.log("Projects/ Resume Smooth Scroll Trigger: isSnapping set to true. because trigger is intersecting and isSnapping is set to false");
+
+                    technologiesIUseSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    console.log("Projects/ Resume Smooth Scroll Trigger: Scrolling to resumeSection", resumeSection);
+
+                    setTimeout(() => {
+                        isSnapping = false;
+                        console.log("Projects/ Resume Smooth Scroll Trigger: isSnapping set to false. because scrolling is complete.");
+                    }, 700); // Changed to 700ms for consistency with other smooth scrolls
+                }
+            });
+        }, {
+            threshold: 0.1 // Changed to 0.1 for consistency with other triggers
+        });
+        // Start observing the trigger
+        projectsResumeScrollObserver.observe(projectsResumeScrollTrigger);
+        console.log("Observing projectsResumeScrollTrigger.");
+
+    } else {
+        console.error("Projects/ Resume Smooth Scroll Trigger: ERROR Could not find the resumeSection or the projectsResumeScrollTrigger.");
+    }
+
 
 
     //typewriter
@@ -1143,7 +1182,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.closeProjectDetails = closeProjectDetails; // Make it global for HTML onclick
 
     // Resume Section Variables
-    const resumeSection = document.getElementById('resume');
+    //const resumeSection = document.getElementById('resume'); // declared above earlier in script
     // Resume Header Variablres
     const resumeDivider = resumeSection ? resumeSection.querySelector('.title-flex-wrapper .divider') : null;
     const resumeTitleBackground = resumeSection ? resumeSection.querySelector('.title-flex-wrapper .title-background') : null; // Get the backing element
