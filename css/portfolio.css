@@ -1021,7 +1021,7 @@ header {
     margin-top: 300px;
     margin-left: 50px;
     /* Make it invisible */
-    opacity: 1;
+    opacity: 0;
     /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
        depending on exactly when you want the trigger to fire. A small height
        might make the triggering feel more precise. */
@@ -1038,7 +1038,7 @@ header {
     margin-top: 915px;
     margin-left: 50px;
     /* Make it invisible */
-    opacity: 1;
+    opacity: 0;
     /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
        depending on exactly when you want the trigger to fire. A small height
        might make the triggering feel more precise. */
@@ -1055,7 +1055,7 @@ header {
     margin-top: 150px;
     margin-left: 50px;
     /* Make it invisible */
-    opacity: 1;
+    opacity: 0;
     /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
        depending on exactly when you want the trigger to fire. A small height
        might make the triggering feel more precise. */
