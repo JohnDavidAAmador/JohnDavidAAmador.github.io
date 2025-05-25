@@ -625,25 +625,63 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Projects/ Resume Scroll Trigger
-    
+
     const resumeSection = document.getElementById('resume'); 
-    console.log("Projects/ Resume Smooth Scroll Trigger, resumeSection address found", resumeSection);
+    //console.log("Projects/ Resume Smooth Scroll Trigger, resumeSection address found", resumeSection);
     const projectsResumeScrollTrigger = document.getElementById('projectsResumeScrollTrigger'); 
-    console.log("Projects/ Resume Smooth Scroll Trigger, projectsResumeScrollTrigger found", projectsResumeScrollTrigger);
+    //console.log("Projects/ Resume Smooth Scroll Trigger, projectsResumeScrollTrigger found", projectsResumeScrollTrigger);
     
 
     let projectsResumeScrollObserver;
 
     if (resumeSection && projectsResumeScrollTrigger) {
-        console.log("Projects/ Resume Smooth Scroll Trigger: resumeSection && projectsResumeScrollTrigger found");
+        //console.log("Projects/ Resume Smooth Scroll Trigger: projectsSection && projectsResumeScrollTrigger found");
         projectsResumeScrollObserver = new IntersectionObserver((entries) => { // Use the global variable
+            entries.forEach(entry => {
+                if (entry.isIntersecting && isSnapping==false) {
+                    isSnapping = true;
+                    //console.log("Projects/ Resume Smooth Scroll Trigger: isSnapping set to true. because trigger is intersecting and isSnapping is set to false");
+
+                    resumeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    //console.log("Projects/ Resume Smooth Scroll Trigger: Scrolling to resumeSection", resumeSection);
+
+                    setTimeout(() => {
+                        isSnapping = false;
+                        //console.log("Projects/ Resume Smooth Scroll Trigger: isSnapping set to false. because scrolling is complete.");
+                    }, 700); // Changed to 700ms for consistency with other smooth scrolls
+                }
+            });
+        }, {
+            threshold: 0.1 // Changed to 0.1 for consistency with other triggers
+        });
+        // Start observing the trigger
+        projectsResumeScrollObserver.observe(projectsResumeScrollTrigger);
+        //console.log("Observing projectsResumeScrollTrigger.");
+
+    } else {
+        console.error("Projects/ Resume Smooth Scroll Trigger: ERROR Could not find the resumeSection or the projectsResumeScrollTrigger.");
+    }
+
+    // Resume/ Projects Scroll Trigger
+    
+   
+    console.log("Projects/ Resume Smooth Scroll Trigger, resumeSection address found", projectsSection);
+    const resumeProjectsScrollTrigger = document.getElementById('resumeProjectsScrollTrigger'); 
+    console.log("Projects/ Resume Smooth Scroll Trigger, resumeProjectsScrollTrigger found", resumeProjectsScrollTrigger);
+    
+
+    let resumeProjectsScrollObserver;
+
+    if (projectsSection && resumeProjectsScrollTrigger) {
+        console.log("Projects/ Resume Smooth Scroll Trigger: projectsSection && resumeProjectsScrollTrigger found");
+        resumeProjectsScrollObserver = new IntersectionObserver((entries) => { // Use the global variable
             entries.forEach(entry => {
                 if (entry.isIntersecting && isSnapping==false) {
                     isSnapping = true;
                     console.log("Projects/ Resume Smooth Scroll Trigger: isSnapping set to true. because trigger is intersecting and isSnapping is set to false");
 
-                    technologiesIUseSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    console.log("Projects/ Resume Smooth Scroll Trigger: Scrolling to resumeSection", resumeSection);
+                    projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    console.log("Projects/ Resume Smooth Scroll Trigger: Scrolling to projectsSection", projectsSection);
 
                     setTimeout(() => {
                         isSnapping = false;
@@ -655,12 +693,13 @@ document.addEventListener('DOMContentLoaded', function() {
             threshold: 0.1 // Changed to 0.1 for consistency with other triggers
         });
         // Start observing the trigger
-        projectsResumeScrollObserver.observe(projectsResumeScrollTrigger);
-        console.log("Observing projectsResumeScrollTrigger.");
+        resumeProjectsScrollObserver.observe(resumeProjectsScrollTrigger);
+        console.log("Observing resumeProjectsScrollTrigger.");
 
     } else {
-        console.error("Projects/ Resume Smooth Scroll Trigger: ERROR Could not find the resumeSection or the projectsResumeScrollTrigger.");
+        console.error("Projects/ Resume Smooth Scroll Trigger: ERROR Could not find the projectsSection or the resumeProjectsScrollTrigger.");
     }
+
 
 
 
