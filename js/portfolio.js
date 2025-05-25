@@ -702,27 +702,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Resume/ Education Scroll Trigger
     const educationSection = document.getElementById('education'); 
-    console.log("Resume/ Education Smooth Scroll Trigger, educationSection address found", educationSection);
+    //console.log("Resume/ Education Smooth Scroll Trigger, educationSection address found", educationSection);
     const resumeEducationScrollTrigger = document.getElementById('resumeEducationScrollTrigger'); 
-    console.log("Resume/ Education Smooth Scroll Trigger, resumeEducationScrollTrigger found", resumeEducationScrollTrigger);
+    //console.log("Resume/ Education Smooth Scroll Trigger, resumeEducationScrollTrigger found", resumeEducationScrollTrigger);
     
 
     let resumeEducationScrollObserver;
 
     if (educationSection && resumeEducationScrollTrigger) {
-        console.log("Resume/ Education Smooth Scroll Trigger: educationSection && resumeEducationScrollTrigger found");
+        //console.log("Resume/ Education Smooth Scroll Trigger: educationSection && resumeEducationScrollTrigger found");
         resumeEducationScrollObserver = new IntersectionObserver((entries) => { // Use the global variable
             entries.forEach(entry => {
                 if (entry.isIntersecting && isSnapping==false) {
                     isSnapping = true;
-                    console.log("Resume/ Education Smooth Scroll Trigger: isSnapping set to true. because trigger is intersecting and isSnapping is set to false");
+                    //console.log("Resume/ Education Smooth Scroll Trigger: isSnapping set to true. because trigger is intersecting and isSnapping is set to false");
 
                     educationSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    console.log("Resume/ Education Smooth Scroll Trigger: Scrolling to educationSection", educationSection);
+                    //console.log("Resume/ Education Smooth Scroll Trigger: Scrolling to educationSection", educationSection);
 
                     setTimeout(() => {
                         isSnapping = false;
-                        console.log("Resume/ Education Smooth Scroll Trigger: isSnapping set to false. because scrolling is complete.");
+                        //console.log("Resume/ Education Smooth Scroll Trigger: isSnapping set to false. because scrolling is complete.");
                     }, 700); // Changed to 700ms for consistency with other smooth scrolls
                 }
             });
@@ -731,10 +731,48 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         // Start observing the trigger
         resumeEducationScrollObserver.observe(resumeEducationScrollTrigger);
-        console.log("Observing resumeEducationScrollTrigger.");
+        //console.log("Observing resumeEducationScrollTrigger.");
 
     } else {
         console.error("Resume/ Education Smooth Scroll Trigger: ERROR Could not find the educationSection or the resumeEducationScrollTrigger.");
+    }
+
+    // Education/ Resume Scroll Trigger
+    
+    //const resumeSection = document.getElementById('resume');//declared above earlier in script
+    console.log("Education/ Resume Smooth Scroll Trigger, resumeSection address found", resumeSection);
+    const educationResumeScrollTrigger = document.getElementById('educationResumeScrollTrigger'); 
+    console.log("Education/ Resume Smooth Scroll Trigger, educationResumeScrollTrigger found", educationResumeScrollTrigger);
+    
+
+    let educationResumeScrollObserver;
+
+    if (resumeSection && resumeProjectsScrollTrigger) {
+        console.log("Education/ Resume Smooth Scroll Trigger: resumeSection && educationResumeScrollTrigger found");
+        educationResumeScrollObserver = new IntersectionObserver((entries) => { // Use the global variable
+            entries.forEach(entry => {
+                if (entry.isIntersecting && isSnapping==false) {
+                    isSnapping = true;
+                    //console.log("Education/ Resume Smooth Scroll Trigger: isSnapping set to true. because trigger is intersecting and isSnapping is set to false");
+
+                    resumeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    console.log("Education/ Resume Smooth Scroll Trigger: Scrolling to resumeSection", resumeSection);
+
+                    setTimeout(() => {
+                        isSnapping = false;
+                        console.log("Education/ Resume Smooth Scroll Trigger: isSnapping set to false. because scrolling is complete.");
+                    }, 700); // Changed to 700ms for consistency with other smooth scrolls
+                }
+            });
+        }, {
+            threshold: 0.1 // Changed to 0.1 for consistency with other triggers
+        });
+        // Start observing the trigger
+        educationResumeScrollObserver.observe(educationResumeScrollTrigger);
+        console.log("Observing resumeProjectsScrollTrigger.");
+
+    } else {
+        console.error("Education/ Resume Smooth Scroll Trigger: ERROR Could not find the resumeSection or the educationResumeScrollTrigger.");
     }
 
 
