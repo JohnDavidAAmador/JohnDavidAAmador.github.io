@@ -6,8 +6,6 @@
     Date:    March 2025
 */
 /************************************************/
-/* background
-********************/
 /* CSS Reset */
 * {
     margin: 0;
@@ -18,6 +16,8 @@
     vertical-align: baseline;
     box-sizing: border-box;
 }
+/* Background
+********************/
 body {
     background-image: url(../img/bg.jpg);
     background-repeat: no-repeat;
@@ -30,7 +30,7 @@ body {
 
 }
 /*
-    header/ page top
+    Header/ Page Top
 ************************/
 header {
     padding: 10px; /* Reduce padding for mobile */
@@ -87,8 +87,8 @@ header {
     background-color: rgba(11, 169, 222, 0.614);
 }
 
-/************************
-/* Navigation Menu
+/*
+    Navigation Menu
 *************************/
 .nav-menu {
     display: none; /*initially hidden */
@@ -133,14 +133,14 @@ header {
     background-color: #555;
 }
 /*
-    Contact Buttons
+    Contacts Buttons
 ***********************/
 .contact-buttons-wrapper {
     display: flex;
     align-items: center;
 }
-/*********************
-    Contact Window
+/*
+    Contacts Window
 **********************/
 #contactWindow {
     position: fixed;
@@ -223,7 +223,6 @@ header {
     color: lightgreen;
 }
 
-
 #contactWindow .contact-buttons .contact-text {
     text-align: center;
     font-size: 1.1em;
@@ -255,25 +254,20 @@ header {
     background-color: rgb(255, 255, 255);
     box-shadow: 0 0 15px 1px rgb(0, 221, 255);
 }
-
 #contactWindow .contact-buttons a:nth-child(1) i {
     color: rgb(36, 36, 218);
 }
-
 #contactWindow .contact-buttons a:nth-child(2) .icon-circle {
     background-color: transparent;
     box-shadow: 0 0 15px 1px rgb(0, 221, 255);
 }
-
 #contactWindow .contact-buttons a:nth-child(2) i {
     color: rgb(255, 255, 255);
 }
-
 #contactWindow .contact-buttons a:nth-child(3) .icon-circle {
     background-color: rgb(5, 121, 253);
     box-shadow: 0 0 15px 1px rgb(0, 221, 255);
 }
-
 #contactWindow .contact-buttons a:nth-child(3) i {
     color: rgb(255, 255, 255);
 }
@@ -281,13 +275,10 @@ header {
     background-color: rgb(5, 121, 253);
     box-shadow: 0 0 15px 1px rgb(0, 221, 255);
 }
-
 #contactWindow .contact-buttons a:nth-child(4) i {
     color: rgb(144, 203, 92);
     font-size: 5.4em;
 }
-
-
 /* Tooltips/ text that appear on hover
 ********************************************/
 [data-tooltip] {
@@ -303,7 +294,6 @@ header {
 .hamburger-menu:active {
     transform: scale(1.1);
 }
-
 /* orange glow transparent boxes around header section */
 .main-title-container{
         position: absolute;
@@ -399,8 +389,8 @@ header {
     font-weight: bold;
 }
 
-/*******************************
-    Contact Me sticky Button
+/*
+    Contact Me Sticky Button // in heading
 ********************************/
 .sticky-contact-button {
     /*position: fixed;*/
@@ -425,10 +415,9 @@ header {
     transform: scale(1.1);
 }
 
-/*******************************
+/*
  Profile and Stats Container
 ********************************/
-
 .profile-stats-container {
     display: flex;
     flex-direction: column;
@@ -456,8 +445,7 @@ header {
     align-items: flex-start; /* Align items to the top */
     overflow: hidden;
 }
-
-/********************
+/*
     profile photo
 *********************/
 .profile-image {
@@ -469,7 +457,6 @@ header {
     position: relative;
 
  }
-
 #profileImage{
     position: absolute;
     max-width: 100px; /* can not Adjust defined in js */
@@ -483,8 +470,7 @@ header {
                 inset 0 0 3px .5px rgb(255, 102, 0); /* Orange glow */
     border: .05px solid rgb(255, 255, 255); /* Add white border */
 }
-
-/*************************
+/*
     profile photo switch
 **************************/
 #profileImage2 {
@@ -500,12 +486,10 @@ header {
                 inset 0 0 3px .5px rgb(255, 102, 0); /* Orange glow */
     border: .05px solid rgb(255, 255, 255); /* Add white border */
 }
-
 #profileImage2 {
     transform: scaleX(-1);
     opacity: 0;
 }
-
 /* profile photo glow */
 #profileImage.glowing,
 #profileImage2.glowing {
@@ -560,7 +544,6 @@ header {
     transform: translateX(0px); /* Slide to its final 'left: 120px' position */
     visibility: visible;
 }
-
 .overlay-window.intro-tech button {
     width: 70%;
     padding: 10px 10px;
@@ -577,7 +560,6 @@ header {
     box-shadow: 0 0 10px rgb(0, 221, 255); /* Add the glow shadow to the buttons */
     transition: box-shadow 0.2s ease-in-out; /* Optional: Smooth transition for the glow */
 }
-
 .overlay-window.intro-tech button:hover {
     background-color: rgb(0, 180, 220);
     box-shadow: 0 0 15px rgb(0, 221, 255); /* Slightly stronger glow on hover */
@@ -635,7 +617,6 @@ header {
     visibility: hidden; /* Initially hidden */
     z-index: 10;
 }
-
 .overlay-window.fingerprint-overlay button {
     padding: 10px 20px;
     color: white;
@@ -650,12 +631,10 @@ header {
     box-shadow: 0 0 10px rgb(0, 221, 255); /* Add the glow shadow to the buttons */
     transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
-
 .overlay-window.fingerprint-overlay button:hover {
     background-color: rgb(0, 180, 220);
     box-shadow: 0 0 15px rgb(0, 221, 255);
 }
-
 /* Fingerprint Block Show Overlay */
 .overlay-window.fingerprint-overlay.show {
     transform: translateX(0px);
@@ -682,7 +661,6 @@ header {
     /*margin-left: 10px; /* Add some spacing between the images */
     /* Add any other styling for the retina image placeholder */
 }
-
 /* Retina Block Overlay */
 .overlay-window.retina-overlay {
     position: absolute;
@@ -707,7 +685,6 @@ header {
     visibility: hidden; /* Initially hidden */
     z-index: 10;
 }
-
 .overlay-window.retina-overlay button {
     padding: 10px 20px;
     color: white;
@@ -722,17 +699,16 @@ header {
     box-shadow: 0 0 10px rgb(0, 221, 255);
     transition: background-color 0..6s ease-in-out, box-shadow 0.6s ease-in-out;
 }
-
 .overlay-window.retina-overlay button:hover {
     background-color: rgb(0, 180, 220);
     box-shadow: 0 0 15px rgb(0, 221, 255);
 }
-
 /* Retina Block Show Overlay */
 .overlay-window.retina-overlay.show {
     transform: translateX(0);
     visibility: visible;
 }
+
 /* Stats Block 2 */
 .stats-block2 {
     position: relative;
@@ -792,7 +768,6 @@ header {
     padding: 20px;
     z-index: 12;
 }
-
 .overlay-window.stats2-overlay button {
     width: 70%;
     padding: 10px 10px;
@@ -815,7 +790,6 @@ header {
     text-shadow: 1px 1px 2px oliveDrab; /* Olive drab text shadow */
     color: rgb(255, 102, 0);
 }
-
 .overlay-window.stats2-overlay button:hover {
     background-color: rgb(0, 180, 220);
     box-shadow: 0 0 15px rgb(0, 221, 255);
@@ -847,7 +821,6 @@ header {
 .profile-record.expanded .stats-block3 {
     display: block;
 }
-
 .stats-block3 ul {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -879,7 +852,6 @@ header {
     visibility: hidden;
     z-index: 12;
 }
-
 .overlay-window.stats3-overlay p {
     font-size: 1.5em;
     text-align: center;
@@ -911,7 +883,7 @@ header {
 .profile-record.expanded .expand-button-container {
     display: none;
 }
-
+/* Stats Expand Button */ 
 .expand-button button {
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
     background-color: transparent;
@@ -926,7 +898,7 @@ header {
     width: 239px;
     z-index: 12;
 }
-/* Stats collapse Button */ 
+/* Stats Collapse Button */ 
 .collapse-button-container {
     position: relative;
     align-items: center;
@@ -961,6 +933,10 @@ header {
     left: 100px;
     z-index: 12;
 }
+
+/*
+    Scroll Triggers
+**************************/
 #contentsExpandTrigger {
     box-shadow: 0 0 25px 3px rgb(0, 221, 255), inset 0 0 15px 1px rgb(0, 221, 255);
     background-color: rgb(0, 221, 255);
@@ -970,12 +946,8 @@ header {
     margin-left: 50px;
     /* Make it invisible */
     opacity: 0;
-    /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
-       depending on exactly when you want the trigger to fire. A small height
-       might make the triggering feel more precise. */
     width: 50px;
-    height: 50px; /* Or adjust as needed */
-    /* Optional: Add some margin to position it relative to the expandButton */
+    height: 50px; 
 }
 
 #contentsIntroScrollTrigger
@@ -986,14 +958,9 @@ header {
     border: 0.5px solid white;
     margin-top: 50px;
     margin-left: 50px;
-    /* Make it invisible */
     opacity: 0;
-    /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
-       depending on exactly when you want the trigger to fire. A small height
-       might make the triggering feel more precise. */
     width: 50px;
-    height: 50px; /* Or adjust as needed */
-    /* Optional: Add some margin to position it relative to the expandButton */
+    height: 50px;
 }
 #introContentsScrollTrigger
 {
@@ -1003,14 +970,9 @@ header {
     border: 0.5px solid white;
     margin-top: 915px;
     margin-left: 50px;
-    /* Make it invisible */
     opacity: 0;
-    /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
-       depending on exactly when you want the trigger to fire. A small height
-       might make the triggering feel more precise. */
     width: 50px;
-    height: 50px; /* Or adjust as needed */
-    /* Optional: Add some margin to position it relative to the expandButton */
+    height: 50px; 
 }
 #introTechnologiesIUseScrollTrigger
 {
@@ -1022,12 +984,8 @@ header {
     margin-left: 50px;
     /* Make it invisible */
     opacity: 0;
-    /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
-       depending on exactly when you want the trigger to fire. A small height
-       might make the triggering feel more precise. */
     width: 50px;
-    height: 50px; /* Or adjust as needed */
-    /* Optional: Add some margin to position it relative to the expandButton */
+    height: 50px;
 }
 #technologiesIUseIntroScrollTrigger
 {
@@ -1037,14 +995,9 @@ header {
     border: 0.5px solid white;
     margin-top: 915px;
     margin-left: 50px;
-    /* Make it invisible */
     opacity: 0;
-    /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
-       depending on exactly when you want the trigger to fire. A small height
-       might make the triggering feel more precise. */
     width: 50px;
-    height: 50px; /* Or adjust as needed */
-    /* Optional: Add some margin to position it relative to the expandButton */
+    height: 50px;
 }
 #technologiesIUseProjectsScrollTrigger
 {
@@ -1054,14 +1007,9 @@ header {
     border: 0.5px solid white;
     margin-top: 150px;
     margin-left: 50px;
-    /* Make it invisible */
     opacity: 0;
-    /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
-       depending on exactly when you want the trigger to fire. A small height
-       might make the triggering feel more precise. */
     width: 50px;
-    height: 50px; /* Or adjust as needed */
-    /* Optional: Add some margin to position it relative to the expandButton */
+    height: 50px;
 }
 #projectsTechnologiesIUseIntroScrollTrigger
 {
@@ -1071,14 +1019,9 @@ header {
     border: 0.5px solid white;
     margin-top: 915px;
     margin-left: 50px;
-    /* Make it invisible */
     opacity: 0;
-    /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
-       depending on exactly when you want the trigger to fire. A small height
-       might make the triggering feel more precise. */
     width: 50px;
-    height: 50px; /* Or adjust as needed */
-    /* Optional: Add some margin to position it relative to the expandButton */
+    height: 50px;
 }
 #projectsResumeScrollTrigger
 {
@@ -1088,14 +1031,9 @@ header {
     border: 0.5px solid white;
     margin-top: 150px;
     margin-left: 50px;
-    /* Make it invisible */
     opacity: 0;
-    /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
-       depending on exactly when you want the trigger to fire. A small height
-       might make the triggering feel more precise. */
     width: 50px;
-    height: 50px; /* Or adjust as needed */
-    /* Optional: Add some margin to position it relative to the expandButton */
+    height: 50px;
 }
 #resumeProjectsScrollTrigger
 {
@@ -1105,14 +1043,9 @@ header {
     border: 0.5px solid white;
     margin-top: 915px;
     margin-left: 50px;
-    /* Make it invisible */
     opacity: 0;
-    /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
-       depending on exactly when you want the trigger to fire. A small height
-       might make the triggering feel more precise. */
     width: 50px;
-    height: 50px; /* Or adjust as needed */
-    /* Optional: Add some margin to position it relative to the expandButton */
+    height: 50px; 
 }
 #resumeEducationScrollTrigger
 {
@@ -1122,14 +1055,9 @@ header {
     border: 0.5px solid white;
     margin-top: 150px;
     margin-left: 50px;
-    /* Make it invisible */
     opacity: 0;
-    /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
-       depending on exactly when you want the trigger to fire. A small height
-       might make the triggering feel more precise. */
     width: 50px;
-    height: 50px; /* Or adjust as needed */
-    /* Optional: Add some margin to position it relative to the expandButton */
+    height: 50px;
 }
 #educationResumeScrollTrigger
 {
@@ -1139,14 +1067,9 @@ header {
     border: 0.5px solid white;
     margin-top: 915px;
     margin-left: 50px;
-    /* Make it invisible */
     opacity: 0;
-    /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
-       depending on exactly when you want the trigger to fire. A small height
-       might make the triggering feel more precise. */
     width: 50px;
-    height: 50px; /* Or adjust as needed */
-    /* Optional: Add some margin to position it relative to the expandButton */
+    height: 50px; 
 }
 #educationAboutMeScrollTrigger
 {
@@ -1156,14 +1079,10 @@ header {
     border: 0.5px solid white;
     margin-top: 150px;
     margin-left: 50px;
-    /* Make it invisible */
     opacity: 0;
-    /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
-       depending on exactly when you want the trigger to fire. A small height
-       might make the triggering feel more precise. */
     width: 50px;
-    height: 50px; /* Or adjust as needed */
-    /* Optional: Add some margin to position it relative to the expandButton */
+    height: 50px; 
+
 }
 #aboutMeEducationScrollTrigger
 {
@@ -1173,14 +1092,9 @@ header {
     border: 0.5px solid white;
     margin-top: 915px;
     margin-left: 50px;
-    /* Make it invisible */
     opacity: 0;
-    /* You might want to give it a small height, e.g., 1px, 10px, or even 0,
-       depending on exactly when you want the trigger to fire. A small height
-       might make the triggering feel more precise. */
     width: 50px;
-    height: 50px; /* Or adjust as needed */
-    /* Optional: Add some margin to position it relative to the expandButton */
+    height: 50px; 
 }
 
 /*
@@ -2465,17 +2379,6 @@ header {
 }
 
 
-#resume .title-background {
-    background-color: rgba(255, 255, 255, 0.2);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 10px 20px;
-    border-radius: 5px;
-    z-index: -1;
-}
-
 /******************************************
     Autotyping Title above each Section
 *******************************************/
@@ -3282,31 +3185,6 @@ section span.animated-title {
     left: 6%;
 }
 
-/*********************
-    Title Backing
-**********************/
-/* Title Backing Box for Sections
-**************************************/
-.title-effects-wrapper {
-    position: relative; /* Needed for positioning */
-    display: inline-block; /* To contain the background */
-    padding: 15px 20px; /* Adjust padding as needed */
-    border-radius: 5px; /* Optional: for rounded corners */
-}
-/* Title Backing White Background
-**************************************/
-#technologies-i-use .title-background,
-#resume .title-background {
-    background-color: white;
-    color: black;
-}
-/* Title Backing Black Background
-**************************************/
-#projects .title-background,
-#bio .title-background {
-    background-color: black;
-    color: white;
-}
 /* Title Backing Object
 **************************************/
 .title-background {
